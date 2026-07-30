@@ -2,6 +2,10 @@
 
 A comprehensive full-stack personal life management system combining journal, time tracker, study tracker, Islamic tracker, calorie tracker, fitness tracker, habit tracker, and finance tracker in one unified dashboard.
 
+## 🚀 Production Readiness
+
+This release hardens the app for local development and deployment by improving environment validation, safer API responses, auth handling, startup reliability, and a lightweight CI workflow.
+
 ## 🚀 Features
 
 - **Dashboard** - Overview of all activities, habits, and metrics
@@ -127,22 +131,30 @@ personal-life-os/
 npm install
 ```
 
-2. **Create .env file** in root directory:
+2. **Create .env file** in root directory using the example file:
 
+```bash
+cp .env.example .env
 ```
+
+3. **Configure your environment variables:**
+
+```env
 PORT=5000
 MONGODB_URI=mongodb://localhost:27017/personal-life-os
-JWT_SECRET=your_jwt_secret_key_here
+JWT_SECRET=replace-with-a-long-random-secret
 NODE_ENV=development
+CORS_ORIGIN=http://localhost:3000
+VITE_API_URL=/api
 ```
 
-3. **Seed database with demo data:**
+4. **Seed database with demo data:**
 
 ```bash
 npm run seed
 ```
 
-4. **Start server:**
+5. **Start server:**
 
 ```bash
 npm run server:dev
@@ -152,7 +164,7 @@ Server will run on `http://localhost:5000`
 
 ### Frontend Setup
 
-1. **Navigate to client directory:**
+1. **Install client dependencies:**
 
 ```bash
 cd client
@@ -399,11 +411,17 @@ NODE_ENV=development
 
 - Check server proxy configuration in vite.config.js
 - Ensure server is running on correct port
+- Set CORS_ORIGIN in .env to the frontend origin when deploying
 
 ### Token Expiration
 
 - Tokens expire after 30 days
-- User will be logged out and redirected to login
+- Invalid or expired tokens trigger a graceful logout and redirect to login
+
+### Build Failures
+
+- Make sure dependencies are installed in both the root and client directories
+- Run `npm run test` and `npm run client:build` to verify locally
 
 ## 📄 License
 
