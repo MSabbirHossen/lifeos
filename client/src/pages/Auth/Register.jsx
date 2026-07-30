@@ -22,11 +22,11 @@ const Register = () => {
     }
 
     setLoading(true);
-    const success = await register(username, email, password);
-    if (success) {
+    const result = await register(username, email, password);
+    if (result === true) {
       navigate("/dashboard");
     } else {
-      setError("Registration failed. Please try again.");
+      setError(result || "Registration failed. Please try again.");
     }
     setLoading(false);
   };

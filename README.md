@@ -141,7 +141,7 @@ cp .env.example .env
 
 ```env
 PORT=5000
-MONGODB_URI=mongodb://localhost:27017/personal-life-os
+MONGODB_URI=mongodb://localhost:27017/lifeOsDB
 JWT_SECRET=replace-with-a-long-random-secret
 NODE_ENV=development
 CORS_ORIGIN=http://localhost:3000
@@ -394,7 +394,7 @@ npm run server:start
 
 ```
 PORT=5000
-MONGODB_URI=mongodb://localhost:27017/personal-life-os
+MONGODB_URI=mongodb://localhost:27017/lifeOsDB
 JWT_SECRET=your_secret_key_here
 NODE_ENV=development
 ```

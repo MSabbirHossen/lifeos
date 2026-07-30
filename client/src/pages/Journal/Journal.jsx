@@ -75,43 +75,47 @@ const Journal = () => {
       </div>
 
       {loading ? (
-        <div className="text-gray-600 dark:text-gray-400">Loading entries...</div>
+        <div className="text-gray-600 dark:text-gray-400">
+          Loading entries...
+        </div>
       ) : error ? (
         <div className="text-red-600 dark:text-red-400">{error}</div>
       ) : journals.length === 0 ? (
         <Card>
-          <p className="text-gray-600 dark:text-gray-400">No journal entries yet. Create your first entry to get started.</p>
+          <p className="text-gray-600 dark:text-gray-400">
+            No journal entries yet. Create your first entry to get started.
+          </p>
         </Card>
       ) : (
         <div className="space-y-4">
           {journals.map((journal) => (
-          <Card key={journal._id}>
-            <div className="flex justify-between items-start">
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                  {journal.title}
-                </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                  {new Date(journal.date).toLocaleDateString()} - Mood:{" "}
-                  {journal.mood}
-                </p>
-                <p className="mt-3 text-gray-700 dark:text-gray-300">
-                  {journal.notes}
-                </p>
-                {journal.highlights && (
-                  <p className="mt-2 text-sm text-green-600 dark:text-green-400">
-                    <strong>Highlights:</strong> {journal.highlights}
+            <Card key={journal._id}>
+              <div className="flex justify-between items-start">
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                    {journal.title}
+                  </h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                    {new Date(journal.date).toLocaleDateString()} - Mood:{" "}
+                    {journal.mood}
                   </p>
-                )}
+                  <p className="mt-3 text-gray-700 dark:text-gray-300">
+                    {journal.notes}
+                  </p>
+                  {journal.highlights && (
+                    <p className="mt-2 text-sm text-green-600 dark:text-green-400">
+                      <strong>Highlights:</strong> {journal.highlights}
+                    </p>
+                  )}
+                </div>
+                <button
+                  onClick={() => handleDelete(journal._id)}
+                  className="text-red-500 hover:text-red-700 p-2"
+                >
+                  <Trash2 size={20} />
+                </button>
               </div>
-              <button
-                onClick={() => handleDelete(journal._id)}
-                className="text-red-500 hover:text-red-700 p-2"
-              >
-                <Trash2 size={20} />
-              </button>
-            </div>
-          </Card>
+            </Card>
           ))}
         </div>
       )}

@@ -13,7 +13,7 @@ const FinanceTracker = require("./server/models/FinanceTracker");
 const seedDatabase = async () => {
   try {
     await mongoose.connect(
-      process.env.MONGODB_URI || "mongodb://localhost:27017/personal-life-os"
+      process.env.MONGODB_URI || "mongodb://localhost:27017/lifeOsDB",
     );
     console.log("Connected to MongoDB");
 

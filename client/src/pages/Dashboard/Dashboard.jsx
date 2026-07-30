@@ -30,6 +30,11 @@ const Dashboard = () => {
     fetchDashboardData();
   }, []);
 
+  const extractList = (response) => {
+    const payload = response?.data;
+    return Array.isArray(payload) ? payload : payload?.data || [];
+  };
+
   const fetchDashboardData = async () => {
     try {
       const [
@@ -51,13 +56,13 @@ const Dashboard = () => {
       ]);
 
       setData({
-        journals: journals.data || [],
-        timeTrackers: timeTrackers.data || [],
-        islamic: islamic.data || [],
-        calories: calories.data || [],
-        fitness: fitness.data || [],
-        habits: habits.data || [],
-        finance: finance.data || [],
+        journals: extractList(journals),
+        timeTrackers: extractList(timeTrackers),
+        islamic: extractList(islamic),
+        calories: extractList(calories),
+        fitness: extractList(fitness),
+        habits: extractList(habits),
+        finance: extractList(finance),
       });
     } catch (error) {
       console.error("Error fetching dashboard data:", error);
@@ -68,7 +73,7 @@ const Dashboard = () => {
 
   const todayCalories = data.calories
     .filter(
-      (c) => new Date(c.date).toDateString() === new Date().toDateString()
+      (c) => new Date(c.date).toDateString() === new Date().toDateString(),
     )
     .reduce((sum, c) => sum + c.calories, 0);
 
@@ -172,7 +177,7 @@ const Dashboard = () => {
             {["fajr", "dhuhr", "asr", "maghrib", "isha"].map((salah) => {
               const today = data.islamic.find(
                 (i) =>
-                  new Date(i.date).toDateString() === new Date().toDateString()
+                  new Date(i.date).toDateString() === new Date().toDateString(),
               );
               const completed = today?.salah?.[salah];
               return (

@@ -34,26 +34,45 @@ const islamicTrackerController = {
       const tracker = await IslamicTracker.findOneAndUpdate(
         { _id: req.params.id, userId: req.userId },
         req.body,
-        { new: true }
+        { new: true },
       );
       if (!tracker) {
-        return res.status(404).json({ success: false, message: "Islamic tracker not found" });
+        return res
+          .status(404)
+          .json({ success: false, message: "Islamic tracker not found" });
       }
       res.json({ success: true, data: tracker });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Server error", error: error.message });
+      res
+        .status(500)
+        .json({
+          success: false,
+          message: "Server error",
+          error: error.message,
+        });
     }
   },
 
   delete: async (req, res) => {
     try {
-      const tracker = await IslamicTracker.findOneAndDelete({ _id: req.params.id, userId: req.userId });
+      const tracker = await IslamicTracker.findOneAndDelete({
+        _id: req.params.id,
+        userId: req.userId,
+      });
       if (!tracker) {
-        return res.status(404).json({ success: false, message: "Islamic tracker not found" });
+        return res
+          .status(404)
+          .json({ success: false, message: "Islamic tracker not found" });
       }
       res.json({ success: true, message: "Islamic tracker deleted" });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Server error", error: error.message });
+      res
+        .status(500)
+        .json({
+          success: false,
+          message: "Server error",
+          error: error.message,
+        });
     }
   },
 };

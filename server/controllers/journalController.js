@@ -48,26 +48,45 @@ const journalController = {
       const journal = await Journal.findOneAndUpdate(
         { _id: req.params.id, userId: req.userId },
         req.body,
-        { new: true }
+        { new: true },
       );
       if (!journal) {
-        return res.status(404).json({ success: false, message: "Journal not found" });
+        return res
+          .status(404)
+          .json({ success: false, message: "Journal not found" });
       }
       res.json({ success: true, data: journal });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Server error", error: error.message });
+      res
+        .status(500)
+        .json({
+          success: false,
+          message: "Server error",
+          error: error.message,
+        });
     }
   },
 
   delete: async (req, res) => {
     try {
-      const journal = await Journal.findOneAndDelete({ _id: req.params.id, userId: req.userId });
+      const journal = await Journal.findOneAndDelete({
+        _id: req.params.id,
+        userId: req.userId,
+      });
       if (!journal) {
-        return res.status(404).json({ success: false, message: "Journal not found" });
+        return res
+          .status(404)
+          .json({ success: false, message: "Journal not found" });
       }
       res.json({ success: true, message: "Journal deleted" });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Server error", error: error.message });
+      res
+        .status(500)
+        .json({
+          success: false,
+          message: "Server error",
+          error: error.message,
+        });
     }
   },
 };

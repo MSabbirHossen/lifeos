@@ -1,11 +1,19 @@
 const validateAuthPayload = (payload = {}) => {
   const errors = [];
 
-  if (!payload.email || typeof payload.email !== "string" || !payload.email.trim()) {
+  if (
+    !payload.email ||
+    typeof payload.email !== "string" ||
+    !payload.email.trim()
+  ) {
     errors.push("email is required");
   }
 
-  if (!payload.password || typeof payload.password !== "string" || !payload.password.trim()) {
+  if (
+    !payload.password ||
+    typeof payload.password !== "string" ||
+    !payload.password.trim()
+  ) {
     errors.push("password is required");
   }
 
@@ -19,11 +27,19 @@ const validateFinancePayload = (payload = {}) => {
     errors.push("type must be expense or income");
   }
 
-  if (typeof payload.amount !== "number" || Number.isNaN(payload.amount) || payload.amount <= 0) {
+  if (
+    typeof payload.amount !== "number" ||
+    Number.isNaN(payload.amount) ||
+    payload.amount <= 0
+  ) {
     errors.push("amount must be a positive number");
   }
 
-  if (!payload.description || typeof payload.description !== "string" || !payload.description.trim()) {
+  if (
+    !payload.description ||
+    typeof payload.description !== "string" ||
+    !payload.description.trim()
+  ) {
     errors.push("description is required");
   }
 
@@ -33,15 +49,26 @@ const validateFinancePayload = (payload = {}) => {
 const validateTimeTrackerPayload = (payload = {}) => {
   const errors = [];
 
-  if (!payload.task || typeof payload.task !== "string" || !payload.task.trim()) {
+  if (
+    !payload.task ||
+    typeof payload.task !== "string" ||
+    !payload.task.trim()
+  ) {
     errors.push("task is required");
   }
 
-  if (!payload.category || typeof payload.category !== "string" || !payload.category.trim()) {
+  if (
+    !payload.category ||
+    typeof payload.category !== "string" ||
+    !payload.category.trim()
+  ) {
     errors.push("category is required");
   }
 
-  if (!payload.startTime || Number.isNaN(new Date(payload.startTime).getTime())) {
+  if (
+    !payload.startTime ||
+    Number.isNaN(new Date(payload.startTime).getTime())
+  ) {
     errors.push("startTime must be a valid date");
   }
 

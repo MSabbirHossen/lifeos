@@ -20,7 +20,7 @@ API.interceptors.response.use(
       window.dispatchEvent(new Event("auth:logout"));
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 export default API;

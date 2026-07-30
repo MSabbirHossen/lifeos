@@ -68,12 +68,16 @@ const TimeTracker = () => {
       </div>
 
       {loading ? (
-        <div className="text-gray-600 dark:text-gray-400">Loading entries...</div>
+        <div className="text-gray-600 dark:text-gray-400">
+          Loading entries...
+        </div>
       ) : error ? (
         <div className="text-red-600 dark:text-red-400">{error}</div>
       ) : trackers.length === 0 ? (
         <Card>
-          <p className="text-gray-600 dark:text-gray-400">No time entries yet. Add your first one to start tracking.</p>
+          <p className="text-gray-600 dark:text-gray-400">
+            No time entries yet. Add your first one to start tracking.
+          </p>
         </Card>
       ) : (
         <div className="space-y-4">

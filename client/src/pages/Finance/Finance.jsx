@@ -159,48 +159,52 @@ const Finance = () => {
           Recent Transactions
         </h2>
         {loading ? (
-          <div className="text-gray-600 dark:text-gray-400">Loading transactions...</div>
+          <div className="text-gray-600 dark:text-gray-400">
+            Loading transactions...
+          </div>
         ) : error ? (
           <div className="text-red-600 dark:text-red-400">{error}</div>
         ) : transactions.length === 0 ? (
-          <p className="text-gray-600 dark:text-gray-400">No transactions yet. Add your first one to see insights.</p>
+          <p className="text-gray-600 dark:text-gray-400">
+            No transactions yet. Add your first one to see insights.
+          </p>
         ) : (
           <div className="space-y-3">
             {transactions.slice(0, 10).map((transaction) => (
-            <div
-              key={transaction._id}
-              className="flex justify-between items-start p-3 bg-gray-50 dark:bg-gray-700 rounded"
-            >
-              <div className="flex-1">
-                <h3 className="font-semibold text-gray-900 dark:text-white">
-                  {transaction.description || "Transaction"}
-                </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {transaction.category && (
-                    <span>{transaction.category} • </span>
-                  )}
-                  {new Date(transaction.date).toLocaleDateString()}
-                </p>
+              <div
+                key={transaction._id}
+                className="flex justify-between items-start p-3 bg-gray-50 dark:bg-gray-700 rounded"
+              >
+                <div className="flex-1">
+                  <h3 className="font-semibold text-gray-900 dark:text-white">
+                    {transaction.description || "Transaction"}
+                  </h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    {transaction.category && (
+                      <span>{transaction.category} • </span>
+                    )}
+                    {new Date(transaction.date).toLocaleDateString()}
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span
+                    className={`text-lg font-bold ${
+                      transaction.type === "income"
+                        ? "text-green-500"
+                        : "text-red-500"
+                    }`}
+                  >
+                    {transaction.type === "income" ? "+" : "-"}$
+                    {transaction.amount.toFixed(2)}
+                  </span>
+                  <button
+                    onClick={() => handleDelete(transaction._id)}
+                    className="text-red-500 hover:text-red-700 p-1"
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <span
-                  className={`text-lg font-bold ${
-                    transaction.type === "income"
-                      ? "text-green-500"
-                      : "text-red-500"
-                  }`}
-                >
-                  {transaction.type === "income" ? "+" : "-"}$
-                  {transaction.amount.toFixed(2)}
-                </span>
-                <button
-                  onClick={() => handleDelete(transaction._id)}
-                  className="text-red-500 hover:text-red-700 p-1"
-                >
-                  <Trash2 size={16} />
-                </button>
-              </div>
-            </div>
             ))}
           </div>
         )}

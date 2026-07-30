@@ -32,26 +32,45 @@ const habitController = {
       const habit = await Habit.findOneAndUpdate(
         { _id: req.params.id, userId: req.userId },
         req.body,
-        { new: true }
+        { new: true },
       );
       if (!habit) {
-        return res.status(404).json({ success: false, message: "Habit not found" });
+        return res
+          .status(404)
+          .json({ success: false, message: "Habit not found" });
       }
       res.json({ success: true, data: habit });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Server error", error: error.message });
+      res
+        .status(500)
+        .json({
+          success: false,
+          message: "Server error",
+          error: error.message,
+        });
     }
   },
 
   delete: async (req, res) => {
     try {
-      const habit = await Habit.findOneAndDelete({ _id: req.params.id, userId: req.userId });
+      const habit = await Habit.findOneAndDelete({
+        _id: req.params.id,
+        userId: req.userId,
+      });
       if (!habit) {
-        return res.status(404).json({ success: false, message: "Habit not found" });
+        return res
+          .status(404)
+          .json({ success: false, message: "Habit not found" });
       }
       res.json({ success: true, message: "Habit deleted" });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Server error", error: error.message });
+      res
+        .status(500)
+        .json({
+          success: false,
+          message: "Server error",
+          error: error.message,
+        });
     }
   },
 };

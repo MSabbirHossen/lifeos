@@ -64,8 +64,11 @@ export const AuthProvider = ({ children }) => {
       setUser(data.user);
       return true;
     } catch (error) {
-      console.error("Registration failed:", error);
-      return false;
+      const apiMessage =
+        error.response?.data?.message ||
+        error.response?.data?.errors?.[0] ||
+        "Registration failed. Please try again.";
+      return apiMessage;
     }
   };
 

@@ -5,14 +5,25 @@ const timeTrackerController = {
   create: async (req, res) => {
     try {
       const { task, category, startTime, endTime } = req.body;
-      const validation = validateTimeTrackerPayload({ task, category, startTime, endTime });
+      const validation = validateTimeTrackerPayload({
+        task,
+        category,
+        startTime,
+        endTime,
+      });
 
       if (!validation.isValid) {
-        return res.status(400).json({ success: false, message: "Validation failed", errors: validation.errors });
+        return res
+          .status(400)
+          .json({
+            success: false,
+            message: "Validation failed",
+            errors: validation.errors,
+          });
       }
 
       const duration = Math.floor(
-        (new Date(endTime) - new Date(startTime)) / 60000
+        (new Date(endTime) - new Date(startTime)) / 60000,
       );
 
       const timeTracker = new TimeTracker({
@@ -26,7 +37,13 @@ const timeTrackerController = {
       await timeTracker.save();
       res.status(201).json({ success: true, data: timeTracker });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Server error", error: error.message });
+      res
+        .status(500)
+        .json({
+          success: false,
+          message: "Server error",
+          error: error.message,
+        });
     }
   },
 
@@ -37,7 +54,13 @@ const timeTrackerController = {
       });
       res.json({ success: true, data: trackers });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Server error", error: error.message });
+      res
+        .status(500)
+        .json({
+          success: false,
+          message: "Server error",
+          error: error.message,
+        });
     }
   },
 
@@ -46,26 +69,45 @@ const timeTrackerController = {
       const tracker = await TimeTracker.findOneAndUpdate(
         { _id: req.params.id, userId: req.userId },
         req.body,
-        { new: true }
+        { new: true },
       );
       if (!tracker) {
-        return res.status(404).json({ success: false, message: "Tracker not found" });
+        return res
+          .status(404)
+          .json({ success: false, message: "Tracker not found" });
       }
       res.json({ success: true, data: tracker });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Server error", error: error.message });
+      res
+        .status(500)
+        .json({
+          success: false,
+          message: "Server error",
+          error: error.message,
+        });
     }
   },
 
   delete: async (req, res) => {
     try {
-      const tracker = await TimeTracker.findOneAndDelete({ _id: req.params.id, userId: req.userId });
+      const tracker = await TimeTracker.findOneAndDelete({
+        _id: req.params.id,
+        userId: req.userId,
+      });
       if (!tracker) {
-        return res.status(404).json({ success: false, message: "Tracker not found" });
+        return res
+          .status(404)
+          .json({ success: false, message: "Tracker not found" });
       }
       res.json({ success: true, message: "Tracker deleted" });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Server error", error: error.message });
+      res
+        .status(500)
+        .json({
+          success: false,
+          message: "Server error",
+          error: error.message,
+        });
     }
   },
 };

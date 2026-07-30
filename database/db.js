@@ -9,10 +9,10 @@ const connectDB = async () => {
 
   try {
     cachedConnection = await mongoose.connect(
-      process.env.MONGODB_URI || "mongodb://localhost:27017/personal-life-os",
+      process.env.MONGODB_URI || "mongodb://localhost:27017/lifeOsDB",
       {
         serverSelectionTimeoutMS: 5000,
-      }
+      },
     );
     console.log("MongoDB connected successfully");
     return cachedConnection;

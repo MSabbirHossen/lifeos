@@ -1,7 +1,10 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 
-const { validateAuthPayload, validateFinancePayload } = require("../utils/validation");
+const {
+  validateAuthPayload,
+  validateFinancePayload,
+} = require("../utils/validation");
 
 test("validateAuthPayload rejects missing credentials", () => {
   const result = validateAuthPayload({ email: "test@example.com" });

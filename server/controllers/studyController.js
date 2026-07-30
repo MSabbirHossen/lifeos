@@ -35,26 +35,45 @@ const studyController = {
       const study = await Study.findOneAndUpdate(
         { _id: req.params.id, userId: req.userId },
         req.body,
-        { new: true }
+        { new: true },
       );
       if (!study) {
-        return res.status(404).json({ success: false, message: "Study record not found" });
+        return res
+          .status(404)
+          .json({ success: false, message: "Study record not found" });
       }
       res.json({ success: true, data: study });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Server error", error: error.message });
+      res
+        .status(500)
+        .json({
+          success: false,
+          message: "Server error",
+          error: error.message,
+        });
     }
   },
 
   delete: async (req, res) => {
     try {
-      const study = await Study.findOneAndDelete({ _id: req.params.id, userId: req.userId });
+      const study = await Study.findOneAndDelete({
+        _id: req.params.id,
+        userId: req.userId,
+      });
       if (!study) {
-        return res.status(404).json({ success: false, message: "Study record not found" });
+        return res
+          .status(404)
+          .json({ success: false, message: "Study record not found" });
       }
       res.json({ success: true, message: "Study deleted" });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Server error", error: error.message });
+      res
+        .status(500)
+        .json({
+          success: false,
+          message: "Server error",
+          error: error.message,
+        });
     }
   },
 };

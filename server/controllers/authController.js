@@ -24,7 +24,9 @@ const authController = {
 
       let user = await User.findOne({ $or: [{ email }, { username }] });
       if (user) {
-        return res.status(400).json({ success: false, message: "User already exists" });
+        return res
+          .status(400)
+          .json({ success: false, message: "User already exists" });
       }
 
       user = new User({ username, email, password });
@@ -38,7 +40,13 @@ const authController = {
         user: { id: user._id, username: user.username, email: user.email },
       });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Server error", error: error.message });
+      res
+        .status(500)
+        .json({
+          success: false,
+          message: "Server error",
+          error: error.message,
+        });
     }
   },
 
@@ -57,12 +65,16 @@ const authController = {
 
       const user = await User.findOne({ email });
       if (!user) {
-        return res.status(401).json({ success: false, message: "Invalid credentials" });
+        return res
+          .status(401)
+          .json({ success: false, message: "Invalid credentials" });
       }
 
       const isMatch = await user.comparePassword(password);
       if (!isMatch) {
-        return res.status(401).json({ success: false, message: "Invalid credentials" });
+        return res
+          .status(401)
+          .json({ success: false, message: "Invalid credentials" });
       }
 
       const token = createToken(user._id);
@@ -73,7 +85,13 @@ const authController = {
         user: { id: user._id, username: user.username, email: user.email },
       });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Server error", error: error.message });
+      res
+        .status(500)
+        .json({
+          success: false,
+          message: "Server error",
+          error: error.message,
+        });
     }
   },
 
@@ -82,7 +100,13 @@ const authController = {
       const user = await User.findById(req.userId).select("-password");
       res.json({ success: true, data: user });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Server error", error: error.message });
+      res
+        .status(500)
+        .json({
+          success: false,
+          message: "Server error",
+          error: error.message,
+        });
     }
   },
 
@@ -92,11 +116,17 @@ const authController = {
       const user = await User.findByIdAndUpdate(
         req.userId,
         { theme },
-        { new: true }
+        { new: true },
       ).select("-password");
       res.json({ success: true, data: user });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Server error", error: error.message });
+      res
+        .status(500)
+        .json({
+          success: false,
+          message: "Server error",
+          error: error.message,
+        });
     }
   },
 };
