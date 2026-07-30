@@ -382,6 +382,8 @@ npm run build
 # Deploy the dist folder
 ```
 
+If you deploy the frontend on Vercel, the root [`vercel.json`](vercel.json) handles the SPA rewrite so routes like `/dashboard` load correctly. If the backend is deployed separately, update `VITE_API_URL` to point to that API base URL.
+
 ### Backend (Heroku/Railway)
 
 ```bash
