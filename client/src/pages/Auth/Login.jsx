@@ -15,11 +15,11 @@ const Login = () => {
     setError("");
     setLoading(true);
 
-    const success = await login(email, password);
-    if (success) {
+    const result = await login(email, password);
+    if (result === true) {
       navigate("/dashboard");
     } else {
-      setError("Invalid email or password");
+      setError(result || "Invalid email or password");
     }
     setLoading(false);
   };

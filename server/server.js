@@ -36,9 +36,48 @@ const validateEnv = () => {
 validateEnv();
 
 const corsOrigin = process.env.CORS_ORIGIN;
-const corsOptions = corsOrigin
-  ? { origin: corsOrigin.split(",").map((value) => value.trim()) }
-  : { origin: true };
+const configuredOrigins = corsOrigin
+  ? corsOrigin
+      .split(",")
+      .map((value) => value.trim())
+      .filter(Boolean)
+  : [];
+
+const isAllowedOrigin = (origin) => {
+  if (!origin) {
+    return true;
+  }
+
+  if (configuredOrigins.includes("*")) {
+    return true;
+  }
+
+  if (configuredOrigins.includes(origin)) {
+    return true;
+  }
+
+  // Keep local development working without extra configuration.
+  if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
+    return true;
+  }
+
+  // Allow Vercel preview and production frontend domains.
+  if (/^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin)) {
+    return true;
+  }
+
+  return false;
+};
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (isAllowedOrigin(origin)) {
+      callback(null, true);
+      return;
+    }
+    callback(new Error("CORS origin not allowed"));
+  },
+};
 
 // Middleware
 app.set("trust proxy", 1);

@@ -47,8 +47,11 @@ export const AuthProvider = ({ children }) => {
       setUser(data.user);
       return true;
     } catch (error) {
-      console.error("Login failed:", error);
-      return false;
+      const apiMessage =
+        error.response?.data?.message ||
+        error.response?.data?.errors?.[0] ||
+        "Unable to connect to the server. Please try again.";
+      return apiMessage;
     }
   };
 
@@ -67,7 +70,7 @@ export const AuthProvider = ({ children }) => {
       const apiMessage =
         error.response?.data?.message ||
         error.response?.data?.errors?.[0] ||
-        "Registration failed. Please try again.";
+        "Unable to connect to the server. Please try again.";
       return apiMessage;
     }
   };
