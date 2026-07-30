@@ -38,11 +38,18 @@ const Login = () => {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            * Required fields
+          </p>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-              Email
+            <label
+              htmlFor="login-email"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Email <span className="text-red-500">*</span>
             </label>
             <input
+              id="login-email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -52,10 +59,14 @@ const Login = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-              Password
+            <label
+              htmlFor="login-password"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Password <span className="text-red-500">*</span>
             </label>
             <input
+              id="login-password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

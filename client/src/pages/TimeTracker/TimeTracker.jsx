@@ -114,43 +114,83 @@ const TimeTracker = () => {
         onSubmit={handleSubmit}
       >
         <div className="space-y-4">
-          <input
-            type="text"
-            placeholder="Task Name"
-            value={formData.task}
-            onChange={(e) => setFormData({ ...formData, task: e.target.value })}
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
-          <select
-            value={formData.category}
-            onChange={(e) =>
-              setFormData({ ...formData, category: e.target.value })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          >
-            <option value="Study">Study</option>
-            <option value="Fitness">Fitness</option>
-            <option value="Islamic">Islamic</option>
-            <option value="Work">Work</option>
-            <option value="Social">Social</option>
-            <option value="Sleep">Sleep</option>
-          </select>
-          <input
-            type="datetime-local"
-            value={formData.startTime}
-            onChange={(e) =>
-              setFormData({ ...formData, startTime: e.target.value })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
-          <input
-            type="datetime-local"
-            value={formData.endTime}
-            onChange={(e) =>
-              setFormData({ ...formData, endTime: e.target.value })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            * Required fields
+          </p>
+          <div>
+            <label
+              htmlFor="time-task"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Task Name <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="time-task"
+              type="text"
+              value={formData.task}
+              onChange={(e) =>
+                setFormData({ ...formData, task: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="time-category"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Category <span className="text-red-500">*</span>
+            </label>
+            <select
+              id="time-category"
+              value={formData.category}
+              onChange={(e) =>
+                setFormData({ ...formData, category: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            >
+              <option value="Study">Study</option>
+              <option value="Fitness">Fitness</option>
+              <option value="Islamic">Islamic</option>
+              <option value="Work">Work</option>
+              <option value="Social">Social</option>
+              <option value="Sleep">Sleep</option>
+            </select>
+          </div>
+          <div>
+            <label
+              htmlFor="time-start"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Start Time <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="time-start"
+              type="datetime-local"
+              value={formData.startTime}
+              onChange={(e) =>
+                setFormData({ ...formData, startTime: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="time-end"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              End Time <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="time-end"
+              type="datetime-local"
+              value={formData.endTime}
+              onChange={(e) =>
+                setFormData({ ...formData, endTime: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
         </div>
       </Modal>
     </div>

@@ -56,7 +56,7 @@ const Fitness = () => {
 
   const totalCalories = trackers.reduce(
     (sum, t) => sum + (t.caloriesBurned || 0),
-    0
+    0,
   );
   const totalDuration = trackers.reduce((sum, t) => sum + (t.duration || 0), 0);
 
@@ -145,55 +145,101 @@ const Fitness = () => {
         onSubmit={handleSubmit}
       >
         <div className="space-y-4">
-          <input
-            type="text"
-            placeholder="Exercise Name"
-            value={formData.exercise}
-            onChange={(e) =>
-              setFormData({ ...formData, exercise: e.target.value })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
-          <select
-            value={formData.type}
-            onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          >
-            <option value="cardio">Cardio</option>
-            <option value="strength">Strength</option>
-            <option value="flexibility">Flexibility</option>
-            <option value="sports">Sports</option>
-          </select>
-          <input
-            type="number"
-            placeholder="Duration (minutes)"
-            value={formData.duration}
-            onChange={(e) =>
-              setFormData({ ...formData, duration: parseInt(e.target.value) })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
-          <input
-            type="number"
-            placeholder="Calories Burned"
-            value={formData.caloriesBurned}
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                caloriesBurned: parseInt(e.target.value),
-              })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
-          <input
-            type="number"
-            placeholder="Weight (kg)"
-            value={formData.weight}
-            onChange={(e) =>
-              setFormData({ ...formData, weight: parseFloat(e.target.value) })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            * Required fields
+          </p>
+          <div>
+            <label
+              htmlFor="fitness-exercise"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Exercise Name <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="fitness-exercise"
+              type="text"
+              value={formData.exercise}
+              onChange={(e) =>
+                setFormData({ ...formData, exercise: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="fitness-type"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Workout Type <span className="text-red-500">*</span>
+            </label>
+            <select
+              id="fitness-type"
+              value={formData.type}
+              onChange={(e) =>
+                setFormData({ ...formData, type: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            >
+              <option value="cardio">Cardio</option>
+              <option value="strength">Strength</option>
+              <option value="flexibility">Flexibility</option>
+              <option value="sports">Sports</option>
+            </select>
+          </div>
+          <div>
+            <label
+              htmlFor="fitness-duration"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Duration (minutes) <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="fitness-duration"
+              type="number"
+              value={formData.duration}
+              onChange={(e) =>
+                setFormData({ ...formData, duration: parseInt(e.target.value) })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="fitness-calories"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Calories Burned
+            </label>
+            <input
+              id="fitness-calories"
+              type="number"
+              value={formData.caloriesBurned}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  caloriesBurned: parseInt(e.target.value),
+                })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="fitness-weight"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Weight (kg)
+            </label>
+            <input
+              id="fitness-weight"
+              type="number"
+              value={formData.weight}
+              onChange={(e) =>
+                setFormData({ ...formData, weight: parseFloat(e.target.value) })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
         </div>
       </Modal>
     </div>

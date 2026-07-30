@@ -65,7 +65,7 @@ const Islamic = () => {
   };
 
   const todayTracker = trackers.find(
-    (t) => new Date(t.date).toDateString() === new Date().toDateString()
+    (t) => new Date(t.date).toDateString() === new Date().toDateString(),
   );
 
   return (
@@ -167,6 +167,9 @@ const Islamic = () => {
         onSubmit={handleSubmit}
       >
         <div className="space-y-4">
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            * Required fields
+          </p>
           <div>
             <p className="font-semibold mb-2 text-gray-900 dark:text-white">
               Salah Status
@@ -195,24 +198,43 @@ const Islamic = () => {
               ))}
             </div>
           </div>
-          <input
-            type="number"
-            placeholder="Quran Pages"
-            value={formData.quranPages}
-            onChange={(e) =>
-              setFormData({ ...formData, quranPages: parseInt(e.target.value) })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
-          <textarea
-            placeholder="Hadith Notes"
-            value={formData.hadithNotes}
-            onChange={(e) =>
-              setFormData({ ...formData, hadithNotes: e.target.value })
-            }
-            rows="3"
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
+          <div>
+            <label
+              htmlFor="islamic-quran-pages"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Quran Pages
+            </label>
+            <input
+              id="islamic-quran-pages"
+              type="number"
+              value={formData.quranPages}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  quranPages: parseInt(e.target.value),
+                })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="islamic-hadith-notes"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Hadith Notes
+            </label>
+            <textarea
+              id="islamic-hadith-notes"
+              value={formData.hadithNotes}
+              onChange={(e) =>
+                setFormData({ ...formData, hadithNotes: e.target.value })
+              }
+              rows="3"
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
         </div>
       </Modal>
     </div>

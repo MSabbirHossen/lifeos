@@ -45,11 +45,18 @@ const Register = () => {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            * Required fields
+          </p>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-              Username
+            <label
+              htmlFor="register-username"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Username <span className="text-red-500">*</span>
             </label>
             <input
+              id="register-username"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -59,10 +66,14 @@ const Register = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-              Email
+            <label
+              htmlFor="register-email"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Email <span className="text-red-500">*</span>
             </label>
             <input
+              id="register-email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -72,10 +83,14 @@ const Register = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-              Password
+            <label
+              htmlFor="register-password"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Password <span className="text-red-500">*</span>
             </label>
             <input
+              id="register-password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -85,10 +100,14 @@ const Register = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-              Confirm Password
+            <label
+              htmlFor="register-confirm-password"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Confirm Password <span className="text-red-500">*</span>
             </label>
             <input
+              id="register-confirm-password"
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}

@@ -217,51 +217,97 @@ const Finance = () => {
         onSubmit={handleSubmit}
       >
         <div className="space-y-4">
-          <select
-            value={formData.type}
-            onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          >
-            <option value="expense">Expense</option>
-            <option value="income">Income</option>
-          </select>
-          <input
-            type="number"
-            placeholder="Amount"
-            value={formData.amount}
-            onChange={(e) =>
-              setFormData({ ...formData, amount: parseFloat(e.target.value) })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
-          <input
-            type="text"
-            placeholder="Category"
-            value={formData.category}
-            onChange={(e) =>
-              setFormData({ ...formData, category: e.target.value })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
-          <input
-            type="text"
-            placeholder="Description"
-            value={formData.description}
-            onChange={(e) =>
-              setFormData({ ...formData, description: e.target.value })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
-          {formData.type === "income" && (
-            <input
-              type="text"
-              placeholder="Source"
-              value={formData.source}
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            * Required fields
+          </p>
+          <div>
+            <label
+              htmlFor="finance-type"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Transaction Type <span className="text-red-500">*</span>
+            </label>
+            <select
+              id="finance-type"
+              value={formData.type}
               onChange={(e) =>
-                setFormData({ ...formData, source: e.target.value })
+                setFormData({ ...formData, type: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            >
+              <option value="expense">Expense</option>
+              <option value="income">Income</option>
+            </select>
+          </div>
+          <div>
+            <label
+              htmlFor="finance-amount"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Amount <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="finance-amount"
+              type="number"
+              value={formData.amount}
+              onChange={(e) =>
+                setFormData({ ...formData, amount: parseFloat(e.target.value) })
               }
               className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
             />
+          </div>
+          <div>
+            <label
+              htmlFor="finance-category"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Category
+            </label>
+            <input
+              id="finance-category"
+              type="text"
+              value={formData.category}
+              onChange={(e) =>
+                setFormData({ ...formData, category: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="finance-description"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Description
+            </label>
+            <input
+              id="finance-description"
+              type="text"
+              value={formData.description}
+              onChange={(e) =>
+                setFormData({ ...formData, description: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          {formData.type === "income" && (
+            <div>
+              <label
+                htmlFor="finance-source"
+                className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+              >
+                Source
+              </label>
+              <input
+                id="finance-source"
+                type="text"
+                value={formData.source}
+                onChange={(e) =>
+                  setFormData({ ...formData, source: e.target.value })
+                }
+                className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+              />
+            </div>
           )}
         </div>
       </Modal>

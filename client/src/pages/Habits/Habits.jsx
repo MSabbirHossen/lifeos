@@ -143,24 +143,43 @@ const Habits = () => {
         onSubmit={handleSubmit}
       >
         <div className="space-y-4">
-          <input
-            type="text"
-            placeholder="Habit Name"
-            value={formData.habitName}
-            onChange={(e) =>
-              setFormData({ ...formData, habitName: e.target.value })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
-          <input
-            type="text"
-            placeholder="Category (optional)"
-            value={formData.category}
-            onChange={(e) =>
-              setFormData({ ...formData, category: e.target.value })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            * Required fields
+          </p>
+          <div>
+            <label
+              htmlFor="habit-name"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Habit Name <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="habit-name"
+              type="text"
+              value={formData.habitName}
+              onChange={(e) =>
+                setFormData({ ...formData, habitName: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="habit-category"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Category
+            </label>
+            <input
+              id="habit-category"
+              type="text"
+              value={formData.category}
+              onChange={(e) =>
+                setFormData({ ...formData, category: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
         </div>
       </Modal>
     </div>

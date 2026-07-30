@@ -127,45 +127,83 @@ const Journal = () => {
         onSubmit={handleSubmit}
       >
         <div className="space-y-4">
-          <input
-            type="text"
-            placeholder="Title"
-            value={formData.title}
-            onChange={(e) =>
-              setFormData({ ...formData, title: e.target.value })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
-          <select
-            value={formData.mood}
-            onChange={(e) => setFormData({ ...formData, mood: e.target.value })}
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          >
-            <option value="happy">Happy</option>
-            <option value="sad">Sad</option>
-            <option value="neutral">Neutral</option>
-            <option value="excited">Excited</option>
-            <option value="anxious">Anxious</option>
-            <option value="calm">Calm</option>
-          </select>
-          <input
-            type="text"
-            placeholder="Highlights"
-            value={formData.highlights}
-            onChange={(e) =>
-              setFormData({ ...formData, highlights: e.target.value })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
-          <textarea
-            placeholder="Notes"
-            value={formData.notes}
-            onChange={(e) =>
-              setFormData({ ...formData, notes: e.target.value })
-            }
-            rows="4"
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            * Required fields
+          </p>
+          <div>
+            <label
+              htmlFor="journal-title"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Title <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="journal-title"
+              type="text"
+              value={formData.title}
+              onChange={(e) =>
+                setFormData({ ...formData, title: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="journal-mood"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Mood
+            </label>
+            <select
+              id="journal-mood"
+              value={formData.mood}
+              onChange={(e) =>
+                setFormData({ ...formData, mood: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            >
+              <option value="happy">Happy</option>
+              <option value="sad">Sad</option>
+              <option value="neutral">Neutral</option>
+              <option value="excited">Excited</option>
+              <option value="anxious">Anxious</option>
+              <option value="calm">Calm</option>
+            </select>
+          </div>
+          <div>
+            <label
+              htmlFor="journal-highlights"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Highlights
+            </label>
+            <input
+              id="journal-highlights"
+              type="text"
+              value={formData.highlights}
+              onChange={(e) =>
+                setFormData({ ...formData, highlights: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="journal-notes"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Notes
+            </label>
+            <textarea
+              id="journal-notes"
+              value={formData.notes}
+              onChange={(e) =>
+                setFormData({ ...formData, notes: e.target.value })
+              }
+              rows="4"
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
         </div>
       </Modal>
     </div>

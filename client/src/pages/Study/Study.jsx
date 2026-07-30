@@ -110,47 +110,83 @@ const Study = () => {
         onSubmit={handleSubmit}
       >
         <div className="space-y-4">
-          <select
-            value={formData.subject}
-            onChange={(e) =>
-              setFormData({ ...formData, subject: e.target.value })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          >
-            <option value="Web Dev">Web Dev</option>
-            <option value="Cybersecurity">Cybersecurity</option>
-            <option value="OSINT">OSINT</option>
-            <option value="Arabic">Arabic</option>
-            <option value="Islamic Studies">Islamic Studies</option>
-            <option value="IT Skills">IT Skills</option>
-          </select>
-          <input
-            type="text"
-            placeholder="Topic"
-            value={formData.topic}
-            onChange={(e) =>
-              setFormData({ ...formData, topic: e.target.value })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
-          <input
-            type="number"
-            placeholder="Duration (minutes)"
-            value={formData.duration}
-            onChange={(e) =>
-              setFormData({ ...formData, duration: parseInt(e.target.value) })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
-          <textarea
-            placeholder="Notes"
-            value={formData.notes}
-            onChange={(e) =>
-              setFormData({ ...formData, notes: e.target.value })
-            }
-            rows="3"
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            * Required fields
+          </p>
+          <div>
+            <label
+              htmlFor="study-subject"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Subject <span className="text-red-500">*</span>
+            </label>
+            <select
+              id="study-subject"
+              value={formData.subject}
+              onChange={(e) =>
+                setFormData({ ...formData, subject: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            >
+              <option value="Web Dev">Web Dev</option>
+              <option value="Cybersecurity">Cybersecurity</option>
+              <option value="OSINT">OSINT</option>
+              <option value="Arabic">Arabic</option>
+              <option value="Islamic Studies">Islamic Studies</option>
+              <option value="IT Skills">IT Skills</option>
+            </select>
+          </div>
+          <div>
+            <label
+              htmlFor="study-topic"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Topic <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="study-topic"
+              type="text"
+              value={formData.topic}
+              onChange={(e) =>
+                setFormData({ ...formData, topic: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="study-duration"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Duration (minutes)
+            </label>
+            <input
+              id="study-duration"
+              type="number"
+              value={formData.duration}
+              onChange={(e) =>
+                setFormData({ ...formData, duration: parseInt(e.target.value) })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="study-notes"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Notes
+            </label>
+            <textarea
+              id="study-notes"
+              value={formData.notes}
+              onChange={(e) =>
+                setFormData({ ...formData, notes: e.target.value })
+              }
+              rows="3"
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
         </div>
       </Modal>
     </div>

@@ -56,13 +56,13 @@ const Calories = () => {
 
   const todayCalories = trackers
     .filter(
-      (t) => new Date(t.date).toDateString() === new Date().toDateString()
+      (t) => new Date(t.date).toDateString() === new Date().toDateString(),
     )
     .reduce((sum, t) => sum + t.calories, 0);
 
   const todayWater = trackers
     .filter(
-      (t) => new Date(t.date).toDateString() === new Date().toDateString()
+      (t) => new Date(t.date).toDateString() === new Date().toDateString(),
     )
     .reduce((sum, t) => sum + t.waterIntake, 0);
 
@@ -151,95 +151,155 @@ const Calories = () => {
         onSubmit={handleSubmit}
       >
         <div className="space-y-4">
-          <select
-            value={formData.mealType}
-            onChange={(e) =>
-              setFormData({ ...formData, mealType: e.target.value })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          >
-            <option value="breakfast">Breakfast</option>
-            <option value="lunch">Lunch</option>
-            <option value="dinner">Dinner</option>
-            <option value="snack">Snack</option>
-          </select>
-          <input
-            type="text"
-            placeholder="Food Name"
-            value={formData.foodName}
-            onChange={(e) =>
-              setFormData({ ...formData, foodName: e.target.value })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
-          <input
-            type="number"
-            placeholder="Calories"
-            value={formData.calories}
-            onChange={(e) =>
-              setFormData({ ...formData, calories: parseInt(e.target.value) })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            * Required fields
+          </p>
+          <div>
+            <label
+              htmlFor="calories-meal-type"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Meal Type <span className="text-red-500">*</span>
+            </label>
+            <select
+              id="calories-meal-type"
+              value={formData.mealType}
+              onChange={(e) =>
+                setFormData({ ...formData, mealType: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            >
+              <option value="breakfast">Breakfast</option>
+              <option value="lunch">Lunch</option>
+              <option value="dinner">Dinner</option>
+              <option value="snack">Snack</option>
+            </select>
+          </div>
+          <div>
+            <label
+              htmlFor="calories-food-name"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Food Name <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="calories-food-name"
+              type="text"
+              value={formData.foodName}
+              onChange={(e) =>
+                setFormData({ ...formData, foodName: e.target.value })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="calories-amount"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Calories <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="calories-amount"
+              type="number"
+              value={formData.calories}
+              onChange={(e) =>
+                setFormData({ ...formData, calories: parseInt(e.target.value) })
+              }
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
           <div className="grid grid-cols-3 gap-2">
+            <div>
+              <label
+                htmlFor="calories-protein"
+                className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+              >
+                Protein (g)
+              </label>
+              <input
+                id="calories-protein"
+                type="number"
+                value={formData.macros.protein}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    macros: {
+                      ...formData.macros,
+                      protein: parseInt(e.target.value),
+                    },
+                  })
+                }
+                className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="calories-carbs"
+                className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+              >
+                Carbs (g)
+              </label>
+              <input
+                id="calories-carbs"
+                type="number"
+                value={formData.macros.carbs}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    macros: {
+                      ...formData.macros,
+                      carbs: parseInt(e.target.value),
+                    },
+                  })
+                }
+                className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="calories-fats"
+                className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+              >
+                Fats (g)
+              </label>
+              <input
+                id="calories-fats"
+                type="number"
+                value={formData.macros.fats}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    macros: {
+                      ...formData.macros,
+                      fats: parseInt(e.target.value),
+                    },
+                  })
+                }
+                className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              htmlFor="calories-water"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Water Intake (ml)
+            </label>
             <input
+              id="calories-water"
               type="number"
-              placeholder="Protein (g)"
-              value={formData.macros.protein}
+              value={formData.waterIntake}
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  macros: {
-                    ...formData.macros,
-                    protein: parseInt(e.target.value),
-                  },
-                })
-              }
-              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-            />
-            <input
-              type="number"
-              placeholder="Carbs (g)"
-              value={formData.macros.carbs}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  macros: {
-                    ...formData.macros,
-                    carbs: parseInt(e.target.value),
-                  },
-                })
-              }
-              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-            />
-            <input
-              type="number"
-              placeholder="Fats (g)"
-              value={formData.macros.fats}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  macros: {
-                    ...formData.macros,
-                    fats: parseInt(e.target.value),
-                  },
+                  waterIntake: parseInt(e.target.value),
                 })
               }
               className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
             />
           </div>
-          <input
-            type="number"
-            placeholder="Water Intake (ml)"
-            value={formData.waterIntake}
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                waterIntake: parseInt(e.target.value),
-              })
-            }
-            className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-          />
         </div>
       </Modal>
     </div>
