@@ -77,20 +77,28 @@ app.use((req, res) => {
 
 app.use(errorHandler);
 
+const initializeApp = async () => {
+  await connectDB();
+  return app;
+};
+
 const startServer = async () => {
   try {
-    await connectDB();
-    if (process.env.NODE_ENV !== "test") {
-      app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
-      });
-    }
+    await initializeApp();
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
   } catch (error) {
     console.error("Failed to start server:", error.message);
     process.exit(1);
   }
 };
 
-startServer();
+if (!process.env.VERCEL && process.env.NODE_ENV !== "test") {
+  startServer();
+}
 
-module.exports = app;
+module.exports = {
+  app,
+  initializeApp,
+};

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-let cachedConnection = null;
+const globalMongoose = global;
+let cachedConnection = globalMongoose.__lifeOsDbConnection || null;
 
 const connectDB = async () => {
   if (cachedConnection && mongoose.connection.readyState === 1) {
@@ -14,6 +15,7 @@ const connectDB = async () => {
         serverSelectionTimeoutMS: 5000,
       },
     );
+    globalMongoose.__lifeOsDbConnection = cachedConnection;
     console.log("MongoDB connected successfully");
     return cachedConnection;
   } catch (error) {
