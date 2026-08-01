@@ -156,10 +156,96 @@ const validateJournalPayload = (payload = {}) => {
   return { isValid: errors.length === 0, errors };
 };
 
+const validateStudySessionPayload = (payload = {}) => {
+  const errors = [];
+
+  if (
+    !payload.subject &&
+    (!payload.subjectId || typeof payload.subjectId !== "string")
+  ) {
+    errors.push("subject is required");
+  }
+
+  if (
+    !payload.topic ||
+    typeof payload.topic !== "string" ||
+    !payload.topic.trim()
+  ) {
+    errors.push("topic is required");
+  }
+
+  if (
+    typeof payload.duration !== "number" ||
+    Number.isNaN(payload.duration) ||
+    payload.duration <= 0
+  ) {
+    errors.push("duration must be a positive number");
+  }
+
+  if (payload.date != null && Number.isNaN(new Date(payload.date).getTime())) {
+    errors.push("date must be a valid date when provided");
+  }
+
+  return { isValid: errors.length === 0, errors };
+};
+
+const validateStudySubjectPayload = (payload = {}) => {
+  const errors = [];
+
+  if (
+    !payload.name ||
+    typeof payload.name !== "string" ||
+    !payload.name.trim()
+  ) {
+    errors.push("name is required");
+  }
+
+  if (payload.archived != null && typeof payload.archived !== "boolean") {
+    errors.push("archived must be a boolean when provided");
+  }
+
+  return { isValid: errors.length === 0, errors };
+};
+
+const validateStudyPlanPayload = (payload = {}) => {
+  const errors = [];
+
+  if (!payload.subjectId || typeof payload.subjectId !== "string") {
+    errors.push("subjectId is required");
+  }
+
+  [
+    ["estimatedHours", payload.estimatedHours],
+    ["completedHours", payload.completedHours],
+    ["totalTopics", payload.totalTopics],
+    ["completedTopics", payload.completedTopics],
+  ].forEach(([field, value]) => {
+    if (
+      value != null &&
+      (typeof value !== "number" || Number.isNaN(value) || value < 0)
+    ) {
+      errors.push(`${field} must be a non-negative number when provided`);
+    }
+  });
+
+  if (
+    payload.targetDate != null &&
+    payload.targetDate !== "" &&
+    Number.isNaN(new Date(payload.targetDate).getTime())
+  ) {
+    errors.push("targetDate must be a valid date when provided");
+  }
+
+  return { isValid: errors.length === 0, errors };
+};
+
 module.exports = {
   validateAuthPayload,
   validateFinancePayload,
   validateTimeTrackerPayload,
   validateTaskPayload,
   validateJournalPayload,
+  validateStudySessionPayload,
+  validateStudySubjectPayload,
+  validateStudyPlanPayload,
 };

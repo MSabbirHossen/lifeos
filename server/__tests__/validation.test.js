@@ -5,6 +5,8 @@ const {
   validateAuthPayload,
   validateFinancePayload,
   validateJournalPayload,
+  validateStudyPlanPayload,
+  validateStudySessionPayload,
   validateTimeTrackerPayload,
   validateTaskPayload,
 } = require("../utils/validation");
@@ -69,6 +71,33 @@ test("validateTimeTrackerPayload requires a task name and valid time span", () =
 
 test("validateTaskPayload accepts a populated task name", () => {
   const result = validateTaskPayload({ name: "Quran Memorization" });
+
+  assert.equal(result.isValid, true);
+  assert.deepEqual(result.errors, []);
+});
+
+test("validateStudySessionPayload requires subject, topic, and duration", () => {
+  const result = validateStudySessionPayload({
+    subject: "",
+    topic: "",
+    duration: 0,
+  });
+
+  assert.equal(result.isValid, false);
+  assert.ok(result.errors.includes("subject is required"));
+  assert.ok(result.errors.includes("topic is required"));
+  assert.ok(result.errors.includes("duration must be a positive number"));
+});
+
+test("validateStudyPlanPayload accepts a well-formed study plan", () => {
+  const result = validateStudyPlanPayload({
+    subjectId: "689123456789012345678901",
+    estimatedHours: 80,
+    completedHours: 30,
+    targetDate: "2026-08-31",
+    totalTopics: 40,
+    completedTopics: 25,
+  });
 
   assert.equal(result.isValid, true);
   assert.deepEqual(result.errors, []);
