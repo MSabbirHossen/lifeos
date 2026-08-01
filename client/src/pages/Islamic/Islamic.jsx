@@ -1,242 +1,176 @@
-import React, { useState, useEffect } from "react";
-import Card from "../../components/Card";
-import Modal from "../../components/Modal";
+import React, { useEffect, useState } from "react";
 import API from "../../utils/api";
-import { Trash2, Plus } from "lucide-react";
+import IslamicDashboard from "./components/IslamicDashboard";
+import SalahBacklog from "./components/SalahBacklog";
+import SalahTracker from "./components/SalahTracker";
+import SalahAnalytics from "./components/SalahAnalytics";
+import IslamicCalendar from "./components/IslamicCalendar";
+import PromiseTracker from "./components/PromiseTracker";
+import { createDefaultDayForm, normalizeTrackerForm } from "./islamicUtils";
 
 const Islamic = () => {
-  const [trackers, setTrackers] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    salah: {
-      fajr: false,
-      dhuhr: false,
-      asr: false,
-      maghrib: false,
-      isha: false,
+  const [loading, setLoading] = useState(true);
+  const [savingDay, setSavingDay] = useState(false);
+  const [savingBacklog, setSavingBacklog] = useState(false);
+  const [savingPromise, setSavingPromise] = useState(false);
+  const [error, setError] = useState("");
+
+  const [summary, setSummary] = useState({
+    today: null,
+    backlog: {
+      totalDays: 0,
+      completedDays: 0,
+      remainingDays: 0,
+      progressPercentage: 0,
+      startDate: null,
+      notes: "",
+      wasFastingOnStartDate: false,
     },
-    quranPages: 0,
-    hadithNotes: "",
-    adhkar: [],
+    currentStreak: 0,
+    locationDistribution: [],
+    calendar: [],
+    promises: [],
   });
 
+  const [dayForm, setDayForm] = useState(createDefaultDayForm());
+
+  const fetchSummary = async () => {
+    try {
+      const response = await API.get("/islamic/summary");
+      const payload = response?.data?.data || {};
+      setSummary((prev) => ({
+        ...prev,
+        ...payload,
+      }));
+      setDayForm(normalizeTrackerForm(payload.today));
+      setError("");
+    } catch (requestError) {
+      setError("Unable to load Islamic tracker data right now.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    fetchTrackers();
+    fetchSummary();
   }, []);
 
-  const fetchTrackers = async () => {
+  const saveToday = async () => {
     try {
-      const { data } = await API.get("/islamic");
-      setTrackers(data);
-    } catch (error) {
-      console.error("Error fetching islamic trackers:", error);
+      setSavingDay(true);
+      await API.post("/islamic", dayForm);
+      await fetchSummary();
+    } catch (requestError) {
+      setError("Unable to save today's salah entry.");
+    } finally {
+      setSavingDay(false);
     }
   };
 
-  const handleSubmit = async () => {
+  const saveBacklog = async (payload) => {
     try {
-      await API.post("/islamic", formData);
-      setFormData({
-        salah: {
-          fajr: false,
-          dhuhr: false,
-          asr: false,
-          maghrib: false,
-          isha: false,
-        },
-        quranPages: 0,
-        hadithNotes: "",
-        adhkar: [],
-      });
-      setIsModalOpen(false);
-      fetchTrackers();
-    } catch (error) {
-      console.error("Error creating islamic tracker:", error);
+      setSavingBacklog(true);
+      await API.put("/islamic/backlog", payload);
+      await fetchSummary();
+    } catch (requestError) {
+      setError("Unable to save backlog setup.");
+    } finally {
+      setSavingBacklog(false);
     }
   };
 
-  const handleDelete = async (id) => {
+  const createPromise = async (payload) => {
     try {
-      await API.delete(`/islamic/${id}`);
-      fetchTrackers();
-    } catch (error) {
-      console.error("Error deleting tracker:", error);
+      setSavingPromise(true);
+      await API.post("/islamic/promises", payload);
+      await fetchSummary();
+    } catch (requestError) {
+      setError("Unable to add promise.");
+    } finally {
+      setSavingPromise(false);
     }
   };
 
-  const todayTracker = trackers.find(
-    (t) => new Date(t.date).toDateString() === new Date().toDateString(),
-  );
+  const updatePromise = async (id, payload) => {
+    try {
+      setSavingPromise(true);
+      await API.put(`/islamic/promises/${id}`, payload);
+      await fetchSummary();
+    } catch (requestError) {
+      setError("Unable to update promise.");
+    } finally {
+      setSavingPromise(false);
+    }
+  };
+
+  const deletePromise = async (id) => {
+    try {
+      setSavingPromise(true);
+      await API.delete(`/islamic/promises/${id}`);
+      await fetchSummary();
+    } catch (requestError) {
+      setError("Unable to delete promise.");
+    } finally {
+      setSavingPromise(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="p-6 text-gray-600 dark:text-gray-300">
+        Loading Islamic tracker...
+      </div>
+    );
+  }
 
   return (
     <div className="p-6 space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="rounded-2xl p-6 bg-gradient-to-r from-emerald-100 via-teal-50 to-cyan-100 dark:from-gray-800 dark:via-gray-800 dark:to-gray-700 border border-emerald-200/60 dark:border-gray-600">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-          Islamic Tracker
+          Salah & Islamic Commitment Tracker
         </h1>
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        >
-          <Plus size={20} /> Log
-        </button>
+        <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">
+          Track daily salah, recover missed salah backlog, and keep promises
+          visible.
+        </p>
       </div>
 
-      {todayTracker && (
-        <Card>
-          <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
-            Today's Progress
-          </h2>
-          <div className="grid grid-cols-5 gap-2 mb-4">
-            {["fajr", "dhuhr", "asr", "maghrib", "isha"].map((salah) => (
-              <div
-                key={salah}
-                className="text-center p-3 bg-gray-50 dark:bg-gray-700 rounded"
-              >
-                <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 capitalize">
-                  {salah}
-                </p>
-                <p className="text-2xl mt-2">
-                  {todayTracker.salah?.[salah] ? "✓" : "○"}
-                </p>
-              </div>
-            ))}
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded">
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Quran Pages
-              </p>
-              <p className="text-2xl font-bold text-blue-500">
-                {todayTracker.quranPages}
-              </p>
-            </div>
-            {todayTracker.hadithNotes && (
-              <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded">
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Hadith Notes
-                </p>
-                <p className="text-sm text-gray-700 dark:text-gray-300 mt-1">
-                  {todayTracker.hadithNotes}
-                </p>
-              </div>
-            )}
-          </div>
-        </Card>
+      {error && (
+        <div className="p-3 rounded bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300">
+          {error}
+        </div>
       )}
 
-      <div className="space-y-4">
-        {trackers.map((tracker) => (
-          <Card key={tracker._id}>
-            <div className="flex justify-between items-start">
-              <div className="flex-1">
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {new Date(tracker.date).toLocaleDateString()}
-                </p>
-                <div className="grid grid-cols-5 gap-2 my-3">
-                  {["fajr", "dhuhr", "asr", "maghrib", "isha"].map((salah) => (
-                    <div key={salah} className="text-center">
-                      <p className="text-xs text-gray-600 dark:text-gray-400 capitalize">
-                        {salah}
-                      </p>
-                      <p className="text-lg">
-                        {tracker.salah?.[salah] ? "✓" : "○"}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-sm text-gray-700 dark:text-gray-300">
-                  Quran: {tracker.quranPages} pages
-                </p>
-              </div>
-              <button
-                onClick={() => handleDelete(tracker._id)}
-                className="text-red-500 hover:text-red-700 p-2"
-              >
-                <Trash2 size={20} />
-              </button>
-            </div>
-          </Card>
-        ))}
+      <IslamicDashboard
+        backlog={summary.backlog || {}}
+        currentStreak={summary.currentStreak || 0}
+      />
+
+      <SalahBacklog
+        backlog={summary.backlog || {}}
+        onSave={saveBacklog}
+        saving={savingBacklog}
+      />
+
+      <SalahTracker
+        value={dayForm}
+        onChange={setDayForm}
+        onSubmit={saveToday}
+        saving={savingDay}
+      />
+
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+        <IslamicCalendar calendar={summary.calendar || []} />
+        <SalahAnalytics data={summary.locationDistribution || []} />
       </div>
 
-      <Modal
-        isOpen={isModalOpen}
-        title="Log Islamic Activities"
-        onClose={() => setIsModalOpen(false)}
-        onSubmit={handleSubmit}
-      >
-        <div className="space-y-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">
-            * Required fields
-          </p>
-          <div>
-            <p className="font-semibold mb-2 text-gray-900 dark:text-white">
-              Salah Status
-            </p>
-            <div className="space-y-2">
-              {["fajr", "dhuhr", "asr", "maghrib", "isha"].map((salah) => (
-                <label
-                  key={salah}
-                  className="flex items-center gap-2 cursor-pointer"
-                >
-                  <input
-                    type="checkbox"
-                    checked={formData.salah[salah]}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        salah: { ...formData.salah, [salah]: e.target.checked },
-                      })
-                    }
-                    className="rounded"
-                  />
-                  <span className="capitalize text-gray-700 dark:text-gray-300">
-                    {salah}
-                  </span>
-                </label>
-              ))}
-            </div>
-          </div>
-          <div>
-            <label
-              htmlFor="islamic-quran-pages"
-              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
-            >
-              Quran Pages
-            </label>
-            <input
-              id="islamic-quran-pages"
-              type="number"
-              value={formData.quranPages}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  quranPages: parseInt(e.target.value),
-                })
-              }
-              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="islamic-hadith-notes"
-              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
-            >
-              Hadith Notes
-            </label>
-            <textarea
-              id="islamic-hadith-notes"
-              value={formData.hadithNotes}
-              onChange={(e) =>
-                setFormData({ ...formData, hadithNotes: e.target.value })
-              }
-              rows="3"
-              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-            />
-          </div>
-        </div>
-      </Modal>
+      <PromiseTracker
+        promises={summary.promises || []}
+        onCreate={createPromise}
+        onUpdate={updatePromise}
+        onDelete={deletePromise}
+        saving={savingPromise}
+      />
     </div>
   );
 };
