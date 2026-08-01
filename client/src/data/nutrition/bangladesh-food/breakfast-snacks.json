@@ -1,0 +1,982 @@
+[
+  {
+    "id": "roti",
+    "name": "Roti",
+    "banglaName": "রুটি",
+    "category": "Breakfast",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 120,
+      "protein": 4,
+      "carbs": 24,
+      "fat": 1,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "chapati",
+    "name": "Chapati",
+    "banglaName": "চাপাটি",
+    "category": "Breakfast",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 40 },
+    "nutrition": {
+      "calories": 104,
+      "protein": 3.5,
+      "carbs": 20,
+      "fat": 1,
+      "fiber": 2.5
+    }
+  },
+  {
+    "id": "paratha",
+    "name": "Paratha",
+    "banglaName": "পরোটা",
+    "category": "Breakfast",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 80 },
+    "nutrition": {
+      "calories": 260,
+      "protein": 6,
+      "carbs": 35,
+      "fat": 11,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "plain_paratha",
+    "name": "Plain Paratha",
+    "banglaName": "সাদা পরোটা",
+    "category": "Breakfast",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 80 },
+    "nutrition": {
+      "calories": 250,
+      "protein": 5,
+      "carbs": 34,
+      "fat": 10,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "lachha_paratha",
+    "name": "Lachha Paratha",
+    "banglaName": "লাচ্ছা পরোটা",
+    "category": "Breakfast",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 320,
+      "protein": 7,
+      "carbs": 40,
+      "fat": 15,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "egg_paratha",
+    "name": "Egg Paratha",
+    "banglaName": "ডিম পরোটা",
+    "category": "Breakfast",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 380,
+      "protein": 14,
+      "carbs": 42,
+      "fat": 18,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "naan",
+    "name": "Naan",
+    "banglaName": "নান রুটি",
+    "category": "Breakfast",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 270,
+      "protein": 9,
+      "carbs": 50,
+      "fat": 5,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "tandoori_roti",
+    "name": "Tandoori Roti",
+    "banglaName": "তন্দুরি রুটি",
+    "category": "Breakfast",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 80 },
+    "nutrition": {
+      "calories": 210,
+      "protein": 7,
+      "carbs": 40,
+      "fat": 3,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "bread_slice",
+    "name": "Bread Slice",
+    "banglaName": "পাউরুটি",
+    "category": "Breakfast",
+    "serving": { "unit": "slice", "quantity": 1, "weight": 30 },
+    "nutrition": {
+      "calories": 80,
+      "protein": 3,
+      "carbs": 15,
+      "fat": 1,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "brown_bread",
+    "name": "Brown Bread",
+    "banglaName": "ব্রাউন ব্রেড",
+    "category": "Breakfast",
+    "serving": { "unit": "slice", "quantity": 1, "weight": 35 },
+    "nutrition": {
+      "calories": 85,
+      "protein": 4,
+      "carbs": 16,
+      "fat": 1,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "toast",
+    "name": "Toast",
+    "banglaName": "টোস্ট",
+    "category": "Breakfast",
+    "serving": { "unit": "slice", "quantity": 1, "weight": 30 },
+    "nutrition": {
+      "calories": 85,
+      "protein": 3,
+      "carbs": 16,
+      "fat": 1,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "butter_toast",
+    "name": "Butter Toast",
+    "banglaName": "বাটার টোস্ট",
+    "category": "Breakfast",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 4,
+      "carbs": 20,
+      "fat": 10,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "biscuits_plain",
+    "name": "Plain Biscuit",
+    "banglaName": "সাধারণ বিস্কুট",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 10 },
+    "nutrition": {
+      "calories": 45,
+      "protein": 0.7,
+      "carbs": 7,
+      "fat": 1.8,
+      "fiber": 0.2
+    }
+  },
+  {
+    "id": "marie_biscuit",
+    "name": "Marie Biscuit",
+    "banglaName": "মেরি বিস্কুট",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 8 },
+    "nutrition": {
+      "calories": 35,
+      "protein": 0.5,
+      "carbs": 6,
+      "fat": 1,
+      "fiber": 0.2
+    }
+  },
+  {
+    "id": "cream_biscuit",
+    "name": "Cream Biscuit",
+    "banglaName": "ক্রিম বিস্কুট",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 12 },
+    "nutrition": {
+      "calories": 60,
+      "protein": 1,
+      "carbs": 8,
+      "fat": 3,
+      "fiber": 0.3
+    }
+  },
+  {
+    "id": "cake_slice",
+    "name": "Cake Slice",
+    "banglaName": "কেক",
+    "category": "Snack",
+    "serving": { "unit": "slice", "quantity": 1, "weight": 80 },
+    "nutrition": {
+      "calories": 300,
+      "protein": 5,
+      "carbs": 45,
+      "fat": 12,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "sweet_bun",
+    "name": "Sweet Bun",
+    "banglaName": "মিষ্টি বান",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 60 },
+    "nutrition": {
+      "calories": 220,
+      "protein": 5,
+      "carbs": 35,
+      "fat": 7,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "vegetable_singara",
+    "name": "Vegetable Singara",
+    "banglaName": "সবজি সিঙ্গারা",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 70 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 3,
+      "carbs": 22,
+      "fat": 7,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "meat_singara",
+    "name": "Meat Singara",
+    "banglaName": "মাংস সিঙ্গারা",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 90 },
+    "nutrition": {
+      "calories": 230,
+      "protein": 8,
+      "carbs": 25,
+      "fat": 11,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "samosa",
+    "name": "Samosa",
+    "banglaName": "সমুচা",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 80 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 4,
+      "carbs": 25,
+      "fat": 8,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "pakora",
+    "name": "Pakora",
+    "banglaName": "পাকোড়া",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 120,
+      "protein": 3,
+      "carbs": 12,
+      "fat": 7,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "beguni",
+    "name": "Beguni",
+    "banglaName": "বেগুনি",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 110,
+      "protein": 2,
+      "carbs": 12,
+      "fat": 6,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "aloo_chop",
+    "name": "Aloo Chop",
+    "banglaName": "আলুর চপ",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 70 },
+    "nutrition": {
+      "calories": 150,
+      "protein": 3,
+      "carbs": 20,
+      "fat": 7,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "dal_puri",
+    "name": "Dal Puri",
+    "banglaName": "ডাল পুরি",
+    "category": "Breakfast",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 70 },
+    "nutrition": {
+      "calories": 200,
+      "protein": 6,
+      "carbs": 32,
+      "fat": 6,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "mughlai_paratha",
+    "name": "Mughlai Paratha",
+    "banglaName": "মুঘলাই পরোটা",
+    "category": "Breakfast",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 550,
+      "protein": 20,
+      "carbs": 55,
+      "fat": 28,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "muri",
+    "name": "Puffed Rice",
+    "banglaName": "মুড়ি",
+    "category": "Snack",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 402,
+      "protein": 7,
+      "carbs": 88,
+      "fat": 0.5,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "muri_50g",
+    "name": "Puffed Rice",
+    "banglaName": "মুড়ি",
+    "category": "Snack",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 201,
+      "protein": 3.5,
+      "carbs": 44,
+      "fat": 0.2,
+      "fiber": 0.5
+    }
+  },
+  {
+    "id": "jhalmuri",
+    "name": "Jhalmuri",
+    "banglaName": "ঝালমুড়ি",
+    "category": "Street Food",
+    "serving": { "unit": "packet", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 300,
+      "protein": 8,
+      "carbs": 55,
+      "fat": 6,
+      "fiber": 5
+    }
+  },
+  {
+    "id": "muri_with_peanuts",
+    "name": "Muri With Peanuts",
+    "banglaName": "বাদাম মুড়ি",
+    "category": "Snack",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 350,
+      "protein": 12,
+      "carbs": 55,
+      "fat": 10,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "chira",
+    "name": "Flattened Rice",
+    "banglaName": "চিড়া",
+    "category": "Breakfast",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 350,
+      "protein": 7,
+      "carbs": 76,
+      "fat": 1,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "chira_with_milk",
+    "name": "Chira With Milk",
+    "banglaName": "দুধ চিড়া",
+    "category": "Breakfast",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 330,
+      "protein": 12,
+      "carbs": 55,
+      "fat": 7,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "chira_with_banana",
+    "name": "Chira With Banana",
+    "banglaName": "কলা চিড়া",
+    "category": "Breakfast",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 350 },
+    "nutrition": {
+      "calories": 420,
+      "protein": 10,
+      "carbs": 85,
+      "fat": 5,
+      "fiber": 5
+    }
+  },
+  {
+    "id": "khai",
+    "name": "Khai (Popped Rice)",
+    "banglaName": "খই",
+    "category": "Snack",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 380,
+      "protein": 7,
+      "carbs": 82,
+      "fat": 1,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "chanachur",
+    "name": "Chanachur",
+    "banglaName": "চানাচুর",
+    "category": "Snack",
+    "serving": { "unit": "50g", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 270,
+      "protein": 7,
+      "carbs": 25,
+      "fat": 16,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "dal_moth",
+    "name": "Dal Moth",
+    "banglaName": "ডালমুঠ",
+    "category": "Snack",
+    "serving": { "unit": "50g", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 250,
+      "protein": 10,
+      "carbs": 28,
+      "fat": 12,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "fuchka",
+    "name": "Fuchka",
+    "banglaName": "ফুচকা",
+    "category": "Street Food",
+    "serving": { "unit": "10 pieces", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 330,
+      "protein": 8,
+      "carbs": 55,
+      "fat": 9,
+      "fiber": 6
+    }
+  },
+  {
+    "id": "chotpoti",
+    "name": "Chotpoti",
+    "banglaName": "চটপটি",
+    "category": "Street Food",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 380,
+      "protein": 15,
+      "carbs": 65,
+      "fat": 8,
+      "fiber": 10
+    }
+  },
+  {
+    "id": "haleem",
+    "name": "Haleem",
+    "banglaName": "হালিম",
+    "category": "Food",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 350,
+      "protein": 20,
+      "carbs": 35,
+      "fat": 14,
+      "fiber": 6
+    }
+  },
+  {
+    "id": "chicken_haleem",
+    "name": "Chicken Haleem",
+    "banglaName": "চিকেন হালিম",
+    "category": "Food",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 400,
+      "protein": 28,
+      "carbs": 38,
+      "fat": 16,
+      "fiber": 5
+    }
+  },
+  {
+    "id": "noodles",
+    "name": "Noodles",
+    "banglaName": "নুডলস",
+    "category": "Fast Food",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 350,
+      "protein": 10,
+      "carbs": 55,
+      "fat": 10,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "egg_noodles",
+    "name": "Egg Noodles",
+    "banglaName": "ডিম নুডলস",
+    "category": "Fast Food",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 450,
+      "protein": 18,
+      "carbs": 60,
+      "fat": 15,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "chicken_noodles",
+    "name": "Chicken Noodles",
+    "banglaName": "চিকেন নুডলস",
+    "category": "Fast Food",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 350 },
+    "nutrition": {
+      "calories": 550,
+      "protein": 30,
+      "carbs": 65,
+      "fat": 20,
+      "fiber": 5
+    }
+  },
+  {
+    "id": "vegetable_pasta",
+    "name": "Vegetable Pasta",
+    "banglaName": "সবজি পাস্তা",
+    "category": "Fast Food",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 420,
+      "protein": 12,
+      "carbs": 65,
+      "fat": 12,
+      "fiber": 5
+    }
+  },
+  {
+    "id": "burger",
+    "name": "Burger",
+    "banglaName": "বার্গার",
+    "category": "Fast Food",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 520,
+      "protein": 22,
+      "carbs": 45,
+      "fat": 28,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "chicken_burger",
+    "name": "Chicken Burger",
+    "banglaName": "চিকেন বার্গার",
+    "category": "Fast Food",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 220 },
+    "nutrition": {
+      "calories": 600,
+      "protein": 30,
+      "carbs": 50,
+      "fat": 30,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "sandwich",
+    "name": "Sandwich",
+    "banglaName": "স্যান্ডউইচ",
+    "category": "Breakfast",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 300,
+      "protein": 12,
+      "carbs": 35,
+      "fat": 12,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "egg_sandwich",
+    "name": "Egg Sandwich",
+    "banglaName": "ডিম স্যান্ডউইচ",
+    "category": "Breakfast",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 180 },
+    "nutrition": {
+      "calories": 380,
+      "protein": 18,
+      "carbs": 40,
+      "fat": 16,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "pizza_slice",
+    "name": "Pizza Slice",
+    "banglaName": "পিজ্জা",
+    "category": "Fast Food",
+    "serving": { "unit": "slice", "quantity": 1, "weight": 120 },
+    "nutrition": {
+      "calories": 300,
+      "protein": 12,
+      "carbs": 35,
+      "fat": 12,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "french_fries",
+    "name": "French Fries",
+    "banglaName": "ফ্রেঞ্চ ফ্রাই",
+    "category": "Fast Food",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 312,
+      "protein": 3.4,
+      "carbs": 41,
+      "fat": 15,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "potato_chips",
+    "name": "Potato Chips",
+    "banglaName": "আলুর চিপস",
+    "category": "Snack",
+    "serving": { "unit": "50g", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 270,
+      "protein": 3,
+      "carbs": 28,
+      "fat": 17,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "milk_250ml",
+    "name": "Milk",
+    "banglaName": "দুধ",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 150,
+      "protein": 8,
+      "carbs": 12,
+      "fat": 8,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "full_cream_milk",
+    "name": "Full Cream Milk",
+    "banglaName": "পূর্ণ ফ্যাট দুধ",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 8,
+      "carbs": 12,
+      "fat": 9,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "tea_with_milk",
+    "name": "Milk Tea",
+    "banglaName": "দুধ চা",
+    "category": "Drink",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 90,
+      "protein": 3,
+      "carbs": 12,
+      "fat": 3,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "tea_with_sugar",
+    "name": "Tea With Sugar",
+    "banglaName": "চিনি দেওয়া চা",
+    "category": "Drink",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 70,
+      "protein": 0,
+      "carbs": 18,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "black_tea",
+    "name": "Black Tea",
+    "banglaName": "লাল চা",
+    "category": "Drink",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 2,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "coffee_with_milk",
+    "name": "Coffee With Milk",
+    "banglaName": "দুধ কফি",
+    "category": "Drink",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 120,
+      "protein": 5,
+      "carbs": 15,
+      "fat": 4,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "black_coffee",
+    "name": "Black Coffee",
+    "banglaName": "ব্ল্যাক কফি",
+    "category": "Drink",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 3,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "lassi",
+    "name": "Lassi",
+    "banglaName": "লাচ্ছি",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 220,
+      "protein": 8,
+      "carbs": 30,
+      "fat": 8,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "sweet_lassi",
+    "name": "Sweet Lassi",
+    "banglaName": "মিষ্টি লাচ্ছি",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 280,
+      "protein": 8,
+      "carbs": 45,
+      "fat": 8,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "faluda",
+    "name": "Faluda",
+    "banglaName": "ফালুদা",
+    "category": "Dessert",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 350 },
+    "nutrition": {
+      "calories": 450,
+      "protein": 10,
+      "carbs": 70,
+      "fat": 15,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "soft_drink_cola",
+    "name": "Cola Soft Drink",
+    "banglaName": "কোলা পানীয়",
+    "category": "Drink",
+    "serving": { "unit": "250ml", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 105,
+      "protein": 0,
+      "carbs": 27,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "mango_drink",
+    "name": "Mango Drink",
+    "banglaName": "আমের পানীয়",
+    "category": "Drink",
+    "serving": { "unit": "250ml", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 130,
+      "protein": 0,
+      "carbs": 32,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "energy_drink",
+    "name": "Energy Drink",
+    "banglaName": "এনার্জি ড্রিংক",
+    "category": "Drink",
+    "serving": { "unit": "250ml", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 110,
+      "protein": 0,
+      "carbs": 28,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "roshogolla",
+    "name": "Roshogolla",
+    "banglaName": "রসগোল্লা",
+    "category": "Sweet",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 125,
+      "protein": 3,
+      "carbs": 22,
+      "fat": 3,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "sandesh",
+    "name": "Sandesh",
+    "banglaName": "সন্দেশ",
+    "category": "Sweet",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 150,
+      "protein": 4,
+      "carbs": 25,
+      "fat": 4,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "mishti_doi",
+    "name": "Sweet Yogurt",
+    "banglaName": "মিষ্টি দই",
+    "category": "Dessert",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 6,
+      "carbs": 25,
+      "fat": 6,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "doi",
+    "name": "Plain Yogurt",
+    "banglaName": "দই",
+    "category": "Dairy",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 90,
+      "protein": 5,
+      "carbs": 7,
+      "fat": 4,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "payesh",
+    "name": "Payesh",
+    "banglaName": "পায়েস",
+    "category": "Dessert",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 280,
+      "protein": 7,
+      "carbs": 45,
+      "fat": 8,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "firni",
+    "name": "Firni",
+    "banglaName": "ফিরনি",
+    "category": "Dessert",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 260,
+      "protein": 7,
+      "carbs": 42,
+      "fat": 7,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "semai",
+    "name": "Shemai",
+    "banglaName": "সেমাই",
+    "category": "Dessert",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 320,
+      "protein": 8,
+      "carbs": 55,
+      "fat": 8,
+      "fiber": 1
+    }
+  }
+]

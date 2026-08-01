@@ -1,0 +1,556 @@
+[
+  {
+    "id": "masoor_dal_cooked",
+    "name": "Masoor Dal Cooked",
+    "banglaName": "মসুর ডাল",
+    "category": "Dal",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 230,
+      "protein": 15,
+      "carbs": 40,
+      "fat": 1,
+      "fiber": 10
+    }
+  },
+  {
+    "id": "masoor_dal_thin",
+    "name": "Thin Masoor Dal",
+    "banglaName": "পাতলা মসুর ডাল",
+    "category": "Dal",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 180 },
+    "nutrition": {
+      "calories": 140,
+      "protein": 9,
+      "carbs": 24,
+      "fat": 0.5,
+      "fiber": 6
+    }
+  },
+  {
+    "id": "masoor_dal_thick",
+    "name": "Thick Masoor Dal",
+    "banglaName": "ঘন মসুর ডাল",
+    "category": "Dal",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 220 },
+    "nutrition": {
+      "calories": 260,
+      "protein": 16,
+      "carbs": 42,
+      "fat": 3,
+      "fiber": 10
+    }
+  },
+  {
+    "id": "moong_dal_cooked",
+    "name": "Moong Dal Cooked",
+    "banglaName": "মুগ ডাল",
+    "category": "Dal",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 210,
+      "protein": 14,
+      "carbs": 38,
+      "fat": 1,
+      "fiber": 8
+    }
+  },
+  {
+    "id": "moong_dal_bhuna",
+    "name": "Bhuna Moong Dal",
+    "banglaName": "ভুনা মুগ ডাল",
+    "category": "Dal",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 280,
+      "protein": 15,
+      "carbs": 35,
+      "fat": 8,
+      "fiber": 7
+    }
+  },
+  {
+    "id": "chana_dal",
+    "name": "Chana Dal Cooked",
+    "banglaName": "ছোলার ডাল",
+    "category": "Dal",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 270,
+      "protein": 15,
+      "carbs": 45,
+      "fat": 5,
+      "fiber": 11
+    }
+  },
+  {
+    "id": "motor_dal",
+    "name": "Motor Dal",
+    "banglaName": "মটর ডাল",
+    "category": "Dal",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 250,
+      "protein": 16,
+      "carbs": 42,
+      "fat": 2,
+      "fiber": 10
+    }
+  },
+  {
+    "id": "urad_dal",
+    "name": "Urad Dal",
+    "banglaName": "মাষকলাই ডাল",
+    "category": "Dal",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 230,
+      "protein": 14,
+      "carbs": 40,
+      "fat": 2,
+      "fiber": 9
+    }
+  },
+  {
+    "id": "arhar_dal",
+    "name": "Arhar Dal",
+    "banglaName": "তুর ডাল",
+    "category": "Dal",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 220,
+      "protein": 14,
+      "carbs": 38,
+      "fat": 1,
+      "fiber": 8
+    }
+  },
+  {
+    "id": "mixed_dal",
+    "name": "Mixed Dal",
+    "banglaName": "মিশ্র ডাল",
+    "category": "Dal",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 220 },
+    "nutrition": {
+      "calories": 260,
+      "protein": 16,
+      "carbs": 42,
+      "fat": 3,
+      "fiber": 10
+    }
+  },
+  {
+    "id": "dal_tadka",
+    "name": "Dal Tadka",
+    "banglaName": "ডাল তড়কা",
+    "category": "Dal",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 320,
+      "protein": 16,
+      "carbs": 42,
+      "fat": 12,
+      "fiber": 8
+    }
+  },
+  {
+    "id": "dal_with_oil",
+    "name": "Dal Cooked With Oil",
+    "banglaName": "তেল দিয়ে রান্না ডাল",
+    "category": "Dal",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 220 },
+    "nutrition": {
+      "calories": 300,
+      "protein": 14,
+      "carbs": 38,
+      "fat": 10,
+      "fiber": 8
+    }
+  },
+  {
+    "id": "boot_chickpeas_cooked",
+    "name": "Chickpeas Cooked",
+    "banglaName": "ছোলা",
+    "category": "Pulses",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 165 },
+    "nutrition": {
+      "calories": 270,
+      "protein": 14.5,
+      "carbs": 45,
+      "fat": 4,
+      "fiber": 12
+    }
+  },
+  {
+    "id": "boot_vuna",
+    "name": "Bhuna Chickpeas",
+    "banglaName": "ভুনা ছোলা",
+    "category": "Pulses",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 180 },
+    "nutrition": {
+      "calories": 330,
+      "protein": 17,
+      "carbs": 48,
+      "fat": 10,
+      "fiber": 12
+    }
+  },
+  {
+    "id": "black_chickpeas",
+    "name": "Black Chickpeas",
+    "banglaName": "কালো ছোলা",
+    "category": "Pulses",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 165 },
+    "nutrition": {
+      "calories": 260,
+      "protein": 14,
+      "carbs": 43,
+      "fat": 4,
+      "fiber": 11
+    }
+  },
+  {
+    "id": "green_peas",
+    "name": "Green Peas",
+    "banglaName": "মটরশুঁটি",
+    "category": "Pulses",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 160 },
+    "nutrition": {
+      "calories": 134,
+      "protein": 8.6,
+      "carbs": 25,
+      "fat": 0.5,
+      "fiber": 9
+    }
+  },
+  {
+    "id": "soybean_cooked",
+    "name": "Cooked Soybean",
+    "banglaName": "সয়াবিন",
+    "category": "Pulses",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 170 },
+    "nutrition": {
+      "calories": 280,
+      "protein": 28,
+      "carbs": 17,
+      "fat": 15,
+      "fiber": 10
+    }
+  },
+  {
+    "id": "soy_chunk",
+    "name": "Soy Chunks",
+    "banglaName": "সয়া বড়ি",
+    "category": "Protein",
+    "serving": { "unit": "50g", "quantity": 1, "weight": 50 },
+    "nutrition": { "calories": 170, "protein": 25, "carbs": 15, "fat": 1 }
+  },
+  {
+    "id": "peanut_roasted",
+    "name": "Roasted Peanut",
+    "banglaName": "বাদাম ভাজা",
+    "category": "Nuts",
+    "serving": { "unit": "30g", "quantity": 1, "weight": 30 },
+    "nutrition": {
+      "calories": 170,
+      "protein": 7,
+      "carbs": 6,
+      "fat": 14,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "peanut_raw",
+    "name": "Raw Peanut",
+    "banglaName": "কাঁচা বাদাম",
+    "category": "Nuts",
+    "serving": { "unit": "30g", "quantity": 1, "weight": 30 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 7,
+      "carbs": 5,
+      "fat": 13,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "dal_vorta",
+    "name": "Dal Bhorta",
+    "banglaName": "ডাল ভর্তা",
+    "category": "Dal",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 8,
+      "carbs": 25,
+      "fat": 3,
+      "fiber": 6
+    }
+  },
+  {
+    "id": "masoor_dal_vorta",
+    "name": "Masoor Dal Bhorta",
+    "banglaName": "মসুর ডাল ভর্তা",
+    "category": "Dal",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 170,
+      "protein": 9,
+      "carbs": 24,
+      "fat": 5,
+      "fiber": 7
+    }
+  },
+  {
+    "id": "chickpea_vorta",
+    "name": "Chickpea Bhorta",
+    "banglaName": "ছোলা ভর্তা",
+    "category": "Pulses",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 9,
+      "carbs": 28,
+      "fat": 5,
+      "fiber": 7
+    }
+  },
+  {
+    "id": "dal_pakora",
+    "name": "Dal Pakora",
+    "banglaName": "ডালের পকোড়া",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 35 },
+    "nutrition": {
+      "calories": 90,
+      "protein": 3,
+      "carbs": 12,
+      "fat": 4,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "moong_dal_pakora",
+    "name": "Moong Dal Pakora",
+    "banglaName": "মুগ ডালের পকোড়া",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 35 },
+    "nutrition": {
+      "calories": 95,
+      "protein": 4,
+      "carbs": 13,
+      "fat": 4,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "motor_shuti_dal",
+    "name": "Green Pea Dal",
+    "banglaName": "মটর ডাল",
+    "category": "Dal",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 240,
+      "protein": 15,
+      "carbs": 38,
+      "fat": 3,
+      "fiber": 8
+    }
+  },
+  {
+    "id": "black_lentil",
+    "name": "Black Lentil",
+    "banglaName": "কালাই ডাল",
+    "category": "Dal",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 240,
+      "protein": 16,
+      "carbs": 40,
+      "fat": 2,
+      "fiber": 9
+    }
+  },
+  {
+    "id": "horse_gram",
+    "name": "Horse Gram",
+    "banglaName": "কুলথি ডাল",
+    "category": "Pulses",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 180 },
+    "nutrition": {
+      "calories": 230,
+      "protein": 15,
+      "carbs": 40,
+      "fat": 1,
+      "fiber": 12
+    }
+  },
+  {
+    "id": "kidney_beans",
+    "name": "Kidney Beans",
+    "banglaName": "রাজমা",
+    "category": "Pulses",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 170 },
+    "nutrition": {
+      "calories": 225,
+      "protein": 15,
+      "carbs": 40,
+      "fat": 1,
+      "fiber": 11
+    }
+  },
+  {
+    "id": "white_beans",
+    "name": "White Beans",
+    "banglaName": "সাদা বিনস",
+    "category": "Pulses",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 170 },
+    "nutrition": {
+      "calories": 240,
+      "protein": 16,
+      "carbs": 43,
+      "fat": 1,
+      "fiber": 10
+    }
+  },
+  {
+    "id": "black_beans",
+    "name": "Black Beans",
+    "banglaName": "কালো বিনস",
+    "category": "Pulses",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 170 },
+    "nutrition": {
+      "calories": 230,
+      "protein": 15,
+      "carbs": 41,
+      "fat": 1,
+      "fiber": 10
+    }
+  },
+  {
+    "id": "lentil_soup",
+    "name": "Lentil Soup",
+    "banglaName": "ডাল স্যুপ",
+    "category": "Dal",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 12,
+      "carbs": 30,
+      "fat": 2,
+      "fiber": 8
+    }
+  },
+  {
+    "id": "dal_makhani",
+    "name": "Dal Makhani",
+    "banglaName": "ডাল মাখানি",
+    "category": "Dal",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 350,
+      "protein": 16,
+      "carbs": 45,
+      "fat": 12,
+      "fiber": 10
+    }
+  },
+  {
+    "id": "cholar_dal_coconut",
+    "name": "Cholar Dal With Coconut",
+    "banglaName": "নারকেল দিয়ে ছোলার ডাল",
+    "category": "Dal",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 220 },
+    "nutrition": {
+      "calories": 330,
+      "protein": 15,
+      "carbs": 45,
+      "fat": 12,
+      "fiber": 8
+    }
+  },
+  {
+    "id": "dal_puri_filling",
+    "name": "Dal Puri Filling",
+    "banglaName": "পুরির ডাল পুর",
+    "category": "Pulses",
+    "serving": { "unit": "50g", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 120,
+      "protein": 5,
+      "carbs": 20,
+      "fat": 2,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "sprouted_moong",
+    "name": "Sprouted Moong",
+    "banglaName": "অঙ্কুরিত মুগ",
+    "category": "Pulses",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 105,
+      "protein": 9,
+      "carbs": 18,
+      "fat": 0.5,
+      "fiber": 5
+    }
+  },
+  {
+    "id": "sprouted_chickpea",
+    "name": "Sprouted Chickpea",
+    "banglaName": "অঙ্কুরিত ছোলা",
+    "category": "Pulses",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 120,
+      "protein": 7,
+      "carbs": 22,
+      "fat": 2,
+      "fiber": 6
+    }
+  },
+  {
+    "id": "fried_chana",
+    "name": "Fried Chana",
+    "banglaName": "ভাজা ছোলা",
+    "category": "Snack",
+    "serving": { "unit": "50g", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 190,
+      "protein": 10,
+      "carbs": 30,
+      "fat": 4,
+      "fiber": 7
+    }
+  },
+  {
+    "id": "chanachur_dal_mix",
+    "name": "Dal Chanachur",
+    "banglaName": "ডাল চানাচুর",
+    "category": "Snack",
+    "serving": { "unit": "30g", "quantity": 1, "weight": 30 },
+    "nutrition": {
+      "calories": 150,
+      "protein": 5,
+      "carbs": 18,
+      "fat": 7,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "dal_bora",
+    "name": "Dal Bora",
+    "banglaName": "ডাল বড়া",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 140,
+      "protein": 5,
+      "carbs": 18,
+      "fat": 6,
+      "fiber": 3
+    }
+  }
+]

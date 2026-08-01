@@ -1,4 +1,4 @@
-export const EXERCISE_CATEGORIES = Object.freeze([
+const EXERCISE_CATEGORIES = Object.freeze([
   "Cardio",
   "Strength",
   "Freehand",
@@ -7,7 +7,7 @@ export const EXERCISE_CATEGORIES = Object.freeze([
   "Flexibility",
 ]);
 
-export const EXERCISE_DATASET = Object.freeze([
+const EXERCISES = Object.freeze([
   {
     id: "walking-brisk",
     name: "Brisk Walking",
@@ -240,9 +240,15 @@ export const EXERCISE_DATASET = Object.freeze([
   },
 ]);
 
-export const EXERCISE_MAP = Object.freeze(
-  EXERCISE_DATASET.reduce((accumulator, exercise) => {
-    accumulator[exercise.id] = exercise;
-    return accumulator;
+const EXERCISE_MAP = Object.freeze(
+  EXERCISES.reduce((acc, exercise) => {
+    acc[exercise.id] = exercise;
+    return acc;
   }, {}),
 );
+
+module.exports = {
+  EXERCISE_CATEGORIES,
+  EXERCISES,
+  EXERCISE_MAP,
+};

@@ -16,8 +16,32 @@ const fitnessTrackerSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ["cardio", "strength", "flexibility", "sports"],
+    enum: ["cardio", "strength", "flexibility", "sports", "freehand", "gym"],
     required: true,
+  },
+  category: {
+    type: String,
+    default: "",
+  },
+  workoutType: {
+    type: String,
+    default: "",
+  },
+  equipment: {
+    type: String,
+    default: "",
+  },
+  targetMuscles: {
+    type: [String],
+    default: [],
+  },
+  met: {
+    type: Number,
+    default: 0,
+  },
+  calculationMethod: {
+    type: String,
+    default: "",
   },
   duration: {
     type: Number,

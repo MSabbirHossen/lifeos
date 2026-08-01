@@ -1,0 +1,1094 @@
+[
+  {
+    "id": "potato_boiled",
+    "name": "Boiled Potato",
+    "banglaName": "সেদ্ধ আলু",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 87,
+      "protein": 1.9,
+      "carbs": 20,
+      "fat": 0.1,
+      "fiber": 1.8
+    }
+  },
+  {
+    "id": "potato_curry",
+    "name": "Potato Curry",
+    "banglaName": "আলুর তরকারি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 4,
+      "carbs": 30,
+      "fat": 6,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "potato_fry",
+    "name": "Potato Fry",
+    "banglaName": "আলু ভাজি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 2,
+      "carbs": 25,
+      "fat": 6,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "sweet_potato",
+    "name": "Sweet Potato",
+    "banglaName": "মিষ্টি আলু",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 86,
+      "protein": 1.6,
+      "carbs": 20,
+      "fat": 0.1,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "brinjal",
+    "name": "Brinjal",
+    "banglaName": "বেগুন",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 25,
+      "protein": 1,
+      "carbs": 6,
+      "fat": 0.2,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "brinjal_bhorta",
+    "name": "Brinjal Bhorta",
+    "banglaName": "বেগুন ভর্তা",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 140,
+      "protein": 2,
+      "carbs": 10,
+      "fat": 10,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "brinjal_fry",
+    "name": "Brinjal Fry",
+    "banglaName": "বেগুন ভাজি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 170,
+      "protein": 2,
+      "carbs": 12,
+      "fat": 12,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "bottle_gourd",
+    "name": "Bottle Gourd",
+    "banglaName": "লাউ",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 15,
+      "protein": 0.6,
+      "carbs": 3.5,
+      "fat": 0.1,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "bottle_gourd_curry",
+    "name": "Bottle Gourd Curry",
+    "banglaName": "লাউ তরকারি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 90,
+      "protein": 3,
+      "carbs": 12,
+      "fat": 4,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "pumpkin",
+    "name": "Pumpkin",
+    "banglaName": "মিষ্টি কুমড়া",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 26,
+      "protein": 1,
+      "carbs": 6.5,
+      "fat": 0.1,
+      "fiber": 0.5
+    }
+  },
+  {
+    "id": "pumpkin_curry",
+    "name": "Pumpkin Curry",
+    "banglaName": "কুমড়ার তরকারি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 120,
+      "protein": 3,
+      "carbs": 20,
+      "fat": 4,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "ridge_gourd",
+    "name": "Ridge Gourd",
+    "banglaName": "ঝিঙা",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 20,
+      "protein": 0.7,
+      "carbs": 4,
+      "fat": 0.1,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "snake_gourd",
+    "name": "Snake Gourd",
+    "banglaName": "চিচিঙ্গা",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 18,
+      "protein": 0.5,
+      "carbs": 4,
+      "fat": 0.1,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "bitter_gourd",
+    "name": "Bitter Gourd",
+    "banglaName": "করলা",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 17,
+      "protein": 1,
+      "carbs": 3.7,
+      "fat": 0.2,
+      "fiber": 2.8
+    }
+  },
+  {
+    "id": "bitter_gourd_fry",
+    "name": "Bitter Gourd Fry",
+    "banglaName": "করলা ভাজি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 150,
+      "protein": 2,
+      "carbs": 8,
+      "fat": 12,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "okra",
+    "name": "Okra",
+    "banglaName": "ঢেঁড়স",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 33,
+      "protein": 1.9,
+      "carbs": 7,
+      "fat": 0.2,
+      "fiber": 3.2
+    }
+  },
+  {
+    "id": "okra_fry",
+    "name": "Okra Fry",
+    "banglaName": "ঢেঁড়স ভাজি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 140,
+      "protein": 3,
+      "carbs": 10,
+      "fat": 10,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "pointed_gourd",
+    "name": "Pointed Gourd",
+    "banglaName": "পটল",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 20,
+      "protein": 1,
+      "carbs": 4,
+      "fat": 0.2,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "pointed_gourd_curry",
+    "name": "Pointed Gourd Curry",
+    "banglaName": "পটলের তরকারি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 150,
+      "protein": 4,
+      "carbs": 18,
+      "fat": 7,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "beans",
+    "name": "Green Beans",
+    "banglaName": "শিম",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 31,
+      "protein": 1.8,
+      "carbs": 7,
+      "fat": 0.2,
+      "fiber": 2.7
+    }
+  },
+  {
+    "id": "beans_curry",
+    "name": "Beans Curry",
+    "banglaName": "শিমের তরকারি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 130,
+      "protein": 5,
+      "carbs": 18,
+      "fat": 5,
+      "fiber": 5
+    }
+  },
+  {
+    "id": "carrot",
+    "name": "Carrot",
+    "banglaName": "গাজর",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 41,
+      "protein": 0.9,
+      "carbs": 10,
+      "fat": 0.2,
+      "fiber": 2.8
+    }
+  },
+  {
+    "id": "radish",
+    "name": "Radish",
+    "banglaName": "মূলা",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 16,
+      "protein": 0.7,
+      "carbs": 3.4,
+      "fat": 0.1,
+      "fiber": 1.6
+    }
+  },
+  {
+    "id": "cauliflower",
+    "name": "Cauliflower",
+    "banglaName": "ফুলকপি",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 25,
+      "protein": 2,
+      "carbs": 5,
+      "fat": 0.3,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "cauliflower_curry",
+    "name": "Cauliflower Curry",
+    "banglaName": "ফুলকপির তরকারি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 5,
+      "carbs": 20,
+      "fat": 7,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "cabbage",
+    "name": "Cabbage",
+    "banglaName": "বাঁধাকপি",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 25,
+      "protein": 1.3,
+      "carbs": 6,
+      "fat": 0.1,
+      "fiber": 2.5
+    }
+  },
+  {
+    "id": "cabbage_curry",
+    "name": "Cabbage Curry",
+    "banglaName": "বাঁধাকপির তরকারি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 140,
+      "protein": 4,
+      "carbs": 18,
+      "fat": 6,
+      "fiber": 5
+    }
+  },
+  {
+    "id": "tomato",
+    "name": "Tomato",
+    "banglaName": "টমেটো",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 18,
+      "protein": 0.9,
+      "carbs": 3.9,
+      "fat": 0.2,
+      "fiber": 1.2
+    }
+  },
+  {
+    "id": "cucumber",
+    "name": "Cucumber",
+    "banglaName": "শসা",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 15,
+      "protein": 0.7,
+      "carbs": 3.6,
+      "fat": 0.1,
+      "fiber": 0.5
+    }
+  },
+  {
+    "id": "spinach",
+    "name": "Spinach",
+    "banglaName": "পালং শাক",
+    "category": "Leafy Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 23,
+      "protein": 2.9,
+      "carbs": 3.6,
+      "fat": 0.4,
+      "fiber": 2.2
+    }
+  },
+  {
+    "id": "spinach_bhaji",
+    "name": "Spinach Bhaji",
+    "banglaName": "পালং শাক ভাজি",
+    "category": "Leafy Dish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 120,
+      "protein": 5,
+      "carbs": 8,
+      "fat": 8,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "red_spinach",
+    "name": "Red Spinach",
+    "banglaName": "লাল শাক",
+    "category": "Leafy Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 22,
+      "protein": 2,
+      "carbs": 4,
+      "fat": 0.3,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "red_spinach_bhaji",
+    "name": "Red Spinach Bhaji",
+    "banglaName": "লাল শাক ভাজি",
+    "category": "Leafy Dish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 130,
+      "protein": 4,
+      "carbs": 9,
+      "fat": 9,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "water_spinach",
+    "name": "Water Spinach",
+    "banglaName": "কলমি শাক",
+    "category": "Leafy Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 19,
+      "protein": 2,
+      "carbs": 3,
+      "fat": 0.3,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "malabar_spinach",
+    "name": "Malabar Spinach",
+    "banglaName": "পুঁই শাক",
+    "category": "Leafy Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 19,
+      "protein": 1.8,
+      "carbs": 3.4,
+      "fat": 0.3,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "pui_shak_chingri",
+    "name": "Malabar Spinach With Shrimp",
+    "banglaName": "চিংড়ি দিয়ে পুঁই শাক",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 220,
+      "protein": 15,
+      "carbs": 12,
+      "fat": 12,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "green_chili",
+    "name": "Green Chili",
+    "banglaName": "কাঁচা মরিচ",
+    "category": "Vegetable",
+    "serving": { "unit": "10g", "quantity": 1, "weight": 10 },
+    "nutrition": {
+      "calories": 4,
+      "protein": 0.2,
+      "carbs": 1,
+      "fat": 0,
+      "fiber": 0.4
+    }
+  },
+  {
+    "id": "onion",
+    "name": "Onion",
+    "banglaName": "পেঁয়াজ",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 40,
+      "protein": 1.1,
+      "carbs": 9,
+      "fat": 0.1,
+      "fiber": 1.7
+    }
+  },
+  {
+    "id": "fried_onion",
+    "name": "Fried Onion",
+    "banglaName": "পেঁয়াজ ভাজা",
+    "category": "Topping",
+    "serving": { "unit": "30g", "quantity": 1, "weight": 30 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 1,
+      "carbs": 10,
+      "fat": 13,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "garlic",
+    "name": "Garlic",
+    "banglaName": "রসুন",
+    "category": "Vegetable",
+    "serving": { "unit": "10g", "quantity": 1, "weight": 10 },
+    "nutrition": {
+      "calories": 15,
+      "protein": 0.6,
+      "carbs": 3.3,
+      "fat": 0,
+      "fiber": 0.2
+    }
+  },
+  {
+    "id": "ginger",
+    "name": "Ginger",
+    "banglaName": "আদা",
+    "category": "Vegetable",
+    "serving": { "unit": "10g", "quantity": 1, "weight": 10 },
+    "nutrition": {
+      "calories": 8,
+      "protein": 0.2,
+      "carbs": 1.8,
+      "fat": 0.1,
+      "fiber": 0.2
+    }
+  },
+  {
+    "id": "green_peas",
+    "name": "Green Peas",
+    "banglaName": "মটরশুঁটি",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 81,
+      "protein": 5.4,
+      "carbs": 14,
+      "fat": 0.4,
+      "fiber": 5
+    }
+  },
+  {
+    "id": "peas_curry",
+    "name": "Green Peas Curry",
+    "banglaName": "মটরশুঁটির তরকারি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 190,
+      "protein": 8,
+      "carbs": 25,
+      "fat": 7,
+      "fiber": 6
+    }
+  },
+  {
+    "id": "corn",
+    "name": "Corn",
+    "banglaName": "ভুট্টা",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 86,
+      "protein": 3.3,
+      "carbs": 19,
+      "fat": 1.2,
+      "fiber": 2.7
+    }
+  },
+  {
+    "id": "raw_papaya",
+    "name": "Raw Papaya",
+    "banglaName": "কাঁচা পেঁপে",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 43,
+      "protein": 0.5,
+      "carbs": 11,
+      "fat": 0.2,
+      "fiber": 1.7
+    }
+  },
+  {
+    "id": "raw_papaya_curry",
+    "name": "Raw Papaya Curry",
+    "banglaName": "কাঁচা পেঁপের তরকারি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 130,
+      "protein": 3,
+      "carbs": 20,
+      "fat": 5,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "drumstick",
+    "name": "Drumstick",
+    "banglaName": "সজনে ডাটা",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 37,
+      "protein": 2.1,
+      "carbs": 8,
+      "fat": 0.2,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "drumstick_curry",
+    "name": "Drumstick Curry",
+    "banglaName": "সজনে ডাটার তরকারি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 140,
+      "protein": 5,
+      "carbs": 18,
+      "fat": 5,
+      "fiber": 5
+    }
+  },
+  {
+    "id": "raw_banana",
+    "name": "Raw Banana",
+    "banglaName": "কাঁচা কলা",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 122,
+      "protein": 1.3,
+      "carbs": 32,
+      "fat": 0.4,
+      "fiber": 2.3
+    }
+  },
+  {
+    "id": "raw_banana_curry",
+    "name": "Raw Banana Curry",
+    "banglaName": "কাঁচা কলার তরকারি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 220,
+      "protein": 4,
+      "carbs": 35,
+      "fat": 7,
+      "fiber": 5
+    }
+  },
+  {
+    "id": "yam",
+    "name": "Yam",
+    "banglaName": "ওল",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 118,
+      "protein": 1.5,
+      "carbs": 28,
+      "fat": 0.2,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "yam_curry",
+    "name": "Yam Curry",
+    "banglaName": "ওলের তরকারি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 240,
+      "protein": 5,
+      "carbs": 35,
+      "fat": 8,
+      "fiber": 5
+    }
+  },
+  {
+    "id": "beetroot",
+    "name": "Beetroot",
+    "banglaName": "বিট",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 43,
+      "protein": 1.6,
+      "carbs": 10,
+      "fat": 0.2,
+      "fiber": 2.8
+    }
+  },
+  {
+    "id": "capsicum",
+    "name": "Capsicum",
+    "banglaName": "ক্যাপসিকাম",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 31,
+      "protein": 1,
+      "carbs": 6,
+      "fat": 0.3,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "mushroom",
+    "name": "Mushroom",
+    "banglaName": "মাশরুম",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 22,
+      "protein": 3.1,
+      "carbs": 3.3,
+      "fat": 0.3,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "mixed_vegetable_curry",
+    "name": "Mixed Vegetable Curry",
+    "banglaName": "মিশ্র সবজি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 220,
+      "protein": 8,
+      "carbs": 30,
+      "fat": 8,
+      "fiber": 8
+    }
+  },
+  {
+    "id": "vegetable_bhaji",
+    "name": "Mixed Vegetable Bhaji",
+    "banglaName": "সবজি ভাজি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 5,
+      "carbs": 15,
+      "fat": 9,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "vegetable_soup",
+    "name": "Vegetable Soup",
+    "banglaName": "সবজি স্যুপ",
+    "category": "Soup",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 100,
+      "protein": 4,
+      "carbs": 18,
+      "fat": 2,
+      "fiber": 5
+    }
+  },
+  {
+    "id": "ash_gourd",
+    "name": "Ash Gourd",
+    "banglaName": "চাল কুমড়া",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 13,
+      "protein": 0.4,
+      "carbs": 3,
+      "fat": 0.1,
+      "fiber": 0.5
+    }
+  },
+  {
+    "id": "ash_gourd_curry",
+    "name": "Ash Gourd Curry",
+    "banglaName": "চাল কুমড়ার তরকারি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 100,
+      "protein": 3,
+      "carbs": 15,
+      "fat": 4,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "zucchini",
+    "name": "Zucchini",
+    "banglaName": "জুকিনি",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 17,
+      "protein": 1.2,
+      "carbs": 3.1,
+      "fat": 0.3,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "lettuce",
+    "name": "Lettuce",
+    "banglaName": "লেটুস পাতা",
+    "category": "Leafy Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 15,
+      "protein": 1.4,
+      "carbs": 2.9,
+      "fat": 0.2,
+      "fiber": 1.3
+    }
+  },
+  {
+    "id": "spring_onion",
+    "name": "Spring Onion",
+    "banglaName": "পেঁয়াজ পাতা",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 32,
+      "protein": 1.8,
+      "carbs": 7,
+      "fat": 0.2,
+      "fiber": 2.6
+    }
+  },
+  {
+    "id": "coriander_leaf",
+    "name": "Coriander Leaves",
+    "banglaName": "ধনিয়া পাতা",
+    "category": "Herbs",
+    "serving": { "unit": "20g", "quantity": 1, "weight": 20 },
+    "nutrition": {
+      "calories": 5,
+      "protein": 0.4,
+      "carbs": 1,
+      "fat": 0.1,
+      "fiber": 0.5
+    }
+  },
+  {
+    "id": "mint_leaf",
+    "name": "Mint Leaves",
+    "banglaName": "পুদিনা পাতা",
+    "category": "Herbs",
+    "serving": { "unit": "20g", "quantity": 1, "weight": 20 },
+    "nutrition": {
+      "calories": 9,
+      "protein": 0.7,
+      "carbs": 1.5,
+      "fat": 0.1,
+      "fiber": 0.8
+    }
+  },
+  {
+    "id": "curry_leaf",
+    "name": "Curry Leaves",
+    "banglaName": "কারি পাতা",
+    "category": "Herbs",
+    "serving": { "unit": "10g", "quantity": 1, "weight": 10 },
+    "nutrition": {
+      "calories": 6,
+      "protein": 0.4,
+      "carbs": 1,
+      "fat": 0.1,
+      "fiber": 0.5
+    }
+  },
+  {
+    "id": "turnip",
+    "name": "Turnip",
+    "banglaName": "শালগম",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 28,
+      "protein": 0.9,
+      "carbs": 6,
+      "fat": 0.1,
+      "fiber": 1.8
+    }
+  },
+  {
+    "id": "turnip_curry",
+    "name": "Turnip Curry",
+    "banglaName": "শালগমের তরকারি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 140,
+      "protein": 4,
+      "carbs": 20,
+      "fat": 5,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "broccoli",
+    "name": "Broccoli",
+    "banglaName": "ব্রকলি",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 34,
+      "protein": 2.8,
+      "carbs": 7,
+      "fat": 0.4,
+      "fiber": 2.6
+    }
+  },
+  {
+    "id": "green_pepper",
+    "name": "Green Pepper",
+    "banglaName": "সবুজ মরিচ",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 20,
+      "protein": 0.9,
+      "carbs": 4.6,
+      "fat": 0.2,
+      "fiber": 1.7
+    }
+  },
+  {
+    "id": "red_pepper",
+    "name": "Red Pepper",
+    "banglaName": "লাল মরিচ",
+    "category": "Vegetable",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 31,
+      "protein": 1,
+      "carbs": 6,
+      "fat": 0.3,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "mushroom_curry",
+    "name": "Mushroom Curry",
+    "banglaName": "মাশরুম তরকারি",
+    "category": "Vegetable Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 8,
+      "carbs": 15,
+      "fat": 10,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "vegetable_chop",
+    "name": "Vegetable Chop",
+    "banglaName": "সবজি চপ",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 80 },
+    "nutrition": {
+      "calories": 170,
+      "protein": 3,
+      "carbs": 25,
+      "fat": 6,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "vegetable_singara",
+    "name": "Vegetable Singara",
+    "banglaName": "সবজি সিঙ্গারা",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 70 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 3,
+      "carbs": 22,
+      "fat": 7,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "vegetable_samosa",
+    "name": "Vegetable Samosa",
+    "banglaName": "সবজি সমুচা",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 80 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 4,
+      "carbs": 25,
+      "fat": 8,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "vegetable_roll",
+    "name": "Vegetable Roll",
+    "banglaName": "সবজি রোল",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 230,
+      "protein": 5,
+      "carbs": 30,
+      "fat": 10,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "mixed_shak_bhaji",
+    "name": "Mixed Leafy Vegetable Bhaji",
+    "banglaName": "মিশ্র শাক ভাজি",
+    "category": "Leafy Dish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 130,
+      "protein": 5,
+      "carbs": 10,
+      "fat": 8,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "vegetable_khichuri",
+    "name": "Vegetable Khichuri",
+    "banglaName": "সবজি খিচুড়ি",
+    "category": "Rice Dish",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 350 },
+    "nutrition": {
+      "calories": 420,
+      "protein": 14,
+      "carbs": 70,
+      "fat": 10,
+      "fiber": 8
+    }
+  }
+]

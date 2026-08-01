@@ -1,0 +1,818 @@
+[
+  {
+    "id": "soybean_oil",
+    "name": "Soybean Oil",
+    "banglaName": "সয়াবিন তেল",
+    "category": "Oil",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 14 },
+    "nutrition": {
+      "calories": 120,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 14,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "mustard_oil",
+    "name": "Mustard Oil",
+    "banglaName": "সরিষার তেল",
+    "category": "Oil",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 14 },
+    "nutrition": {
+      "calories": 124,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 14,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "olive_oil",
+    "name": "Olive Oil",
+    "banglaName": "অলিভ অয়েল",
+    "category": "Oil",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 14 },
+    "nutrition": {
+      "calories": 119,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 13.5,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "coconut_oil",
+    "name": "Coconut Oil",
+    "banglaName": "নারিকেল তেল",
+    "category": "Oil",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 14 },
+    "nutrition": {
+      "calories": 121,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 14,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "ghee",
+    "name": "Ghee",
+    "banglaName": "ঘি",
+    "category": "Fat",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 14 },
+    "nutrition": {
+      "calories": 126,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 14,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "butter",
+    "name": "Butter",
+    "banglaName": "মাখন",
+    "category": "Fat",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 14 },
+    "nutrition": {
+      "calories": 102,
+      "protein": 0.1,
+      "carbs": 0,
+      "fat": 11.5,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "margarine",
+    "name": "Margarine",
+    "banglaName": "মার্জারিন",
+    "category": "Fat",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 14 },
+    "nutrition": {
+      "calories": 100,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 11,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "sugar",
+    "name": "Sugar",
+    "banglaName": "চিনি",
+    "category": "Sweetener",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 4 },
+    "nutrition": {
+      "calories": 16,
+      "protein": 0,
+      "carbs": 4,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "brown_sugar",
+    "name": "Brown Sugar",
+    "banglaName": "বাদামি চিনি",
+    "category": "Sweetener",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 4 },
+    "nutrition": {
+      "calories": 17,
+      "protein": 0,
+      "carbs": 4.2,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "jaggery",
+    "name": "Jaggery",
+    "banglaName": "গুড়",
+    "category": "Sweetener",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 20 },
+    "nutrition": {
+      "calories": 75,
+      "protein": 0.1,
+      "carbs": 18,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "honey",
+    "name": "Honey",
+    "banglaName": "মধু",
+    "category": "Sweetener",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 21 },
+    "nutrition": {
+      "calories": 64,
+      "protein": 0,
+      "carbs": 17,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "date_syrup",
+    "name": "Date Syrup",
+    "banglaName": "খেজুরের সিরাপ",
+    "category": "Sweetener",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 20 },
+    "nutrition": {
+      "calories": 60,
+      "protein": 0,
+      "carbs": 15,
+      "fat": 0,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "atta",
+    "name": "Whole Wheat Flour",
+    "banglaName": "আটা",
+    "category": "Ingredient",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 340,
+      "protein": 13,
+      "carbs": 72,
+      "fat": 2,
+      "fiber": 12
+    }
+  },
+  {
+    "id": "maida",
+    "name": "Refined Flour",
+    "banglaName": "ময়দা",
+    "category": "Ingredient",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 364,
+      "protein": 10,
+      "carbs": 76,
+      "fat": 1,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "rice_flour",
+    "name": "Rice Flour",
+    "banglaName": "চালের গুঁড়া",
+    "category": "Ingredient",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 366,
+      "protein": 6,
+      "carbs": 80,
+      "fat": 1,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "besan",
+    "name": "Gram Flour",
+    "banglaName": "বেসন",
+    "category": "Ingredient",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 387,
+      "protein": 22,
+      "carbs": 58,
+      "fat": 6,
+      "fiber": 11
+    }
+  },
+  {
+    "id": "suji",
+    "name": "Semolina",
+    "banglaName": "সুজি",
+    "category": "Ingredient",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 360,
+      "protein": 12,
+      "carbs": 73,
+      "fat": 1,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "corn_flour",
+    "name": "Corn Flour",
+    "banglaName": "কর্ন ফ্লাওয়ার",
+    "category": "Ingredient",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 381,
+      "protein": 0.3,
+      "carbs": 91,
+      "fat": 0.1,
+      "fiber": 0.9
+    }
+  },
+  {
+    "id": "coconut_grated",
+    "name": "Grated Coconut",
+    "banglaName": "নারিকেল কুচি",
+    "category": "Ingredient",
+    "serving": { "unit": "50g", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 177,
+      "protein": 2,
+      "carbs": 7,
+      "fat": 17,
+      "fiber": 5
+    }
+  },
+  {
+    "id": "turmeric_powder",
+    "name": "Turmeric Powder",
+    "banglaName": "হলুদ গুঁড়া",
+    "category": "Spice",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 3 },
+    "nutrition": {
+      "calories": 10,
+      "protein": 0.3,
+      "carbs": 2,
+      "fat": 0.3,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "chili_powder",
+    "name": "Chili Powder",
+    "banglaName": "মরিচ গুঁড়া",
+    "category": "Spice",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 3 },
+    "nutrition": {
+      "calories": 9,
+      "protein": 0.3,
+      "carbs": 1.5,
+      "fat": 0.4,
+      "fiber": 0.7
+    }
+  },
+  {
+    "id": "coriander_powder",
+    "name": "Coriander Powder",
+    "banglaName": "ধনে গুঁড়া",
+    "category": "Spice",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 3 },
+    "nutrition": {
+      "calories": 9,
+      "protein": 0.4,
+      "carbs": 1.5,
+      "fat": 0.5,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "cumin",
+    "name": "Cumin",
+    "banglaName": "জিরা",
+    "category": "Spice",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 3 },
+    "nutrition": {
+      "calories": 11,
+      "protein": 0.5,
+      "carbs": 1.4,
+      "fat": 0.6,
+      "fiber": 0.4
+    }
+  },
+  {
+    "id": "black_pepper",
+    "name": "Black Pepper",
+    "banglaName": "গোলমরিচ",
+    "category": "Spice",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 3 },
+    "nutrition": {
+      "calories": 8,
+      "protein": 0.2,
+      "carbs": 1.8,
+      "fat": 0.1,
+      "fiber": 0.7
+    }
+  },
+  {
+    "id": "cinnamon",
+    "name": "Cinnamon",
+    "banglaName": "দারুচিনি",
+    "category": "Spice",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 3 },
+    "nutrition": {
+      "calories": 8,
+      "protein": 0.1,
+      "carbs": 2.5,
+      "fat": 0,
+      "fiber": 1.6
+    }
+  },
+  {
+    "id": "cardamom",
+    "name": "Cardamom",
+    "banglaName": "এলাচ",
+    "category": "Spice",
+    "serving": { "unit": "pod", "quantity": 1, "weight": 1 },
+    "nutrition": {
+      "calories": 3,
+      "protein": 0.1,
+      "carbs": 0.4,
+      "fat": 0.1,
+      "fiber": 0.3
+    }
+  },
+  {
+    "id": "clove",
+    "name": "Clove",
+    "banglaName": "লবঙ্গ",
+    "category": "Spice",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 1 },
+    "nutrition": {
+      "calories": 3,
+      "protein": 0.1,
+      "carbs": 0.7,
+      "fat": 0.1,
+      "fiber": 0.4
+    }
+  },
+  {
+    "id": "bay_leaf",
+    "name": "Bay Leaf",
+    "banglaName": "তেজপাতা",
+    "category": "Spice",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 1 },
+    "nutrition": {
+      "calories": 3,
+      "protein": 0.1,
+      "carbs": 0.7,
+      "fat": 0.1,
+      "fiber": 0.5
+    }
+  },
+  {
+    "id": "ginger",
+    "name": "Ginger",
+    "banglaName": "আদা",
+    "category": "Spice",
+    "serving": { "unit": "10g", "quantity": 1, "weight": 10 },
+    "nutrition": {
+      "calories": 8,
+      "protein": 0.2,
+      "carbs": 1.8,
+      "fat": 0.1,
+      "fiber": 0.2
+    }
+  },
+  {
+    "id": "garlic",
+    "name": "Garlic",
+    "banglaName": "রসুন",
+    "category": "Spice",
+    "serving": { "unit": "clove", "quantity": 1, "weight": 3 },
+    "nutrition": {
+      "calories": 5,
+      "protein": 0.2,
+      "carbs": 1,
+      "fat": 0,
+      "fiber": 0.1
+    }
+  },
+  {
+    "id": "salt",
+    "name": "Salt",
+    "banglaName": "লবণ",
+    "category": "Ingredient",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 6 },
+    "nutrition": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "baking_soda",
+    "name": "Baking Soda",
+    "banglaName": "বেকিং সোডা",
+    "category": "Ingredient",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 5 },
+    "nutrition": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "vinegar",
+    "name": "Vinegar",
+    "banglaName": "ভিনেগার",
+    "category": "Ingredient",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 15 },
+    "nutrition": {
+      "calories": 3,
+      "protein": 0,
+      "carbs": 0.1,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "soy_sauce",
+    "name": "Soy Sauce",
+    "banglaName": "সয়া সস",
+    "category": "Ingredient",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 16 },
+    "nutrition": {
+      "calories": 10,
+      "protein": 1.5,
+      "carbs": 1,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "tomato_sauce",
+    "name": "Tomato Sauce",
+    "banglaName": "টমেটো সস",
+    "category": "Sauce",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 17 },
+    "nutrition": {
+      "calories": 20,
+      "protein": 0.3,
+      "carbs": 5,
+      "fat": 0,
+      "fiber": 0.5
+    }
+  },
+  {
+    "id": "chili_sauce",
+    "name": "Chili Sauce",
+    "banglaName": "চিলি সস",
+    "category": "Sauce",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 17 },
+    "nutrition": {
+      "calories": 25,
+      "protein": 0.2,
+      "carbs": 6,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "mayonnaise",
+    "name": "Mayonnaise",
+    "banglaName": "মেয়োনিজ",
+    "category": "Sauce",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 15 },
+    "nutrition": {
+      "calories": 100,
+      "protein": 0,
+      "carbs": 0.5,
+      "fat": 11,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "mixed_masala",
+    "name": "Mixed Masala Powder",
+    "banglaName": "মিক্সড মসলা",
+    "category": "Spice",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 3 },
+    "nutrition": {
+      "calories": 10,
+      "protein": 0.3,
+      "carbs": 2,
+      "fat": 0.3,
+      "fiber": 0.8
+    }
+  },
+  {
+    "id": "garam_masala",
+    "name": "Garam Masala",
+    "banglaName": "গরম মসলা",
+    "category": "Spice",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 3 },
+    "nutrition": {
+      "calories": 9,
+      "protein": 0.3,
+      "carbs": 1.5,
+      "fat": 0.3,
+      "fiber": 0.5
+    }
+  },
+  {
+    "id": "chicken_masala",
+    "name": "Chicken Masala",
+    "banglaName": "চিকেন মসলা",
+    "category": "Spice",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 3 },
+    "nutrition": {
+      "calories": 10,
+      "protein": 0.3,
+      "carbs": 2,
+      "fat": 0.2,
+      "fiber": 0.5
+    }
+  },
+  {
+    "id": "biryani_masala",
+    "name": "Biryani Masala",
+    "banglaName": "বিরিয়ানি মসলা",
+    "category": "Spice",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 3 },
+    "nutrition": {
+      "calories": 12,
+      "protein": 0.4,
+      "carbs": 2,
+      "fat": 0.3,
+      "fiber": 0.6
+    }
+  },
+  {
+    "id": "black_cumin",
+    "name": "Black Cumin",
+    "banglaName": "কালোজিরা",
+    "category": "Seed",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 3 },
+    "nutrition": {
+      "calories": 14,
+      "protein": 0.5,
+      "carbs": 1,
+      "fat": 1,
+      "fiber": 0.5
+    }
+  },
+  {
+    "id": "fenugreek",
+    "name": "Fenugreek",
+    "banglaName": "মেথি",
+    "category": "Seed",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 3 },
+    "nutrition": {
+      "calories": 11,
+      "protein": 0.8,
+      "carbs": 2,
+      "fat": 0.2,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "mustard_seed",
+    "name": "Mustard Seed",
+    "banglaName": "সরিষা দানা",
+    "category": "Seed",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 3 },
+    "nutrition": {
+      "calories": 15,
+      "protein": 0.8,
+      "carbs": 0.9,
+      "fat": 1,
+      "fiber": 0.5
+    }
+  },
+  {
+    "id": "sesame_seed",
+    "name": "Sesame Seed",
+    "banglaName": "তিল",
+    "category": "Seed",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 9 },
+    "nutrition": {
+      "calories": 52,
+      "protein": 1.6,
+      "carbs": 2,
+      "fat": 4.5,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "flax_seed",
+    "name": "Flax Seed",
+    "banglaName": "তিসি বীজ",
+    "category": "Seed",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 10 },
+    "nutrition": {
+      "calories": 55,
+      "protein": 1.8,
+      "carbs": 3,
+      "fat": 4.3,
+      "fiber": 2.8
+    }
+  },
+  {
+    "id": "chia_seed",
+    "name": "Chia Seed",
+    "banglaName": "চিয়া বীজ",
+    "category": "Seed",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 12 },
+    "nutrition": {
+      "calories": 58,
+      "protein": 2,
+      "carbs": 5,
+      "fat": 3.7,
+      "fiber": 5
+    }
+  },
+  {
+    "id": "peanut_butter",
+    "name": "Peanut Butter",
+    "banglaName": "পিনাট বাটার",
+    "category": "Spread",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 16 },
+    "nutrition": {
+      "calories": 95,
+      "protein": 4,
+      "carbs": 3,
+      "fat": 8,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "tomato_paste",
+    "name": "Tomato Paste",
+    "banglaName": "টমেটো পেস্ট",
+    "category": "Ingredient",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 16 },
+    "nutrition": {
+      "calories": 13,
+      "protein": 0.7,
+      "carbs": 3,
+      "fat": 0,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "pickle_mango",
+    "name": "Mango Pickle",
+    "banglaName": "আমের আচার",
+    "category": "Pickle",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 20 },
+    "nutrition": {
+      "calories": 35,
+      "protein": 0.2,
+      "carbs": 5,
+      "fat": 2,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "pickle_chili",
+    "name": "Chili Pickle",
+    "banglaName": "মরিচের আচার",
+    "category": "Pickle",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 20 },
+    "nutrition": {
+      "calories": 40,
+      "protein": 0.3,
+      "carbs": 4,
+      "fat": 3,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "coconut_milk",
+    "name": "Coconut Milk",
+    "banglaName": "নারিকেলের দুধ",
+    "category": "Ingredient",
+    "serving": { "unit": "100ml", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 230,
+      "protein": 2,
+      "carbs": 5,
+      "fat": 24,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "cream",
+    "name": "Cream",
+    "banglaName": "ক্রিম",
+    "category": "Dairy",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 15 },
+    "nutrition": {
+      "calories": 50,
+      "protein": 0.3,
+      "carbs": 0.5,
+      "fat": 5,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "milk_powder",
+    "name": "Milk Powder",
+    "banglaName": "গুঁড়া দুধ",
+    "category": "Dairy",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 8 },
+    "nutrition": { "calories": 40, "protein": 2, "carbs": 4, "fat": 2 }
+  },
+  {
+    "id": "custard_powder",
+    "name": "Custard Powder",
+    "banglaName": "কাস্টার্ড পাউডার",
+    "category": "Ingredient",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 10 },
+    "nutrition": { "calories": 35, "protein": 0, "carbs": 8, "fat": 0 }
+  },
+  {
+    "id": "gelatin",
+    "name": "Gelatin",
+    "banglaName": "জেলাটিন",
+    "category": "Ingredient",
+    "serving": { "unit": "10g", "quantity": 1, "weight": 10 },
+    "nutrition": { "calories": 34, "protein": 9, "carbs": 0, "fat": 0 }
+  },
+  {
+    "id": "vanilla_essence",
+    "name": "Vanilla Essence",
+    "banglaName": "ভ্যানিলা এসেন্স",
+    "category": "Ingredient",
+    "serving": { "unit": "teaspoon", "quantity": 1, "weight": 4 },
+    "nutrition": { "calories": 12, "protein": 0, "carbs": 0.5, "fat": 0 }
+  },
+  {
+    "id": "cocoa_powder",
+    "name": "Cocoa Powder",
+    "banglaName": "কোকো পাউডার",
+    "category": "Ingredient",
+    "serving": { "unit": "tablespoon", "quantity": 1, "weight": 5 },
+    "nutrition": {
+      "calories": 12,
+      "protein": 1,
+      "carbs": 3,
+      "fat": 0.7,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "dark_chocolate",
+    "name": "Dark Chocolate",
+    "banglaName": "ডার্ক চকলেট",
+    "category": "Sweet",
+    "serving": { "unit": "20g", "quantity": 1, "weight": 20 },
+    "nutrition": {
+      "calories": 110,
+      "protein": 1.5,
+      "carbs": 10,
+      "fat": 8,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "peanut",
+    "name": "Peanut",
+    "banglaName": "চিনাবাদাম",
+    "category": "Nut",
+    "serving": { "unit": "30g", "quantity": 1, "weight": 30 },
+    "nutrition": {
+      "calories": 170,
+      "protein": 8,
+      "carbs": 6,
+      "fat": 14,
+      "fiber": 2
+    }
+  }
+]

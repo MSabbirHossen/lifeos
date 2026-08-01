@@ -1,41 +1,58 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import { Dumbbell, Plus } from "lucide-react";
 import Card from "../../components/Card";
 import Modal from "../../components/Modal";
 import API from "../../utils/api";
-import { Trash2, Plus } from "lucide-react";
-import { EXERCISE_DATASET } from "../../data/exercises";
+import {
+  EXERCISE_CATEGORIES,
+  EXERCISE_DATASET,
+  EXERCISE_MAP,
+} from "../../data/exercises";
 import {
   calculateWorkoutCalories,
   calculateWorkoutCaloriesFromSetsReps,
 } from "../../utils/workoutCalculator";
+import WorkoutForm from "./components/WorkoutForm";
+import WorkoutCard from "./components/WorkoutCard";
+import FitnessStats from "./components/FitnessStats";
+import WorkoutChart from "./components/WorkoutChart";
+import { computeFitnessAnalytics } from "./fitnessAnalytics";
 
-const categoryToWorkoutType = {
-  "Freehand & Bodyweight": "strength",
-  "Gym & Weight Training": "strength",
-  "Cardio Equipment": "cardio",
+const defaultFormData = {
+  exerciseId: "",
+  exercise: "",
+  type: "cardio",
+  category: "",
+  workoutType: "",
+  equipment: "",
+  targetMuscles: [],
+  met: 0,
+  calculationMethod: "duration",
+  duration: 0,
+  sets: 0,
+  reps: 0,
+  caloriesBurned: 0,
+  weight: 0,
 };
 
 const Fitness = () => {
   const [trackers, setTrackers] = useState([]);
+  const [exercises, setExercises] = useState(EXERCISE_DATASET);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedExercise, setSelectedExercise] = useState(null);
   const [helperDurationMinutes, setHelperDurationMinutes] = useState(0);
-  const [formData, setFormData] = useState({
-    exerciseId: "",
-    exercise: "",
-    type: "cardio",
-    duration: 0,
-    sets: 0,
-    reps: 0,
-    caloriesBurned: 0,
-    weight: 0,
-  });
+  const [formData, setFormData] = useState(defaultFormData);
 
-  const hasDurationInput = Number(formData.duration) > 0;
-  const hasSetRepInput = Number(formData.sets) > 0 || Number(formData.reps) > 0;
+  const analytics = useMemo(
+    () => computeFitnessAnalytics(trackers),
+    [trackers],
+  );
 
   useEffect(() => {
     fetchTrackers();
+    fetchExercises();
   }, []);
 
   const fetchTrackers = async () => {
@@ -47,120 +64,75 @@ const Fitness = () => {
     }
   };
 
-  const handleSubmit = async () => {
+  const fetchExercises = async () => {
     try {
-      await API.post("/fitness", formData);
-      setFormData({
-        exerciseId: "",
-        exercise: "",
-        type: "cardio",
-        duration: 0,
-        sets: 0,
-        reps: 0,
-        caloriesBurned: 0,
-        weight: 0,
-      });
-      setSelectedExercise(null);
-      setHelperDurationMinutes(0);
-      setIsModalOpen(false);
-      fetchTrackers();
+      const { data } = await API.get("/fitness/exercises");
+      if (Array.isArray(data) && data.length > 0) {
+        setExercises(data);
+      }
     } catch (error) {
-      console.error("Error creating fitness tracker:", error);
+      console.warn("Using local exercise dataset fallback:", error);
     }
   };
 
-  const recalculateCalories = ({
-    exerciseId,
-    duration,
-    sets,
-    reps,
-    weight,
-  }) => {
-    const safeDuration = Number(duration) || 0;
-    const safeWeight = Number(weight) || 0;
+  const recalculateCalories = (nextFormData, exerciseMeta = null) => {
+    const resolvedExercise =
+      exerciseMeta || EXERCISE_MAP[nextFormData.exerciseId] || selectedExercise;
+    const bodyWeight = Number(nextFormData.weight) || 0;
 
-    if (!exerciseId || safeWeight <= 0) {
+    if (!resolvedExercise || bodyWeight <= 0) {
       setHelperDurationMinutes(0);
       return 0;
     }
 
-    if (safeDuration > 0) {
-      setHelperDurationMinutes(0);
-      return calculateWorkoutCalories(exerciseId, safeDuration, safeWeight);
+    if (resolvedExercise.calculationMethod === "sets_reps") {
+      const helperResult = calculateWorkoutCaloriesFromSetsReps(
+        resolvedExercise.id,
+        nextFormData.sets,
+        nextFormData.reps,
+        bodyWeight,
+      );
+      setHelperDurationMinutes(helperResult.estimatedDurationMinutes);
+      return helperResult.calories;
     }
 
-    const helperResult = calculateWorkoutCaloriesFromSetsReps(
-      exerciseId,
-      Number(sets) || 0,
-      Number(reps) || 0,
-      safeWeight,
+    setHelperDurationMinutes(0);
+    return calculateWorkoutCalories(
+      resolvedExercise.id,
+      nextFormData.duration,
+      bodyWeight,
     );
-    setHelperDurationMinutes(helperResult.estimatedDurationMinutes);
-    return helperResult.calories;
   };
 
-  const resolveExerciseFromInput = (value) => {
-    const normalizedInput = value.trim().toLowerCase();
-    if (!normalizedInput) {
-      return null;
-    }
+  const handleSelectExercise = (exercise) => {
+    setSelectedExercise(exercise);
 
-    const exactMatch = EXERCISE_DATASET.find(
-      (exercise) => exercise.name.toLowerCase() === normalizedInput,
-    );
-    if (exactMatch) {
-      return exactMatch;
-    }
-
-    const startsWithMatches = EXERCISE_DATASET.filter((exercise) =>
-      exercise.name.toLowerCase().startsWith(normalizedInput),
-    );
-    if (startsWithMatches.length === 1) {
-      return startsWithMatches[0];
-    }
-
-    const containsMatches = EXERCISE_DATASET.filter((exercise) =>
-      exercise.name.toLowerCase().includes(normalizedInput),
-    );
-    if (containsMatches.length === 1) {
-      return containsMatches[0];
-    }
-
-    return null;
-  };
-
-  const handleExerciseChange = (value) => {
-    const matchedExercise = resolveExerciseFromInput(value);
-
-    if (!matchedExercise) {
-      setSelectedExercise(null);
-      setHelperDurationMinutes(0);
-      setFormData((prev) => ({ ...prev, exerciseId: "", exercise: value }));
-      return;
-    }
-
-    setSelectedExercise(matchedExercise);
-    setFormData((prev) => {
+    setFormData((previous) => {
       const next = {
-        ...prev,
-        exerciseId: matchedExercise.id,
-        exercise: matchedExercise.name,
-        type: categoryToWorkoutType[matchedExercise.category] || prev.type,
+        ...previous,
+        exerciseId: exercise.id,
+        exercise: exercise.name,
+        type: exercise.workoutType || "cardio",
+        category: exercise.category,
+        workoutType: exercise.workoutType || "cardio",
+        equipment: exercise.equipment,
+        targetMuscles: exercise.targetMuscles,
+        met: exercise.met,
+        calculationMethod: exercise.calculationMethod,
+        duration:
+          exercise.calculationMethod === "sets_reps" ? 0 : previous.duration,
+        sets: exercise.calculationMethod === "sets_reps" ? previous.sets : 0,
+        reps: exercise.calculationMethod === "sets_reps" ? previous.reps : 0,
       };
-      next.caloriesBurned = recalculateCalories(next);
+      next.caloriesBurned = recalculateCalories(next, exercise);
       return next;
     });
   };
 
   const handleDurationChange = (value) => {
     const duration = Number(value) || 0;
-
-    setFormData((prev) => {
-      const next = {
-        ...prev,
-        duration,
-        ...(duration > 0 ? { sets: 0, reps: 0 } : {}),
-      };
+    setFormData((previous) => {
+      const next = { ...previous, duration };
       next.caloriesBurned = recalculateCalories(next);
       return next;
     });
@@ -168,13 +140,8 @@ const Fitness = () => {
 
   const handleSetsChange = (value) => {
     const sets = Number(value) || 0;
-
-    setFormData((prev) => {
-      const next = {
-        ...prev,
-        sets,
-        ...(sets > 0 ? { duration: 0 } : {}),
-      };
+    setFormData((previous) => {
+      const next = { ...previous, sets, duration: 0 };
       next.caloriesBurned = recalculateCalories(next);
       return next;
     });
@@ -182,13 +149,8 @@ const Fitness = () => {
 
   const handleRepsChange = (value) => {
     const reps = Number(value) || 0;
-
-    setFormData((prev) => {
-      const next = {
-        ...prev,
-        reps,
-        ...(reps > 0 ? { duration: 0 } : {}),
-      };
+    setFormData((previous) => {
+      const next = { ...previous, reps, duration: 0 };
       next.caloriesBurned = recalculateCalories(next);
       return next;
     });
@@ -196,12 +158,52 @@ const Fitness = () => {
 
   const handleWeightChange = (value) => {
     const weight = Number(value) || 0;
-
-    setFormData((prev) => {
-      const next = { ...prev, weight };
+    setFormData((previous) => {
+      const next = { ...previous, weight };
       next.caloriesBurned = recalculateCalories(next);
       return next;
     });
+  };
+
+  const canSubmit = useMemo(() => {
+    if (
+      !formData.exerciseId ||
+      !formData.exercise ||
+      Number(formData.weight) <= 0
+    ) {
+      return false;
+    }
+
+    if (formData.calculationMethod === "sets_reps") {
+      return Number(formData.sets) > 0 && Number(formData.reps) > 0;
+    }
+
+    return Number(formData.duration) > 0;
+  }, [formData]);
+
+  const handleSubmit = async () => {
+    if (!canSubmit) {
+      return;
+    }
+
+    try {
+      const payload = {
+        ...formData,
+        type: formData.type || formData.workoutType || "cardio",
+      };
+
+      await API.post("/fitness", payload);
+
+      setFormData(defaultFormData);
+      setSelectedExercise(null);
+      setSearchTerm("");
+      setSelectedCategory("All");
+      setHelperDurationMinutes(0);
+      setIsModalOpen(false);
+      fetchTrackers();
+    } catch (error) {
+      console.error("Error creating fitness tracker:", error);
+    }
   };
 
   const handleDelete = async (id) => {
@@ -213,258 +215,96 @@ const Fitness = () => {
     }
   };
 
-  const totalCalories = trackers.reduce(
-    (sum, t) => sum + (t.caloriesBurned || 0),
-    0,
-  );
-  const totalDuration = trackers.reduce((sum, t) => sum + (t.duration || 0), 0);
-
   return (
     <div className="p-6 space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-          Fitness Tracker
-        </h1>
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        >
-          <Plus size={20} /> Log Workout
-        </button>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card>
-          <div className="text-center">
-            <p className="text-gray-600 dark:text-gray-400">Total Workouts</p>
-            <p className="text-3xl font-bold text-blue-500">
-              {trackers.length}
+      <Card className="bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-500 text-white overflow-hidden relative">
+        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_right,_white_0,_transparent_50%)]" />
+        <div className="relative flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <p className="text-sm uppercase tracking-wider">
+              Professional Fitness Module
+            </p>
+            <h1 className="text-3xl font-bold mt-1">
+              Workout and Calorie Intelligence
+            </h1>
+            <p className="text-sm text-cyan-50 mt-2">
+              Track by duration or sets/reps, estimate calories automatically,
+              and monitor progress trends.
             </p>
           </div>
-        </Card>
-        <Card>
-          <div className="text-center">
-            <p className="text-gray-600 dark:text-gray-400">Total Duration</p>
-            <p className="text-3xl font-bold text-green-500">{totalDuration}</p>
-            <p className="text-sm text-gray-500">minutes</p>
-          </div>
-        </Card>
-        <Card>
-          <div className="text-center">
-            <p className="text-gray-600 dark:text-gray-400">Calories Burned</p>
-            <p className="text-3xl font-bold text-red-500">{totalCalories}</p>
-            <p className="text-sm text-gray-500">kcal</p>
-          </div>
-        </Card>
-      </div>
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/20 hover:bg-white/30 transition-colors"
+          >
+            <Plus size={18} /> Log Workout
+          </button>
+        </div>
+      </Card>
 
-      <div className="space-y-4">
-        {trackers.map((tracker) => (
-          <Card key={tracker._id}>
-            <div className="flex justify-between items-start">
-              <div className="flex-1">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                  {tracker.exercise}
-                </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                  <span className="font-semibold capitalize">
-                    {tracker.type}
-                  </span>{" "}
-                  - {new Date(tracker.date).toLocaleDateString()}
-                </p>
-                <div className="grid grid-cols-3 gap-2 mt-2">
-                  <p className="text-sm">
-                    <strong>Duration:</strong> {tracker.duration} min
-                  </p>
-                  {tracker.sets > 0 && tracker.reps > 0 && (
-                    <p className="text-sm">
-                      <strong>Volume:</strong> {tracker.sets} x {tracker.reps}
-                    </p>
-                  )}
-                  <p className="text-sm">
-                    <strong>Calories:</strong> {tracker.caloriesBurned}
-                  </p>
-                  {tracker.weight && (
-                    <p className="text-sm">
-                      <strong>Weight:</strong> {tracker.weight} kg
-                    </p>
-                  )}
-                </div>
-              </div>
-              <button
-                onClick={() => handleDelete(tracker._id)}
-                className="text-red-500 hover:text-red-700 p-2"
-              >
-                <Trash2 size={20} />
-              </button>
-            </div>
-          </Card>
-        ))}
+      <FitnessStats analytics={analytics} />
+
+      <WorkoutChart
+        monthlyTotals={analytics.monthlyTotals}
+        muscleDistribution={analytics.muscleDistribution}
+      />
+
+      <div>
+        <div className="flex items-center gap-2 mb-3">
+          <Dumbbell className="text-teal-500" size={18} />
+          <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+            Workout History
+          </h2>
+        </div>
+
+        <div className="space-y-3">
+          {trackers.map((tracker) => (
+            <WorkoutCard
+              key={tracker._id}
+              tracker={tracker}
+              onDelete={handleDelete}
+            />
+          ))}
+          {trackers.length === 0 && (
+            <Card>
+              <p className="text-gray-500 dark:text-gray-400">
+                No workouts logged yet. Open the modal to add your first
+                workout.
+              </p>
+            </Card>
+          )}
+        </div>
       </div>
 
       <Modal
         isOpen={isModalOpen}
         title="Log Workout"
+        submitLabel="Save Workout"
         onClose={() => setIsModalOpen(false)}
         onSubmit={handleSubmit}
+        maxWidthClass="max-w-3xl"
       >
-        <div className="space-y-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">
-            * Required fields
+        <WorkoutForm
+          exercises={exercises}
+          categories={EXERCISE_CATEGORIES}
+          selectedExercise={selectedExercise}
+          searchTerm={searchTerm}
+          selectedCategory={selectedCategory}
+          formData={formData}
+          helperDurationMinutes={helperDurationMinutes}
+          onSearchChange={setSearchTerm}
+          onCategoryChange={setSelectedCategory}
+          onSelectExercise={handleSelectExercise}
+          onDurationChange={handleDurationChange}
+          onSetsChange={handleSetsChange}
+          onRepsChange={handleRepsChange}
+          onWeightChange={handleWeightChange}
+        />
+        {!canSubmit && (
+          <p className="text-xs text-red-500 mt-3">
+            Select an exercise, enter body weight, and provide duration or
+            sets/reps.
           </p>
-          <div>
-            <label
-              htmlFor="fitness-exercise"
-              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
-            >
-              Exercise Name <span className="text-red-500">*</span>
-            </label>
-            <input
-              id="fitness-exercise"
-              type="text"
-              list="fitness-exercise-options"
-              value={formData.exercise}
-              onChange={(e) => handleExerciseChange(e.target.value)}
-              placeholder="Search exercise"
-              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-            />
-            <datalist id="fitness-exercise-options">
-              {EXERCISE_DATASET.map((exercise) => (
-                <option
-                  key={exercise.id}
-                  value={exercise.name}
-                  label={`${exercise.category} | ${exercise.intensity} | MET ${exercise.met}`}
-                />
-              ))}
-            </datalist>
-            {selectedExercise && (
-              <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                {selectedExercise.category} | {selectedExercise.intensity} | MET{" "}
-                {selectedExercise.met}
-              </p>
-            )}
-          </div>
-          <div>
-            <label
-              htmlFor="fitness-type"
-              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
-            >
-              Workout Type <span className="text-red-500">*</span>
-            </label>
-            <select
-              id="fitness-type"
-              value={formData.type}
-              onChange={(e) =>
-                setFormData({ ...formData, type: e.target.value })
-              }
-              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-            >
-              <option value="cardio">Cardio</option>
-              <option value="strength">Strength</option>
-              <option value="flexibility">Flexibility</option>
-              <option value="sports">Sports</option>
-            </select>
-          </div>
-          <div>
-            <label
-              htmlFor="fitness-duration"
-              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
-            >
-              Duration (minutes)
-            </label>
-            <input
-              id="fitness-duration"
-              type="number"
-              value={formData.duration}
-              onChange={(e) => handleDurationChange(e.target.value)}
-              disabled={hasSetRepInput}
-              placeholder="Enter direct workout time"
-              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-            />
-            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-              Use either duration OR sets/reps. Clear sets/reps to enable
-              duration.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-2">
-            <div>
-              <label
-                htmlFor="fitness-sets"
-                className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
-              >
-                Sets
-              </label>
-              <input
-                id="fitness-sets"
-                type="number"
-                value={formData.sets}
-                onChange={(e) => handleSetsChange(e.target.value)}
-                disabled={hasDurationInput}
-                className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="fitness-reps"
-                className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
-              >
-                Reps
-              </label>
-              <input
-                id="fitness-reps"
-                type="number"
-                value={formData.reps}
-                onChange={(e) => handleRepsChange(e.target.value)}
-                disabled={hasDurationInput}
-                className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-              />
-            </div>
-          </div>
-          <div>
-            <label
-              htmlFor="fitness-calories"
-              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
-            >
-              Calories Burned
-            </label>
-            <input
-              id="fitness-calories"
-              type="number"
-              value={formData.caloriesBurned}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  caloriesBurned: Number(e.target.value) || 0,
-                })
-              }
-              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-            />
-            {selectedExercise && (
-              <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                Calories Burned = MET x Weight in kg x (Duration in minutes /
-                60).
-                {helperDurationMinutes > 0
-                  ? ` Estimated time from sets/reps: ${helperDurationMinutes} min.`
-                  : ""}
-              </p>
-            )}
-          </div>
-          <div>
-            <label
-              htmlFor="fitness-weight"
-              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
-            >
-              Body Weight (kg) <span className="text-red-500">*</span>
-            </label>
-            <input
-              id="fitness-weight"
-              type="number"
-              value={formData.weight}
-              onChange={(e) => handleWeightChange(e.target.value)}
-              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
-            />
-          </div>
-        </div>
+        )}
       </Modal>
     </div>
   );

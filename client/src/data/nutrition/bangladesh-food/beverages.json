@@ -1,0 +1,562 @@
+[
+  {
+    "id": "water",
+    "name": "Water",
+    "banglaName": "পানি",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "rooh_afza",
+    "name": "Rooh Afza Drink",
+    "banglaName": "রুহ আফজা",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 120,
+      "protein": 0,
+      "carbs": 30,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "borhani",
+    "name": "Borhani",
+    "banglaName": "বোরহানি",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 90,
+      "protein": 4,
+      "carbs": 10,
+      "fat": 4,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "lassi_salted",
+    "name": "Salted Lassi",
+    "banglaName": "নোনতা লাচ্ছি",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 8,
+      "carbs": 15,
+      "fat": 7,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "sweet_yogurt_drink",
+    "name": "Sweet Yogurt Drink",
+    "banglaName": "মিষ্টি দইয়ের শরবত",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 220,
+      "protein": 7,
+      "carbs": 35,
+      "fat": 6,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "lemon_sherbet",
+    "name": "Lemon Sherbet",
+    "banglaName": "লেবুর শরবত",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 80,
+      "protein": 0,
+      "carbs": 20,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "mint_lemon_drink",
+    "name": "Mint Lemon Drink",
+    "banglaName": "পুদিনা লেবুর শরবত",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 70,
+      "protein": 0,
+      "carbs": 18,
+      "fat": 0,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "orange_juice_fresh",
+    "name": "Fresh Orange Juice",
+    "banglaName": "তাজা কমলার জুস",
+    "category": "Juice",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 110,
+      "protein": 2,
+      "carbs": 25,
+      "fat": 0.2,
+      "fiber": 0.5
+    }
+  },
+  {
+    "id": "apple_juice_fresh",
+    "name": "Fresh Apple Juice",
+    "banglaName": "তাজা আপেলের জুস",
+    "category": "Juice",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 115,
+      "protein": 0.3,
+      "carbs": 28,
+      "fat": 0.1,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "guava_juice",
+    "name": "Guava Juice",
+    "banglaName": "পেয়ারার জুস",
+    "category": "Juice",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 130,
+      "protein": 2,
+      "carbs": 30,
+      "fat": 0.5,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "pineapple_juice",
+    "name": "Pineapple Juice",
+    "banglaName": "আনারসের জুস",
+    "category": "Juice",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 120,
+      "protein": 0.5,
+      "carbs": 30,
+      "fat": 0.2,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "watermelon_juice",
+    "name": "Watermelon Juice",
+    "banglaName": "তরমুজের জুস",
+    "category": "Juice",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 75,
+      "protein": 1,
+      "carbs": 18,
+      "fat": 0.2,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "sugarcane_juice",
+    "name": "Sugarcane Juice",
+    "banglaName": "আখের রস",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 0.5,
+      "carbs": 45,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "badam_milk",
+    "name": "Badam Milk",
+    "banglaName": "বাদাম দুধ",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 220,
+      "protein": 8,
+      "carbs": 25,
+      "fat": 10,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "banana_shake",
+    "name": "Banana Shake",
+    "banglaName": "কলা শেক",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 280,
+      "protein": 9,
+      "carbs": 45,
+      "fat": 8,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "mango_shake",
+    "name": "Mango Shake",
+    "banglaName": "আম শেক",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 320,
+      "protein": 9,
+      "carbs": 55,
+      "fat": 8,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "date_milkshake",
+    "name": "Date Milkshake",
+    "banglaName": "খেজুর শেক",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 350,
+      "protein": 10,
+      "carbs": 60,
+      "fat": 9,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "chocolate_milk",
+    "name": "Chocolate Milk",
+    "banglaName": "চকলেট দুধ",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 210,
+      "protein": 8,
+      "carbs": 32,
+      "fat": 6,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "lassi_mango",
+    "name": "Mango Lassi",
+    "banglaName": "আম লাচ্ছি",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 300,
+      "protein": 8,
+      "carbs": 45,
+      "fat": 10,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "lassi_banana",
+    "name": "Banana Lassi",
+    "banglaName": "কলা লাচ্ছি",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 280,
+      "protein": 8,
+      "carbs": 42,
+      "fat": 9,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "faluda_drink",
+    "name": "Faluda Drink",
+    "banglaName": "ফালুদা",
+    "category": "Dessert Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 350 },
+    "nutrition": {
+      "calories": 450,
+      "protein": 10,
+      "carbs": 70,
+      "fat": 15,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "roasted_barley_drink",
+    "name": "Barley Drink",
+    "banglaName": "যবের শরবত",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 90,
+      "protein": 2,
+      "carbs": 20,
+      "fat": 0,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "lassi_plain",
+    "name": "Plain Lassi",
+    "banglaName": "সাধারণ লাচ্ছি",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 8,
+      "carbs": 20,
+      "fat": 8,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "green_tea",
+    "name": "Green Tea",
+    "banglaName": "গ্রিন টি",
+    "category": "Drink",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 2,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "milkshake_chocolate",
+    "name": "Chocolate Milkshake",
+    "banglaName": "চকলেট মিল্কশেক",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 380,
+      "protein": 12,
+      "carbs": 55,
+      "fat": 12,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "rooh_afza_milk",
+    "name": "Rooh Afza Milk",
+    "banglaName": "রুহ আফজা দুধ",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 240,
+      "protein": 10,
+      "carbs": 35,
+      "fat": 8,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "ramadan_fruit_drink",
+    "name": "Ramadan Fruit Drink",
+    "banglaName": "রমজানের ফলের শরবত",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 220,
+      "protein": 2,
+      "carbs": 55,
+      "fat": 1,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "fruit_cocktail",
+    "name": "Fruit Cocktail",
+    "banglaName": "ফ্রুট ককটেল",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 250,
+      "protein": 4,
+      "carbs": 55,
+      "fat": 2,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "custard_fruit_drink",
+    "name": "Fruit Custard",
+    "banglaName": "ফ্রুট কাস্টার্ড",
+    "category": "Dessert",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 300,
+      "protein": 8,
+      "carbs": 50,
+      "fat": 8,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "soda_water",
+    "name": "Soda Water",
+    "banglaName": "সোডা পানি",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "cola_500ml",
+    "name": "Cola 500ml",
+    "banglaName": "কোলা ৫০০ মিলি",
+    "category": "Drink",
+    "serving": { "unit": "bottle", "quantity": 1, "weight": 500 },
+    "nutrition": {
+      "calories": 210,
+      "protein": 0,
+      "carbs": 54,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "lemon_soda",
+    "name": "Lemon Soda",
+    "banglaName": "লেবু সোডা",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 80,
+      "protein": 0,
+      "carbs": 20,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "iced_tea",
+    "name": "Iced Tea",
+    "banglaName": "আইস টি",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 120,
+      "protein": 0,
+      "carbs": 30,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "cold_coffee",
+    "name": "Cold Coffee",
+    "banglaName": "কোল্ড কফি",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 250,
+      "protein": 8,
+      "carbs": 35,
+      "fat": 8,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "espresso",
+    "name": "Espresso",
+    "banglaName": "এসপ্রেসো",
+    "category": "Drink",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 60 },
+    "nutrition": {
+      "calories": 5,
+      "protein": 0,
+      "carbs": 1,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "cappuccino",
+    "name": "Cappuccino",
+    "banglaName": "ক্যাপুচিনো",
+    "category": "Drink",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 240 },
+    "nutrition": {
+      "calories": 120,
+      "protein": 6,
+      "carbs": 12,
+      "fat": 5,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "mango_lassi_large",
+    "name": "Large Mango Lassi",
+    "banglaName": "বড় আম লাচ্ছি",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 500 },
+    "nutrition": {
+      "calories": 500,
+      "protein": 14,
+      "carbs": 75,
+      "fat": 16,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "milk_tea_large",
+    "name": "Large Milk Tea",
+    "banglaName": "বড় দুধ চা",
+    "category": "Drink",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 350 },
+    "nutrition": {
+      "calories": 150,
+      "protein": 5,
+      "carbs": 25,
+      "fat": 4,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "date_syrup_drink",
+    "name": "Date Syrup Drink",
+    "banglaName": "খেজুরের শরবত",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 170,
+      "protein": 1,
+      "carbs": 42,
+      "fat": 0,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "coconut_water",
+    "name": "Coconut Water",
+    "banglaName": "ডাবের পানি",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 45,
+      "protein": 1.5,
+      "carbs": 9,
+      "fat": 0.5,
+      "fiber": 1
+    }
+  }
+]

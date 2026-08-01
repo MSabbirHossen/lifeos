@@ -1,0 +1,702 @@
+[
+  {
+    "id": "rice_white_cooked",
+    "name": "Cooked White Rice",
+    "banglaName": "সাদা ভাত",
+    "category": "Rice",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 158 },
+    "nutrition": {
+      "calories": 205,
+      "protein": 4.3,
+      "carbs": 44.5,
+      "fat": 0.4,
+      "fiber": 0.6
+    }
+  },
+  {
+    "id": "rice_white_plate",
+    "name": "Cooked White Rice",
+    "banglaName": "এক প্লেট ভাত",
+    "category": "Rice",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 390,
+      "protein": 8,
+      "carbs": 85,
+      "fat": 0.8,
+      "fiber": 1.2
+    }
+  },
+  {
+    "id": "rice_brown",
+    "name": "Brown Rice Cooked",
+    "banglaName": "লাল চালের ভাত",
+    "category": "Rice",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 195 },
+    "nutrition": {
+      "calories": 216,
+      "protein": 5,
+      "carbs": 45,
+      "fat": 1.8,
+      "fiber": 3.5
+    }
+  },
+  {
+    "id": "rice_basmati",
+    "name": "Basmati Rice Cooked",
+    "banglaName": "বাসমতি চালের ভাত",
+    "category": "Rice",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 160 },
+    "nutrition": {
+      "calories": 210,
+      "protein": 4.4,
+      "carbs": 45,
+      "fat": 0.5,
+      "fiber": 0.7
+    }
+  },
+  {
+    "id": "polao_plain",
+    "name": "Plain Polao",
+    "banglaName": "সাদা পোলাও",
+    "category": "Rice",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 330,
+      "protein": 6,
+      "carbs": 58,
+      "fat": 9,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "polao_ghee",
+    "name": "Ghee Polao",
+    "banglaName": "ঘি পোলাও",
+    "category": "Rice",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 380,
+      "protein": 6,
+      "carbs": 55,
+      "fat": 15,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "basmati_polao",
+    "name": "Basmati Polao",
+    "banglaName": "বাসমতি পোলাও",
+    "category": "Rice",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 520,
+      "protein": 10,
+      "carbs": 90,
+      "fat": 15,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "chicken_biryani",
+    "name": "Chicken Biryani",
+    "banglaName": "মুরগি বিরিয়ানি",
+    "category": "Rice",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 350 },
+    "nutrition": {
+      "calories": 650,
+      "protein": 28,
+      "carbs": 85,
+      "fat": 22,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "kacchi_biryani",
+    "name": "Kacchi Biryani",
+    "banglaName": "কাচ্চি বিরিয়ানি",
+    "category": "Rice",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 400 },
+    "nutrition": {
+      "calories": 750,
+      "protein": 30,
+      "carbs": 90,
+      "fat": 32,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "beef_biryani",
+    "name": "Beef Biryani",
+    "banglaName": "গরুর বিরিয়ানি",
+    "category": "Rice",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 400 },
+    "nutrition": {
+      "calories": 780,
+      "protein": 35,
+      "carbs": 88,
+      "fat": 35,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "khichuri_plain",
+    "name": "Plain Khichuri",
+    "banglaName": "সাধারণ খিচুড়ি",
+    "category": "Rice",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 350,
+      "protein": 12,
+      "carbs": 55,
+      "fat": 8,
+      "fiber": 5
+    }
+  },
+  {
+    "id": "khichuri_bhuna",
+    "name": "Bhuna Khichuri",
+    "banglaName": "ভুনা খিচুড়ি",
+    "category": "Rice",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 350 },
+    "nutrition": {
+      "calories": 520,
+      "protein": 18,
+      "carbs": 70,
+      "fat": 18,
+      "fiber": 6
+    }
+  },
+  {
+    "id": "khichuri_chicken",
+    "name": "Chicken Khichuri",
+    "banglaName": "মুরগি খিচুড়ি",
+    "category": "Rice",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 400 },
+    "nutrition": {
+      "calories": 600,
+      "protein": 32,
+      "carbs": 75,
+      "fat": 20,
+      "fiber": 6
+    }
+  },
+  {
+    "id": "muri",
+    "name": "Puffed Rice",
+    "banglaName": "মুড়ি",
+    "category": "Rice",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 14 },
+    "nutrition": {
+      "calories": 54,
+      "protein": 1,
+      "carbs": 12,
+      "fat": 0.1,
+      "fiber": 0.2
+    }
+  },
+  {
+    "id": "chira",
+    "name": "Flattened Rice",
+    "banglaName": "চিড়া",
+    "category": "Rice",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 80 },
+    "nutrition": {
+      "calories": 290,
+      "protein": 6,
+      "carbs": 64,
+      "fat": 1,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "fried_rice",
+    "name": "Vegetable Fried Rice",
+    "banglaName": "ফ্রাইড রাইস",
+    "category": "Rice",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 450,
+      "protein": 10,
+      "carbs": 65,
+      "fat": 16,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "egg_fried_rice",
+    "name": "Egg Fried Rice",
+    "banglaName": "ডিম ফ্রাইড রাইস",
+    "category": "Rice",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 350 },
+    "nutrition": {
+      "calories": 520,
+      "protein": 18,
+      "carbs": 70,
+      "fat": 18,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "rice_steamed",
+    "name": "Steamed Rice",
+    "banglaName": "সেদ্ধ ভাত",
+    "category": "Rice",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 160 },
+    "nutrition": {
+      "calories": 205,
+      "protein": 4,
+      "carbs": 45,
+      "fat": 0.3,
+      "fiber": 0.5
+    }
+  },
+  {
+    "id": "rice_leftover",
+    "name": "Leftover Cooked Rice",
+    "banglaName": "পান্তা ভাত",
+    "category": "Rice",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 350,
+      "protein": 7,
+      "carbs": 75,
+      "fat": 0.5,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "roti",
+    "name": "Whole Wheat Roti",
+    "banglaName": "রুটি",
+    "category": "Bread",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 40 },
+    "nutrition": {
+      "calories": 120,
+      "protein": 4,
+      "carbs": 22,
+      "fat": 1.5,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "paratha",
+    "name": "Paratha",
+    "banglaName": "পরোটা",
+    "category": "Bread",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 80 },
+    "nutrition": {
+      "calories": 260,
+      "protein": 5,
+      "carbs": 35,
+      "fat": 12,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "lachha_paratha",
+    "name": "Lachha Paratha",
+    "banglaName": "লাচ্ছা পরোটা",
+    "category": "Bread",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 330,
+      "protein": 6,
+      "carbs": 42,
+      "fat": 16,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "naan",
+    "name": "Naan",
+    "banglaName": "নান রুটি",
+    "category": "Bread",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 90 },
+    "nutrition": {
+      "calories": 260,
+      "protein": 8,
+      "carbs": 50,
+      "fat": 3,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "bread_white",
+    "name": "White Bread",
+    "banglaName": "পাউরুটি",
+    "category": "Bread",
+    "serving": { "unit": "slice", "quantity": 1, "weight": 30 },
+    "nutrition": {
+      "calories": 80,
+      "protein": 3,
+      "carbs": 15,
+      "fat": 1,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "bread_brown",
+    "name": "Brown Bread",
+    "banglaName": "ব্রাউন ব্রেড",
+    "category": "Bread",
+    "serving": { "unit": "slice", "quantity": 1, "weight": 30 },
+    "nutrition": {
+      "calories": 75,
+      "protein": 4,
+      "carbs": 13,
+      "fat": 1,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "chapati_whole_wheat",
+    "name": "Whole Wheat Chapati",
+    "banglaName": "আটা রুটি",
+    "category": "Bread",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 45 },
+    "nutrition": {
+      "calories": 135,
+      "protein": 4.5,
+      "carbs": 25,
+      "fat": 1.2,
+      "fiber": 3.5
+    }
+  },
+  {
+    "id": "rumali_roti",
+    "name": "Rumali Roti",
+    "banglaName": "রুমালি রুটি",
+    "category": "Bread",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 60 },
+    "nutrition": {
+      "calories": 170,
+      "protein": 5,
+      "carbs": 32,
+      "fat": 2,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "bakarkhani",
+    "name": "Bakarkhani",
+    "banglaName": "বাকরখানি",
+    "category": "Bread",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 70 },
+    "nutrition": {
+      "calories": 280,
+      "protein": 7,
+      "carbs": 40,
+      "fat": 10,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "shemai_plain",
+    "name": "Plain Shemai",
+    "banglaName": "সাধারণ সেমাই",
+    "category": "Rice Noodles",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 360,
+      "protein": 8,
+      "carbs": 75,
+      "fat": 2,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "shemai_milk",
+    "name": "Milk Shemai",
+    "banglaName": "দুধ সেমাই",
+    "category": "Dessert",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 420,
+      "protein": 12,
+      "carbs": 65,
+      "fat": 12,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "noodles_plain",
+    "name": "Plain Noodles",
+    "banglaName": "নুডলস",
+    "category": "Noodles",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 380,
+      "protein": 10,
+      "carbs": 60,
+      "fat": 10,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "chicken_noodles",
+    "name": "Chicken Noodles",
+    "banglaName": "চিকেন নুডলস",
+    "category": "Noodles",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 500,
+      "protein": 25,
+      "carbs": 65,
+      "fat": 16,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "egg_noodles",
+    "name": "Egg Noodles",
+    "banglaName": "ডিম নুডলস",
+    "category": "Noodles",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 280 },
+    "nutrition": {
+      "calories": 450,
+      "protein": 18,
+      "carbs": 62,
+      "fat": 14,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "suji_upma",
+    "name": "Suji Upma",
+    "banglaName": "সুজি",
+    "category": "Breakfast",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 250,
+      "protein": 7,
+      "carbs": 45,
+      "fat": 5,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "suji_halua",
+    "name": "Suji Halwa",
+    "banglaName": "সুজির হালুয়া",
+    "category": "Dessert",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 350,
+      "protein": 5,
+      "carbs": 55,
+      "fat": 12,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "dal_khichuri",
+    "name": "Dal Khichuri",
+    "banglaName": "ডাল খিচুড়ি",
+    "category": "Rice",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 350 },
+    "nutrition": {
+      "calories": 430,
+      "protein": 15,
+      "carbs": 70,
+      "fat": 10,
+      "fiber": 7
+    }
+  },
+  {
+    "id": "vegetable_khichuri",
+    "name": "Vegetable Khichuri",
+    "banglaName": "সবজি খিচুড়ি",
+    "category": "Rice",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 350 },
+    "nutrition": {
+      "calories": 400,
+      "protein": 14,
+      "carbs": 65,
+      "fat": 9,
+      "fiber": 8
+    }
+  },
+  {
+    "id": "beef_khichuri",
+    "name": "Beef Khichuri",
+    "banglaName": "গরুর মাংস খিচুড়ি",
+    "category": "Rice",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 400 },
+    "nutrition": {
+      "calories": 620,
+      "protein": 30,
+      "carbs": 70,
+      "fat": 25,
+      "fiber": 6
+    }
+  },
+  {
+    "id": "mughlai_paratha",
+    "name": "Mughlai Paratha",
+    "banglaName": "মুঘলাই পরোটা",
+    "category": "Bread",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 180 },
+    "nutrition": {
+      "calories": 520,
+      "protein": 18,
+      "carbs": 55,
+      "fat": 25,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "egg_paratha",
+    "name": "Egg Paratha",
+    "banglaName": "ডিম পরোটা",
+    "category": "Breakfast",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 430,
+      "protein": 18,
+      "carbs": 45,
+      "fat": 20,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "dal_puri",
+    "name": "Dal Puri",
+    "banglaName": "ডাল পুরি",
+    "category": "Breakfast",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 60 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 5,
+      "carbs": 30,
+      "fat": 5,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "puri",
+    "name": "Puri",
+    "banglaName": "পুরি",
+    "category": "Breakfast",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 35 },
+    "nutrition": {
+      "calories": 130,
+      "protein": 3,
+      "carbs": 18,
+      "fat": 5,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "luchi",
+    "name": "Luchi",
+    "banglaName": "লুচি",
+    "category": "Breakfast",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 40 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 3,
+      "carbs": 20,
+      "fat": 8,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "moshuri_rice",
+    "name": "Rice with Lentil Mix",
+    "banglaName": "মিশ্র ভাত",
+    "category": "Rice",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 350 },
+    "nutrition": {
+      "calories": 450,
+      "protein": 16,
+      "carbs": 75,
+      "fat": 10,
+      "fiber": 6
+    }
+  },
+  {
+    "id": "rice_with_milk",
+    "name": "Rice with Milk",
+    "banglaName": "দুধ ভাত",
+    "category": "Rice",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 390,
+      "protein": 12,
+      "carbs": 65,
+      "fat": 8,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "payesh",
+    "name": "Rice Payesh",
+    "banglaName": "পায়েস",
+    "category": "Dessert",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 300,
+      "protein": 8,
+      "carbs": 45,
+      "fat": 10,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "moori_milk",
+    "name": "Puffed Rice with Milk",
+    "banglaName": "দুধ মুড়ি",
+    "category": "Breakfast",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 280,
+      "protein": 10,
+      "carbs": 50,
+      "fat": 5,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "chira_milk",
+    "name": "Flattened Rice with Milk",
+    "banglaName": "দুধ চিড়া",
+    "category": "Breakfast",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 350,
+      "protein": 12,
+      "carbs": 60,
+      "fat": 8,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "panta_bhat_fish",
+    "name": "Panta Bhat with Fish",
+    "banglaName": "পান্তা ভাত মাছ",
+    "category": "Traditional",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 400 },
+    "nutrition": {
+      "calories": 500,
+      "protein": 25,
+      "carbs": 70,
+      "fat": 15,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "tehari",
+    "name": "Beef Tehari",
+    "banglaName": "তেহারি",
+    "category": "Rice",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 400 },
+    "nutrition": {
+      "calories": 700,
+      "protein": 32,
+      "carbs": 85,
+      "fat": 30,
+      "fiber": 3
+    }
+  }
+]

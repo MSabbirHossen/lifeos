@@ -1,6 +1,8 @@
 import { EXERCISE_DATASET } from "../data/exercises";
 
 const DEFAULT_WEIGHT_KG = 70;
+const DEFAULT_SECONDS_PER_REP = 4;
+const DEFAULT_REST_SECONDS_BETWEEN_SETS = 45;
 
 /**
  * Calculates total calories burned based on exercise ID, body weight, and time.
@@ -20,8 +22,8 @@ export function calculateWorkoutCalories(
     return 0;
   }
 
-  const durationHours = durationMinutes / 60;
-  const caloriesBurned = exercise.met * userWeightKg * durationHours;
+  const caloriesBurned =
+    ((exercise.met * 3.5 * userWeightKg) / 200) * durationMinutes;
 
   return Math.round(caloriesBurned);
 }
@@ -37,8 +39,8 @@ export function calculateWorkoutCalories(
 export function estimateDurationFromSetsReps(
   sets,
   reps,
-  secondsPerRep = 4,
-  restSecondsBetweenSets = 45,
+  secondsPerRep = DEFAULT_SECONDS_PER_REP,
+  restSecondsBetweenSets = DEFAULT_REST_SECONDS_BETWEEN_SETS,
 ) {
   const safeSets = Number(sets) || 0;
   const safeReps = Number(reps) || 0;

@@ -1,0 +1,982 @@
+[
+  {
+    "id": "hilsa_curry",
+    "name": "Hilsa Fish Curry",
+    "banglaName": "ইলিশ মাছের ঝোল",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 250,
+      "protein": 22,
+      "carbs": 2,
+      "fat": 18,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "hilsa_fry",
+    "name": "Hilsa Fry",
+    "banglaName": "ইলিশ মাছ ভাজা",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 290,
+      "protein": 22,
+      "carbs": 1,
+      "fat": 22,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "hilsa_small",
+    "name": "Small Hilsa",
+    "banglaName": "ছোট ইলিশ",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 80 },
+    "nutrition": {
+      "calories": 200,
+      "protein": 18,
+      "carbs": 0,
+      "fat": 15,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "rui_curry",
+    "name": "Rohu Fish Curry",
+    "banglaName": "রুই মাছের ঝোল",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 22,
+      "carbs": 3,
+      "fat": 9,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "rui_fry",
+    "name": "Rohu Fish Fry",
+    "banglaName": "রুই মাছ ভাজা",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 220,
+      "protein": 23,
+      "carbs": 2,
+      "fat": 13,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "catla_curry",
+    "name": "Catla Fish Curry",
+    "banglaName": "কাতলা মাছের ঝোল",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 190,
+      "protein": 21,
+      "carbs": 2,
+      "fat": 11,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "catla_fry",
+    "name": "Catla Fish Fry",
+    "banglaName": "কাতলা মাছ ভাজা",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 230,
+      "protein": 22,
+      "carbs": 2,
+      "fat": 15,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "pangash_curry",
+    "name": "Pangas Fish Curry",
+    "banglaName": "পাঙ্গাস মাছের ঝোল",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 210,
+      "protein": 19,
+      "carbs": 2,
+      "fat": 14,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "pangash_fry",
+    "name": "Pangas Fry",
+    "banglaName": "পাঙ্গাস মাছ ভাজা",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 260,
+      "protein": 20,
+      "carbs": 2,
+      "fat": 19,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "tilapia_curry",
+    "name": "Tilapia Fish Curry",
+    "banglaName": "তেলাপিয়া মাছের ঝোল",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 170,
+      "protein": 23,
+      "carbs": 2,
+      "fat": 8,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "tilapia_fry",
+    "name": "Tilapia Fry",
+    "banglaName": "তেলাপিয়া মাছ ভাজা",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 230,
+      "protein": 23,
+      "carbs": 2,
+      "fat": 15,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "koi_fish_curry",
+    "name": "Koi Fish Curry",
+    "banglaName": "কই মাছের ঝোল",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 190,
+      "protein": 20,
+      "carbs": 2,
+      "fat": 11,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "koi_fry",
+    "name": "Koi Fish Fry",
+    "banglaName": "কই মাছ ভাজা",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 240,
+      "protein": 21,
+      "carbs": 1,
+      "fat": 17,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "shing_fish_curry",
+    "name": "Shing Fish Curry",
+    "banglaName": "শিং মাছের ঝোল",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 21,
+      "carbs": 2,
+      "fat": 7,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "magur_fish_curry",
+    "name": "Magur Fish Curry",
+    "banglaName": "মাগুর মাছের ঝোল",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 170,
+      "protein": 22,
+      "carbs": 2,
+      "fat": 8,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "boal_fish",
+    "name": "Boal Fish Curry",
+    "banglaName": "বোয়াল মাছ",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 190,
+      "protein": 21,
+      "carbs": 0,
+      "fat": 12,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "tengra_fish",
+    "name": "Tengra Fish Curry",
+    "banglaName": "টেংরা মাছ",
+    "category": "Fish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 150,
+      "protein": 20,
+      "carbs": 1,
+      "fat": 7,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "pabda_fish",
+    "name": "Pabda Fish Curry",
+    "banglaName": "পাবদা মাছ",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 20,
+      "carbs": 2,
+      "fat": 10,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "shrimp_curry",
+    "name": "Shrimp Curry",
+    "banglaName": "চিংড়ি মাছের ঝোল",
+    "category": "Seafood",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 120,
+      "protein": 24,
+      "carbs": 2,
+      "fat": 2,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "shrimp_fry",
+    "name": "Fried Shrimp",
+    "banglaName": "চিংড়ি ভাজা",
+    "category": "Seafood",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 22,
+      "carbs": 5,
+      "fat": 8,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "chingri_malai_curry",
+    "name": "Chingri Malai Curry",
+    "banglaName": "চিংড়ি মালাইকারি",
+    "category": "Seafood",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 320,
+      "protein": 28,
+      "carbs": 8,
+      "fat": 20,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "small_chingri_curry",
+    "name": "Small Shrimp Curry",
+    "banglaName": "ছোট চিংড়ি মাছের ঝোল",
+    "category": "Seafood",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 130,
+      "protein": 23,
+      "carbs": 3,
+      "fat": 3,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "chingri_bhorta",
+    "name": "Shrimp Bhorta",
+    "banglaName": "চিংড়ি ভর্তা",
+    "category": "Seafood",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 20,
+      "carbs": 4,
+      "fat": 10,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "loitta_shutki",
+    "name": "Loitta Shutki",
+    "banglaName": "লইট্টা শুঁটকি",
+    "category": "Dry Fish",
+    "serving": { "unit": "50g", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 30,
+      "carbs": 2,
+      "fat": 4,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "shutki_bhorta",
+    "name": "Shutki Bhorta",
+    "banglaName": "শুঁটকি ভর্তা",
+    "category": "Dry Fish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 220,
+      "protein": 25,
+      "carbs": 5,
+      "fat": 12,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "rupchanda_fish",
+    "name": "Rupchanda Fish Curry",
+    "banglaName": "রূপচাঁদা মাছ",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 170,
+      "protein": 21,
+      "carbs": 1,
+      "fat": 9,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "rupchanda_fry",
+    "name": "Rupchanda Fry",
+    "banglaName": "রূপচাঁদা ভাজা",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 240,
+      "protein": 21,
+      "carbs": 2,
+      "fat": 16,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "bhetki_fish",
+    "name": "Bhetki Fish",
+    "banglaName": "ভেটকি মাছ",
+    "category": "Fish",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 140,
+      "protein": 24,
+      "carbs": 0,
+      "fat": 5,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "surmai_fish",
+    "name": "Surmai Fish",
+    "banglaName": "সুরমাই মাছ",
+    "category": "Fish",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 24,
+      "carbs": 0,
+      "fat": 8,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "coral_fish",
+    "name": "Coral Fish",
+    "banglaName": "কোরাল মাছ",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 170,
+      "protein": 22,
+      "carbs": 1,
+      "fat": 8,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "mola_fish",
+    "name": "Mola Fish",
+    "banglaName": "মলা মাছ",
+    "category": "Small Fish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 150,
+      "protein": 19,
+      "carbs": 0,
+      "fat": 8,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "puti_fish",
+    "name": "Puti Fish",
+    "banglaName": "পুঁটি মাছ",
+    "category": "Small Fish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 20,
+      "carbs": 1,
+      "fat": 8,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "bata_fish",
+    "name": "Bata Fish",
+    "banglaName": "বাটা মাছ",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 170,
+      "protein": 21,
+      "carbs": 1,
+      "fat": 9,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "kajoli_fish",
+    "name": "Kajoli Fish",
+    "banglaName": "কাজলী মাছ",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 150,
+      "protein": 20,
+      "carbs": 0,
+      "fat": 7,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "ayer_fish",
+    "name": "Ayer Fish",
+    "banglaName": "আইড় মাছ",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 190,
+      "protein": 22,
+      "carbs": 0,
+      "fat": 11,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "tuna_fish",
+    "name": "Tuna Fish",
+    "banglaName": "টুনা মাছ",
+    "category": "Fish",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 130,
+      "protein": 29,
+      "carbs": 0,
+      "fat": 1,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "salmon_fish",
+    "name": "Salmon Fish",
+    "banglaName": "স্যালমন মাছ",
+    "category": "Fish",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 208,
+      "protein": 22,
+      "carbs": 0,
+      "fat": 13,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "sardine_fish",
+    "name": "Sardine Fish",
+    "banglaName": "সার্ডিন মাছ",
+    "category": "Fish",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 200,
+      "protein": 25,
+      "carbs": 0,
+      "fat": 11,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "fish_head_curry",
+    "name": "Fish Head Curry",
+    "banglaName": "মাছের মাথার ঝোল",
+    "category": "Fish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 260,
+      "protein": 18,
+      "carbs": 5,
+      "fat": 18,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "fish_egg_curry",
+    "name": "Fish Egg Curry",
+    "banglaName": "মাছের ডিমের ঝোল",
+    "category": "Fish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 190,
+      "protein": 20,
+      "carbs": 2,
+      "fat": 11,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "fish_egg_fry",
+    "name": "Fish Egg Fry",
+    "banglaName": "মাছের ডিম ভাজা",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 230,
+      "protein": 21,
+      "carbs": 3,
+      "fat": 15,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "fish_kalia",
+    "name": "Fish Kalia",
+    "banglaName": "মাছ কালিয়া",
+    "category": "Fish Curry",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 330,
+      "protein": 28,
+      "carbs": 8,
+      "fat": 20,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "fish_bhuna",
+    "name": "Fish Bhuna",
+    "banglaName": "মাছ ভুনা",
+    "category": "Fish Curry",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 300,
+      "protein": 27,
+      "carbs": 5,
+      "fat": 18,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "fish_jhol",
+    "name": "Fish Jhol",
+    "banglaName": "মাছের ঝোল",
+    "category": "Fish Curry",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 220,
+      "protein": 25,
+      "carbs": 6,
+      "fat": 10,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "fish_vorta",
+    "name": "Fish Bhorta",
+    "banglaName": "মাছ ভর্তা",
+    "category": "Fish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 190,
+      "protein": 22,
+      "carbs": 3,
+      "fat": 10,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "churi_shutki",
+    "name": "Churi Shutki",
+    "banglaName": "ছুরি শুঁটকি",
+    "category": "Dry Fish",
+    "serving": { "unit": "50g", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 170,
+      "protein": 32,
+      "carbs": 1,
+      "fat": 5,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "kakila_shutki",
+    "name": "Kakila Shutki",
+    "banglaName": "কাকিলা শুঁটকি",
+    "category": "Dry Fish",
+    "serving": { "unit": "50g", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 165,
+      "protein": 31,
+      "carbs": 2,
+      "fat": 4,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "chapila_shutki",
+    "name": "Chapila Shutki",
+    "banglaName": "চাপিলা শুঁটকি",
+    "category": "Dry Fish",
+    "serving": { "unit": "50g", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 175,
+      "protein": 30,
+      "carbs": 2,
+      "fat": 6,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "churi_fish",
+    "name": "Churi Fish Curry",
+    "banglaName": "ছুরি মাছ",
+    "category": "Fish",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 170,
+      "protein": 20,
+      "carbs": 1,
+      "fat": 9,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "boal_bhuna",
+    "name": "Boal Bhuna",
+    "banglaName": "বোয়াল ভুনা",
+    "category": "Fish Curry",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 320,
+      "protein": 28,
+      "carbs": 5,
+      "fat": 20,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "rui_kalia",
+    "name": "Rui Kalia",
+    "banglaName": "রুই কালিয়া",
+    "category": "Fish Curry",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 340,
+      "protein": 30,
+      "carbs": 8,
+      "fat": 20,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "catla_kalia",
+    "name": "Catla Kalia",
+    "banglaName": "কাতলা কালিয়া",
+    "category": "Fish Curry",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 350,
+      "protein": 29,
+      "carbs": 8,
+      "fat": 22,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "tilapia_bhuna",
+    "name": "Tilapia Bhuna",
+    "banglaName": "তেলাপিয়া ভুনা",
+    "category": "Fish Curry",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 300,
+      "protein": 28,
+      "carbs": 5,
+      "fat": 18,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "pangash_curry_spicy",
+    "name": "Spicy Pangas Curry",
+    "banglaName": "ঝাল পাঙ্গাস মাছ",
+    "category": "Fish Curry",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 330,
+      "protein": 27,
+      "carbs": 6,
+      "fat": 22,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "koi_shorshe",
+    "name": "Koi Fish Mustard Curry",
+    "banglaName": "সরিষা কই মাছ",
+    "category": "Fish Curry",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 300,
+      "protein": 26,
+      "carbs": 5,
+      "fat": 18,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "ilish_shorshe",
+    "name": "Hilsa Mustard Curry",
+    "banglaName": "সরিষা ইলিশ",
+    "category": "Fish Curry",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 390,
+      "protein": 32,
+      "carbs": 5,
+      "fat": 28,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "ilish_bhapa",
+    "name": "Bhapa Hilsa",
+    "banglaName": "ভাপা ইলিশ",
+    "category": "Fish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 360,
+      "protein": 30,
+      "carbs": 3,
+      "fat": 26,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "fish_cutlet",
+    "name": "Fish Cutlet",
+    "banglaName": "ফিশ কাটলেট",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 80 },
+    "nutrition": {
+      "calories": 220,
+      "protein": 14,
+      "carbs": 18,
+      "fat": 10,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "fish_finger",
+    "name": "Fish Finger",
+    "banglaName": "ফিশ ফিঙ্গার",
+    "category": "Snack",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 140,
+      "protein": 8,
+      "carbs": 12,
+      "fat": 7,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "fish_burger_patty",
+    "name": "Fish Burger Patty",
+    "banglaName": "ফিশ বার্গার প্যাটি",
+    "category": "Fast Food",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 250,
+      "protein": 15,
+      "carbs": 20,
+      "fat": 12,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "fried_small_fish",
+    "name": "Fried Small Fish",
+    "banglaName": "ছোট মাছ ভাজা",
+    "category": "Fish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 230,
+      "protein": 24,
+      "carbs": 1,
+      "fat": 14,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "small_fish_curry",
+    "name": "Small Fish Curry",
+    "banglaName": "ছোট মাছের ঝোল",
+    "category": "Fish Curry",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 260,
+      "protein": 28,
+      "carbs": 5,
+      "fat": 14,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "fish_with_vegetable",
+    "name": "Fish With Vegetable Curry",
+    "banglaName": "সবজি দিয়ে মাছ",
+    "category": "Fish Curry",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 280,
+      "protein": 28,
+      "carbs": 10,
+      "fat": 14,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "fish_dopiaza",
+    "name": "Fish Dopiaza",
+    "banglaName": "মাছ দোপেঁয়াজা",
+    "category": "Fish Curry",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 340,
+      "protein": 28,
+      "carbs": 12,
+      "fat": 20,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "fish_rezala",
+    "name": "Fish Rezala",
+    "banglaName": "মাছ রেজালা",
+    "category": "Fish Curry",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 200 },
+    "nutrition": {
+      "calories": 370,
+      "protein": 30,
+      "carbs": 10,
+      "fat": 24,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "fish_biryani",
+    "name": "Fish Biryani",
+    "banglaName": "মাছ বিরিয়ানি",
+    "category": "Rice Dish",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 350 },
+    "nutrition": {
+      "calories": 620,
+      "protein": 30,
+      "carbs": 85,
+      "fat": 18,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "fish_polao",
+    "name": "Fish Polao",
+    "banglaName": "মাছ পোলাও",
+    "category": "Rice Dish",
+    "serving": { "unit": "plate", "quantity": 1, "weight": 350 },
+    "nutrition": {
+      "calories": 580,
+      "protein": 28,
+      "carbs": 80,
+      "fat": 17,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "canned_tuna",
+    "name": "Canned Tuna",
+    "banglaName": "টিনজাত টুনা",
+    "category": "Seafood",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 130,
+      "protein": 29,
+      "carbs": 0,
+      "fat": 1,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "fish_soup",
+    "name": "Fish Soup",
+    "banglaName": "মাছের স্যুপ",
+    "category": "Fish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 20,
+      "carbs": 8,
+      "fat": 5,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "grilled_fish",
+    "name": "Grilled Fish",
+    "banglaName": "গ্রিল মাছ",
+    "category": "Fish",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 190,
+      "protein": 28,
+      "carbs": 0,
+      "fat": 8,
+      "fiber": 0
+    }
+  }
+]

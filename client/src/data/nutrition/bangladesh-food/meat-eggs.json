@@ -1,0 +1,688 @@
+[
+  {
+    "id": "chicken_curry",
+    "name": "Chicken Curry",
+    "banglaName": "মুরগির মাংসের ঝোল",
+    "category": "Meat",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 220,
+      "protein": 25,
+      "carbs": 3,
+      "fat": 12,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "deshi_chicken_curry",
+    "name": "Deshi Chicken Curry",
+    "banglaName": "দেশি মুরগির মাংস",
+    "category": "Meat",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 240,
+      "protein": 27,
+      "carbs": 2,
+      "fat": 14,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "broiler_chicken_curry",
+    "name": "Broiler Chicken Curry",
+    "banglaName": "ব্রয়লার মুরগির মাংস",
+    "category": "Meat",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 210,
+      "protein": 26,
+      "carbs": 2,
+      "fat": 10,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "chicken_breast_cooked",
+    "name": "Chicken Breast Cooked",
+    "banglaName": "মুরগির বুকের মাংস",
+    "category": "Protein",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 165,
+      "protein": 31,
+      "carbs": 0,
+      "fat": 3.6,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "chicken_thigh_cooked",
+    "name": "Chicken Thigh Cooked",
+    "banglaName": "মুরগির রান",
+    "category": "Protein",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 210,
+      "protein": 26,
+      "carbs": 0,
+      "fat": 11,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "chicken_roast",
+    "name": "Chicken Roast",
+    "banglaName": "মুরগির রোস্ট",
+    "category": "Meat Dish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 380,
+      "protein": 32,
+      "carbs": 10,
+      "fat": 24,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "chicken_korma",
+    "name": "Chicken Korma",
+    "banglaName": "মুরগির কোরমা",
+    "category": "Meat Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 450,
+      "protein": 30,
+      "carbs": 12,
+      "fat": 30,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "chicken_bhuna",
+    "name": "Chicken Bhuna",
+    "banglaName": "মুরগির ভুনা",
+    "category": "Meat Dish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 330,
+      "protein": 30,
+      "carbs": 5,
+      "fat": 20,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "chicken_fry",
+    "name": "Chicken Fry",
+    "banglaName": "মুরগির ভাজা",
+    "category": "Meat Dish",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 280,
+      "protein": 25,
+      "carbs": 5,
+      "fat": 18,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "chicken_shashlik",
+    "name": "Chicken Shashlik",
+    "banglaName": "চিকেন শাসলিক",
+    "category": "Fast Food",
+    "serving": { "unit": "stick", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 260,
+      "protein": 28,
+      "carbs": 12,
+      "fat": 10,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "chicken_tikka",
+    "name": "Chicken Tikka",
+    "banglaName": "চিকেন টিক্কা",
+    "category": "Fast Food",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 220,
+      "protein": 28,
+      "carbs": 5,
+      "fat": 10,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "chicken_kebab",
+    "name": "Chicken Kebab",
+    "banglaName": "চিকেন কাবাব",
+    "category": "Fast Food",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 80 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 18,
+      "carbs": 8,
+      "fat": 9,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "beef_curry",
+    "name": "Beef Curry",
+    "banglaName": "গরুর মাংসের ঝোল",
+    "category": "Meat",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 280,
+      "protein": 26,
+      "carbs": 2,
+      "fat": 20,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "beef_bhuna",
+    "name": "Beef Bhuna",
+    "banglaName": "গরুর মাংস ভুনা",
+    "category": "Meat Dish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 420,
+      "protein": 35,
+      "carbs": 8,
+      "fat": 28,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "beef_kosha",
+    "name": "Beef Kosha",
+    "banglaName": "কষা গরুর মাংস",
+    "category": "Meat Dish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 450,
+      "protein": 34,
+      "carbs": 10,
+      "fat": 32,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "beef_kebab",
+    "name": "Beef Kebab",
+    "banglaName": "বিফ কাবাব",
+    "category": "Fast Food",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 80 },
+    "nutrition": {
+      "calories": 220,
+      "protein": 20,
+      "carbs": 6,
+      "fat": 13,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "beef_tehari_meat",
+    "name": "Beef Tehari Meat Portion",
+    "banglaName": "তেহারির গরুর মাংস",
+    "category": "Meat",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 80 },
+    "nutrition": {
+      "calories": 230,
+      "protein": 20,
+      "carbs": 2,
+      "fat": 16,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "mutton_curry",
+    "name": "Mutton Curry",
+    "banglaName": "খাসির মাংস",
+    "category": "Meat",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 294,
+      "protein": 25,
+      "carbs": 2,
+      "fat": 21,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "mutton_bhuna",
+    "name": "Mutton Bhuna",
+    "banglaName": "খাসির ভুনা",
+    "category": "Meat Dish",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 450,
+      "protein": 34,
+      "carbs": 8,
+      "fat": 33,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "mutton_korma",
+    "name": "Mutton Korma",
+    "banglaName": "খাসির কোরমা",
+    "category": "Meat Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 520,
+      "protein": 38,
+      "carbs": 12,
+      "fat": 36,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "egg_boiled",
+    "name": "Boiled Egg",
+    "banglaName": "সেদ্ধ ডিম",
+    "category": "Egg",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 72,
+      "protein": 6.3,
+      "carbs": 0.4,
+      "fat": 5,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "egg_fried",
+    "name": "Fried Egg",
+    "banglaName": "ভাজা ডিম",
+    "category": "Egg",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 55 },
+    "nutrition": {
+      "calories": 100,
+      "protein": 6,
+      "carbs": 1,
+      "fat": 8,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "egg_omelette",
+    "name": "Egg Omelette",
+    "banglaName": "ডিমের অমলেট",
+    "category": "Egg",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 80 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 10,
+      "carbs": 2,
+      "fat": 12,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "egg_curry",
+    "name": "Egg Curry",
+    "banglaName": "ডিমের ঝোল",
+    "category": "Egg Dish",
+    "serving": { "unit": "2 pieces", "quantity": 1, "weight": 120 },
+    "nutrition": {
+      "calories": 240,
+      "protein": 14,
+      "carbs": 5,
+      "fat": 18,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "chicken_keema",
+    "name": "Chicken Keema",
+    "banglaName": "চিকেন কিমা",
+    "category": "Meat",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 300,
+      "protein": 32,
+      "carbs": 5,
+      "fat": 16,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "beef_keema",
+    "name": "Beef Keema",
+    "banglaName": "গরুর কিমা",
+    "category": "Meat",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 380,
+      "protein": 30,
+      "carbs": 5,
+      "fat": 28,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "mutton_keema",
+    "name": "Mutton Keema",
+    "banglaName": "খাসির কিমা",
+    "category": "Meat",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 430,
+      "protein": 28,
+      "carbs": 6,
+      "fat": 34,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "chicken_liver",
+    "name": "Chicken Liver",
+    "banglaName": "মুরগির কলিজা",
+    "category": "Organ Meat",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 165,
+      "protein": 24,
+      "carbs": 2,
+      "fat": 6,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "beef_liver",
+    "name": "Beef Liver",
+    "banglaName": "গরুর কলিজা",
+    "category": "Organ Meat",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 175,
+      "protein": 26,
+      "carbs": 5,
+      "fat": 5,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "mutton_liver",
+    "name": "Mutton Liver",
+    "banglaName": "খাসির কলিজা",
+    "category": "Organ Meat",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 190,
+      "protein": 25,
+      "carbs": 4,
+      "fat": 8,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "brain_curry",
+    "name": "Brain Curry",
+    "banglaName": "মগজ ভুনা",
+    "category": "Organ Meat",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 250,
+      "protein": 12,
+      "carbs": 3,
+      "fat": 21,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "chicken_soup",
+    "name": "Chicken Soup",
+    "banglaName": "চিকেন স্যুপ",
+    "category": "Soup",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 18,
+      "carbs": 10,
+      "fat": 7,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "chicken_stock",
+    "name": "Chicken Stock",
+    "banglaName": "চিকেন স্টক",
+    "category": "Soup",
+    "serving": { "unit": "cup", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 60,
+      "protein": 8,
+      "carbs": 2,
+      "fat": 2,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "chicken_grill",
+    "name": "Grilled Chicken",
+    "banglaName": "গ্রিল চিকেন",
+    "category": "Fast Food",
+    "serving": { "unit": "quarter", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 420,
+      "protein": 45,
+      "carbs": 5,
+      "fat": 22,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "bbq_chicken",
+    "name": "BBQ Chicken",
+    "banglaName": "বারবিকিউ চিকেন",
+    "category": "Fast Food",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 150 },
+    "nutrition": {
+      "calories": 330,
+      "protein": 35,
+      "carbs": 8,
+      "fat": 18,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "chicken_nuggets",
+    "name": "Chicken Nuggets",
+    "banglaName": "চিকেন নাগেটস",
+    "category": "Fast Food",
+    "serving": { "unit": "5 pieces", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 280,
+      "protein": 15,
+      "carbs": 18,
+      "fat": 16,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "chicken_sausage",
+    "name": "Chicken Sausage",
+    "banglaName": "চিকেন সসেজ",
+    "category": "Processed Meat",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 140,
+      "protein": 8,
+      "carbs": 3,
+      "fat": 10,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "beef_sausage",
+    "name": "Beef Sausage",
+    "banglaName": "বিফ সসেজ",
+    "category": "Processed Meat",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 8,
+      "carbs": 3,
+      "fat": 12,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "shami_kebab",
+    "name": "Shami Kebab",
+    "banglaName": "শামি কাবাব",
+    "category": "Kebab",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 70 },
+    "nutrition": {
+      "calories": 170,
+      "protein": 12,
+      "carbs": 10,
+      "fat": 9,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "chap_kebab",
+    "name": "Chap Kebab",
+    "banglaName": "চাপ কাবাব",
+    "category": "Kebab",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 120 },
+    "nutrition": {
+      "calories": 300,
+      "protein": 25,
+      "carbs": 8,
+      "fat": 18,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "seekh_kebab",
+    "name": "Seekh Kebab",
+    "banglaName": "শিক কাবাব",
+    "category": "Kebab",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 80 },
+    "nutrition": {
+      "calories": 220,
+      "protein": 18,
+      "carbs": 5,
+      "fat": 14,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "doner_kebab",
+    "name": "Doner Kebab",
+    "banglaName": "ডোনার কাবাব",
+    "category": "Fast Food",
+    "serving": { "unit": "sandwich", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 550,
+      "protein": 35,
+      "carbs": 55,
+      "fat": 22,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "burger_chicken",
+    "name": "Chicken Burger",
+    "banglaName": "চিকেন বার্গার",
+    "category": "Fast Food",
+    "serving": { "unit": "burger", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 520,
+      "protein": 28,
+      "carbs": 50,
+      "fat": 24,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "burger_beef",
+    "name": "Beef Burger",
+    "banglaName": "বিফ বার্গার",
+    "category": "Fast Food",
+    "serving": { "unit": "burger", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 600,
+      "protein": 32,
+      "carbs": 55,
+      "fat": 30,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "egg_bhurji",
+    "name": "Egg Bhurji",
+    "banglaName": "ডিম ভুরজি",
+    "category": "Egg",
+    "serving": { "unit": "serving", "quantity": 1, "weight": 120 },
+    "nutrition": {
+      "calories": 200,
+      "protein": 12,
+      "carbs": 4,
+      "fat": 15,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "egg_chicken_curry",
+    "name": "Egg Chicken Curry",
+    "banglaName": "ডিম মুরগির ঝোল",
+    "category": "Meat Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 420,
+      "protein": 35,
+      "carbs": 8,
+      "fat": 28,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "duck_meat",
+    "name": "Duck Meat Curry",
+    "banglaName": "হাঁসের মাংস",
+    "category": "Meat",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 337,
+      "protein": 19,
+      "carbs": 2,
+      "fat": 28,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "quail_meat",
+    "name": "Quail Meat",
+    "banglaName": "কোয়েল পাখির মাংস",
+    "category": "Meat",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 230,
+      "protein": 25,
+      "carbs": 0,
+      "fat": 14,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "turkey_meat",
+    "name": "Turkey Meat",
+    "banglaName": "টার্কি মাংস",
+    "category": "Meat",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 135,
+      "protein": 29,
+      "carbs": 0,
+      "fat": 2,
+      "fiber": 0
+    }
+  }
+]

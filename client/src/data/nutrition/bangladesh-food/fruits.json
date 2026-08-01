@@ -1,0 +1,828 @@
+[
+  {
+    "id": "banana_regular",
+    "name": "Banana",
+    "banglaName": "কলা",
+    "category": "Fruit",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 89,
+      "protein": 1.1,
+      "carbs": 23,
+      "fat": 0.3,
+      "fiber": 2.6
+    }
+  },
+  {
+    "id": "banana_sagor",
+    "name": "Sagor Banana",
+    "banglaName": "সাগর কলা",
+    "category": "Fruit",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 90 },
+    "nutrition": {
+      "calories": 80,
+      "protein": 1,
+      "carbs": 21,
+      "fat": 0.2,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "banana_champa",
+    "name": "Champa Banana",
+    "banglaName": "চাঁপা কলা",
+    "category": "Fruit",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 70 },
+    "nutrition": {
+      "calories": 62,
+      "protein": 0.8,
+      "carbs": 16,
+      "fat": 0.2,
+      "fiber": 1.8
+    }
+  },
+  {
+    "id": "mango",
+    "name": "Mango",
+    "banglaName": "আম",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 60,
+      "protein": 0.8,
+      "carbs": 15,
+      "fat": 0.4,
+      "fiber": 1.6
+    }
+  },
+  {
+    "id": "mango_himsagar",
+    "name": "Himsagar Mango",
+    "banglaName": "হিমসাগর আম",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 65,
+      "protein": 0.8,
+      "carbs": 16,
+      "fat": 0.3,
+      "fiber": 1.5
+    }
+  },
+  {
+    "id": "mango_langra",
+    "name": "Langra Mango",
+    "banglaName": "ল্যাংড়া আম",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 62,
+      "protein": 0.7,
+      "carbs": 15,
+      "fat": 0.4,
+      "fiber": 1.8
+    }
+  },
+  {
+    "id": "jackfruit",
+    "name": "Jackfruit",
+    "banglaName": "কাঁঠাল",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 95,
+      "protein": 1.7,
+      "carbs": 23,
+      "fat": 0.6,
+      "fiber": 1.5
+    }
+  },
+  {
+    "id": "lychee",
+    "name": "Lychee",
+    "banglaName": "লিচু",
+    "category": "Fruit",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 10 },
+    "nutrition": {
+      "calories": 7,
+      "protein": 0.1,
+      "carbs": 1.8,
+      "fat": 0,
+      "fiber": 0.1
+    }
+  },
+  {
+    "id": "guava",
+    "name": "Guava",
+    "banglaName": "পেয়ারা",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 68,
+      "protein": 2.6,
+      "carbs": 14,
+      "fat": 1,
+      "fiber": 5.4
+    }
+  },
+  {
+    "id": "papaya",
+    "name": "Papaya",
+    "banglaName": "পেঁপে",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 43,
+      "protein": 0.5,
+      "carbs": 11,
+      "fat": 0.3,
+      "fiber": 1.7
+    }
+  },
+  {
+    "id": "watermelon",
+    "name": "Watermelon",
+    "banglaName": "তরমুজ",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 30,
+      "protein": 0.6,
+      "carbs": 7.6,
+      "fat": 0.2,
+      "fiber": 0.4
+    }
+  },
+  {
+    "id": "apple",
+    "name": "Apple",
+    "banglaName": "আপেল",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 52,
+      "protein": 0.3,
+      "carbs": 14,
+      "fat": 0.2,
+      "fiber": 2.4
+    }
+  },
+  {
+    "id": "orange",
+    "name": "Orange",
+    "banglaName": "কমলা",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 47,
+      "protein": 0.9,
+      "carbs": 12,
+      "fat": 0.1,
+      "fiber": 2.4
+    }
+  },
+  {
+    "id": "malta",
+    "name": "Malta",
+    "banglaName": "মাল্টা",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 50,
+      "protein": 0.9,
+      "carbs": 13,
+      "fat": 0.2,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "grapes",
+    "name": "Grapes",
+    "banglaName": "আঙুর",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 69,
+      "protein": 0.7,
+      "carbs": 18,
+      "fat": 0.2,
+      "fiber": 0.9
+    }
+  },
+  {
+    "id": "dates",
+    "name": "Dates",
+    "banglaName": "খেজুর",
+    "category": "Dry Fruit",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 8 },
+    "nutrition": {
+      "calories": 23,
+      "protein": 0.2,
+      "carbs": 6.2,
+      "fat": 0,
+      "fiber": 0.6
+    }
+  },
+  {
+    "id": "dry_dates",
+    "name": "Dry Dates",
+    "banglaName": "শুকনা খেজুর",
+    "category": "Dry Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 282,
+      "protein": 2.5,
+      "carbs": 75,
+      "fat": 0.4,
+      "fiber": 8
+    }
+  },
+  {
+    "id": "pomegranate",
+    "name": "Pomegranate",
+    "banglaName": "ডালিম",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 83,
+      "protein": 1.7,
+      "carbs": 19,
+      "fat": 1.2,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "pineapple",
+    "name": "Pineapple",
+    "banglaName": "আনারস",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 50,
+      "protein": 0.5,
+      "carbs": 13,
+      "fat": 0.1,
+      "fiber": 1.4
+    }
+  },
+  {
+    "id": "coconut_flesh",
+    "name": "Coconut Flesh",
+    "banglaName": "নারিকেলের শাঁস",
+    "category": "Fruit",
+    "serving": { "unit": "50g", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 177,
+      "protein": 1.7,
+      "carbs": 7,
+      "fat": 17,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "coconut_water",
+    "name": "Coconut Water",
+    "banglaName": "ডাবের পানি",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 45,
+      "protein": 1,
+      "carbs": 10,
+      "fat": 0.5,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "star_fruit",
+    "name": "Star Fruit",
+    "banglaName": "কামরাঙ্গা",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 31,
+      "protein": 1,
+      "carbs": 7,
+      "fat": 0.3,
+      "fiber": 2.8
+    }
+  },
+  {
+    "id": "wood_apple",
+    "name": "Wood Apple",
+    "banglaName": "বেল",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 137,
+      "protein": 1.8,
+      "carbs": 31,
+      "fat": 0.3,
+      "fiber": 2.9
+    }
+  },
+  {
+    "id": "elephant_apple",
+    "name": "Elephant Apple",
+    "banglaName": "চালতা",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 40,
+      "protein": 0.8,
+      "carbs": 9,
+      "fat": 0.2,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "rose_apple",
+    "name": "Rose Apple",
+    "banglaName": "জামরুল",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 25,
+      "protein": 0.6,
+      "carbs": 6,
+      "fat": 0.3,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "black_plum",
+    "name": "Black Plum",
+    "banglaName": "জাম",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 60,
+      "protein": 0.7,
+      "carbs": 15,
+      "fat": 0.2,
+      "fiber": 0.6
+    }
+  },
+  {
+    "id": "pear",
+    "name": "Pear",
+    "banglaName": "নাশপাতি",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 57,
+      "protein": 0.4,
+      "carbs": 15,
+      "fat": 0.1,
+      "fiber": 3.1
+    }
+  },
+  {
+    "id": "strawberry",
+    "name": "Strawberry",
+    "banglaName": "স্ট্রবেরি",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 32,
+      "protein": 0.7,
+      "carbs": 7.7,
+      "fat": 0.3,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "kiwi",
+    "name": "Kiwi",
+    "banglaName": "কিউই",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 61,
+      "protein": 1.1,
+      "carbs": 15,
+      "fat": 0.5,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "dragon_fruit",
+    "name": "Dragon Fruit",
+    "banglaName": "ড্রাগন ফল",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 60,
+      "protein": 1.2,
+      "carbs": 13,
+      "fat": 0.4,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "peach",
+    "name": "Peach",
+    "banglaName": "পিচ",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 39,
+      "protein": 0.9,
+      "carbs": 10,
+      "fat": 0.3,
+      "fiber": 1.5
+    }
+  },
+  {
+    "id": "plum",
+    "name": "Plum",
+    "banglaName": "আলুবোখারা",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 46,
+      "protein": 0.7,
+      "carbs": 11,
+      "fat": 0.3,
+      "fiber": 1.4
+    }
+  },
+  {
+    "id": "apricot",
+    "name": "Apricot",
+    "banglaName": "খুবানি",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 48,
+      "protein": 1.4,
+      "carbs": 11,
+      "fat": 0.4,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "fig_fresh",
+    "name": "Fresh Fig",
+    "banglaName": "ডুমুর",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 74,
+      "protein": 0.8,
+      "carbs": 19,
+      "fat": 0.3,
+      "fiber": 3
+    }
+  },
+  {
+    "id": "fig_dry",
+    "name": "Dry Fig",
+    "banglaName": "শুকনা ডুমুর",
+    "category": "Dry Fruit",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 20 },
+    "nutrition": {
+      "calories": 50,
+      "protein": 0.7,
+      "carbs": 13,
+      "fat": 0.2,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "raisins",
+    "name": "Raisins",
+    "banglaName": "কিশমিশ",
+    "category": "Dry Fruit",
+    "serving": { "unit": "30g", "quantity": 1, "weight": 30 },
+    "nutrition": {
+      "calories": 90,
+      "protein": 0.9,
+      "carbs": 24,
+      "fat": 0.1,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "almond",
+    "name": "Almond",
+    "banglaName": "কাঠবাদাম",
+    "category": "Nuts",
+    "serving": { "unit": "10 pieces", "quantity": 1, "weight": 12 },
+    "nutrition": {
+      "calories": 70,
+      "protein": 2.5,
+      "carbs": 2.5,
+      "fat": 6,
+      "fiber": 1.5
+    }
+  },
+  {
+    "id": "cashew",
+    "name": "Cashew",
+    "banglaName": "কাজু বাদাম",
+    "category": "Nuts",
+    "serving": { "unit": "10 pieces", "quantity": 1, "weight": 15 },
+    "nutrition": {
+      "calories": 85,
+      "protein": 2.8,
+      "carbs": 5,
+      "fat": 7,
+      "fiber": 0.5
+    }
+  },
+  {
+    "id": "walnut",
+    "name": "Walnut",
+    "banglaName": "আখরোট",
+    "category": "Nuts",
+    "serving": { "unit": "20g", "quantity": 1, "weight": 20 },
+    "nutrition": {
+      "calories": 130,
+      "protein": 3,
+      "carbs": 3,
+      "fat": 13,
+      "fiber": 1.5
+    }
+  },
+  {
+    "id": "pistachio",
+    "name": "Pistachio",
+    "banglaName": "পেস্তা বাদাম",
+    "category": "Nuts",
+    "serving": { "unit": "20g", "quantity": 1, "weight": 20 },
+    "nutrition": {
+      "calories": 112,
+      "protein": 4,
+      "carbs": 6,
+      "fat": 9,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "peanut",
+    "name": "Peanut",
+    "banglaName": "চিনাবাদাম",
+    "category": "Nuts",
+    "serving": { "unit": "30g", "quantity": 1, "weight": 30 },
+    "nutrition": {
+      "calories": 170,
+      "protein": 8,
+      "carbs": 6,
+      "fat": 14,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "fruit_salad",
+    "name": "Fruit Salad",
+    "banglaName": "ফ্রুট সালাদ",
+    "category": "Fruit Dish",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 3,
+      "carbs": 40,
+      "fat": 1,
+      "fiber": 5
+    }
+  },
+  {
+    "id": "banana_milkshake",
+    "name": "Banana Milkshake",
+    "banglaName": "কলা মিল্কশেক",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 280,
+      "protein": 9,
+      "carbs": 45,
+      "fat": 7,
+      "fiber": 2
+    }
+  },
+  {
+    "id": "mango_juice",
+    "name": "Mango Juice",
+    "banglaName": "আমের জুস",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 150,
+      "protein": 1,
+      "carbs": 38,
+      "fat": 0.5,
+      "fiber": 1
+    }
+  },
+  {
+    "id": "orange_juice",
+    "name": "Orange Juice",
+    "banglaName": "কমলার জুস",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 110,
+      "protein": 2,
+      "carbs": 25,
+      "fat": 0.3,
+      "fiber": 0.5
+    }
+  },
+  {
+    "id": "apple_juice",
+    "name": "Apple Juice",
+    "banglaName": "আপেলের জুস",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 115,
+      "protein": 0.2,
+      "carbs": 28,
+      "fat": 0.1,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "lemon",
+    "name": "Lemon",
+    "banglaName": "লেবু",
+    "category": "Fruit",
+    "serving": { "unit": "piece", "quantity": 1, "weight": 50 },
+    "nutrition": {
+      "calories": 15,
+      "protein": 0.5,
+      "carbs": 5,
+      "fat": 0.2,
+      "fiber": 1.5
+    }
+  },
+  {
+    "id": "lemon_water",
+    "name": "Lemon Water",
+    "banglaName": "লেবুর পানি",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 20,
+      "protein": 0,
+      "carbs": 5,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "sugarcane",
+    "name": "Sugarcane",
+    "banglaName": "আখ",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 269,
+      "protein": 0.1,
+      "carbs": 73,
+      "fat": 0.2,
+      "fiber": 0.5
+    }
+  },
+  {
+    "id": "sugarcane_juice",
+    "name": "Sugarcane Juice",
+    "banglaName": "আখের রস",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 180,
+      "protein": 0.5,
+      "carbs": 45,
+      "fat": 0.2,
+      "fiber": 0
+    }
+  },
+  {
+    "id": "date_shake",
+    "name": "Date Shake",
+    "banglaName": "খেজুর শেক",
+    "category": "Drink",
+    "serving": { "unit": "glass", "quantity": 1, "weight": 300 },
+    "nutrition": {
+      "calories": 320,
+      "protein": 10,
+      "carbs": 55,
+      "fat": 8,
+      "fiber": 4
+    }
+  },
+  {
+    "id": "fruit_chaat",
+    "name": "Fruit Chaat",
+    "banglaName": "ফল চাট",
+    "category": "Snack",
+    "serving": { "unit": "bowl", "quantity": 1, "weight": 250 },
+    "nutrition": {
+      "calories": 200,
+      "protein": 3,
+      "carbs": 45,
+      "fat": 1,
+      "fiber": 6
+    }
+  },
+  {
+    "id": "avocado",
+    "name": "Avocado",
+    "banglaName": "অ্যাভোকাডো",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 160,
+      "protein": 2,
+      "carbs": 9,
+      "fat": 15,
+      "fiber": 7
+    }
+  },
+  {
+    "id": "passion_fruit",
+    "name": "Passion Fruit",
+    "banglaName": "প্যাশন ফল",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 97,
+      "protein": 2.2,
+      "carbs": 23,
+      "fat": 0.7,
+      "fiber": 10
+    }
+  },
+  {
+    "id": "cranberry",
+    "name": "Cranberry",
+    "banglaName": "ক্র্যানবেরি",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 46,
+      "protein": 0.4,
+      "carbs": 12,
+      "fat": 0.1,
+      "fiber": 4.6
+    }
+  },
+  {
+    "id": "blueberry",
+    "name": "Blueberry",
+    "banglaName": "ব্লুবেরি",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 57,
+      "protein": 0.7,
+      "carbs": 14,
+      "fat": 0.3,
+      "fiber": 2.4
+    }
+  },
+  {
+    "id": "raspberry",
+    "name": "Raspberry",
+    "banglaName": "রাস্পবেরি",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 52,
+      "protein": 1.2,
+      "carbs": 12,
+      "fat": 0.7,
+      "fiber": 6.5
+    }
+  },
+  {
+    "id": "melon",
+    "name": "Melon",
+    "banglaName": "বাঙ্গি",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 34,
+      "protein": 0.8,
+      "carbs": 8,
+      "fat": 0.2,
+      "fiber": 0.9
+    }
+  },
+  {
+    "id": "custard_apple",
+    "name": "Custard Apple",
+    "banglaName": "আতা ফল",
+    "category": "Fruit",
+    "serving": { "unit": "100g", "quantity": 1, "weight": 100 },
+    "nutrition": {
+      "calories": 94,
+      "protein": 2.1,
+      "carbs": 23,
+      "fat": 0.3,
+      "fiber": 4.4
+    }
+  }
+]
