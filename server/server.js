@@ -19,6 +19,8 @@ const calorieTrackerRoutes = require("./routes/calorieTrackerRoutes");
 const fitnessTrackerRoutes = require("./routes/fitnessTrackerRoutes");
 const habitRoutes = require("./routes/habitRoutes");
 const financeTrackerRoutes = require("./routes/financeTrackerRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
+const currencyRoutes = require("./routes/currencyRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -100,6 +102,8 @@ app.use("/api/calories", calorieTrackerRoutes);
 app.use("/api/fitness", fitnessTrackerRoutes);
 app.use("/api/habits", habitRoutes);
 app.use("/api/finance", financeTrackerRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/currency", currencyRoutes);
 
 // Health check
 app.get("/api/health", (req, res) => {

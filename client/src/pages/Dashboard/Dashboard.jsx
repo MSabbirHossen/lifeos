@@ -1,203 +1,159 @@
-import React, { useState, useEffect } from "react";
-import Card from "../../components/Card";
+import React, { useEffect, useMemo, useState } from "react";
 import API from "../../utils/api";
-import {
-  BarChart,
-  Bar,
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+import { useAuth } from "../../context/AuthContext";
+import DashboardHeader from "../../components/dashboard/DashboardHeader";
+import OverviewCards from "../../components/dashboard/OverviewCards";
+import TimeAnalytics from "../../components/dashboard/TimeAnalytics";
+import StudyAnalytics from "../../components/dashboard/StudyAnalytics";
+import IslamicAnalytics from "../../components/dashboard/IslamicAnalytics";
+import JournalAnalytics from "../../components/dashboard/JournalAnalytics";
+import CaloriesAnalytics from "../../components/dashboard/CaloriesAnalytics";
+import FitnessAnalytics from "../../components/dashboard/FitnessAnalytics";
+import HabitAnalytics from "../../components/dashboard/HabitAnalytics";
+import FinanceAnalytics from "../../components/dashboard/FinanceAnalytics";
+import AIInsights from "../../components/dashboard/AIInsights";
 
 const Dashboard = () => {
-  const [data, setData] = useState({
-    journals: [],
-    timeTrackers: [],
-    islamic: [],
-    calories: [],
-    fitness: [],
-    habits: [],
-    finance: [],
-  });
+  const { user } = useAuth();
+  const [range, setRange] = useState("30d");
+  const [currency, setCurrency] = useState("BDT");
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchDashboardData();
-  }, []);
-
-  const extractList = (response) => {
-    const payload = response?.data;
-    return Array.isArray(payload) ? payload : payload?.data || [];
-  };
+  const [error, setError] = useState("");
+  const [overview, setOverview] = useState(null);
+  const [charts, setCharts] = useState(null);
+  const [rates, setRates] = useState({ USD_BDT: 122, SAR_BDT: 32.5 });
 
   const fetchDashboardData = async () => {
-    try {
-      const [
-        journals,
-        timeTrackers,
-        islamic,
-        calories,
-        fitness,
-        habits,
-        finance,
-      ] = await Promise.all([
-        API.get("/journal").catch(() => ({ data: [] })),
-        API.get("/time-tracker").catch(() => ({ data: [] })),
-        API.get("/islamic").catch(() => ({ data: [] })),
-        API.get("/calories").catch(() => ({ data: [] })),
-        API.get("/fitness").catch(() => ({ data: [] })),
-        API.get("/habits").catch(() => ({ data: [] })),
-        API.get("/finance").catch(() => ({ data: [] })),
-      ]);
+    setLoading(true);
+    setError("");
 
-      setData({
-        journals: extractList(journals),
-        timeTrackers: extractList(timeTrackers),
-        islamic: extractList(islamic),
-        calories: extractList(calories),
-        fitness: extractList(fitness),
-        habits: extractList(habits),
-        finance: extractList(finance),
-      });
-    } catch (error) {
-      console.error("Error fetching dashboard data:", error);
+    try {
+      const [overviewResponse, chartsResponse, ratesResponse] =
+        await Promise.all([
+          API.get(`/dashboard/overview?range=${range}&currency=${currency}`),
+          API.get(`/dashboard/charts?range=${range}&currency=${currency}`),
+          API.get("/currency/rates").catch(() => ({ data: {} })),
+        ]);
+
+      setOverview(overviewResponse.data?.data || null);
+      setCharts(chartsResponse.data?.data || null);
+
+      const ratesData = ratesResponse.data || {};
+      if (ratesData.USD_BDT && ratesData.SAR_BDT) {
+        setRates(ratesData);
+      }
+    } catch (requestError) {
+      console.error("Failed to load dashboard analytics", requestError);
+      setError("Unable to load dashboard analytics right now.");
     } finally {
       setLoading(false);
     }
   };
 
-  const todayCalories = data.calories
-    .filter(
-      (c) => new Date(c.date).toDateString() === new Date().toDateString(),
-    )
-    .reduce((sum, c) => sum + c.calories, 0);
+  useEffect(() => {
+    fetchDashboardData();
+  }, [range, currency]);
 
-  const totalExpenses = data.finance
-    .filter((f) => f.type === "expense")
-    .reduce((sum, f) => sum + (f.convertedAmountBDT || f.amount || 0), 0);
+  const miniCharts = useMemo(() => {
+    if (!charts) {
+      return {};
+    }
 
-  const totalIncome = data.finance
-    .filter((f) => f.type === "income")
-    .reduce((sum, f) => sum + (f.convertedAmountBDT || f.amount || 0), 0);
-
-  const activeHabits = data.habits.filter((h) => h.active !== false);
-  const completedHabits = activeHabits.filter(
-    (h) => h.completedToday || h.status,
-  ).length;
+    return {
+      productivity: (charts.time?.productivity30d || []).map((point) => ({
+        value: point.hours,
+      })),
+      study: (charts.study?.monthlyLine || []).map((point) => ({
+        value: point.hours,
+      })),
+      islamic: (charts.islamic?.prayerConsistency || []).map((point) => ({
+        value: point.percentage,
+      })),
+      calories: (charts.calories?.weeklyBalance || []).map((point) => ({
+        value: point.balance,
+      })),
+      fitness: (charts.fitness?.caloriesTrend || []).map((point) => ({
+        value: point.calories,
+      })),
+      habits: (charts.habits?.heatmap || []).map((point) => ({
+        value: point.completion,
+      })),
+      finance: (charts.finance?.savingsGrowth || []).map((point) => ({
+        value: point.savings,
+      })),
+      journal: (charts.journal?.moodTrend || []).map((point) => ({
+        value: point.moodScore,
+      })),
+    };
+  }, [charts]);
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        Loading...
+      <div className="p-6 space-y-4 animate-pulse">
+        <div className="h-44 rounded-2xl bg-slate-200 dark:bg-slate-700" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <div
+              key={index}
+              className="h-40 rounded-2xl bg-slate-200 dark:bg-slate-700"
+            />
+          ))}
+        </div>
+        <div className="h-80 rounded-2xl bg-slate-200 dark:bg-slate-700" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="p-6">
+        <div className="rounded-xl border border-rose-200 bg-rose-50 text-rose-700 dark:bg-rose-900/20 dark:border-rose-700/50 dark:text-rose-200 p-4">
+          {error}
+        </div>
+      </div>
+    );
+  }
+
+  if (!overview || !charts) {
+    return (
+      <div className="p-6">
+        <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 text-center text-slate-600 dark:text-slate-300">
+          No analytics data yet. Start logging your daily activities to unlock
+          your full LifeOS dashboard.
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="p-6 space-y-6">
-      <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-        Dashboard
-      </h1>
+    <div className="p-4 md:p-6 space-y-6 bg-gradient-to-b from-slate-100/70 to-transparent dark:from-slate-900/70 min-h-full">
+      <DashboardHeader
+        userName={user?.username}
+        greeting={overview.greeting}
+        lifeScore={overview.lifeScore}
+        motivation={overview.motivation}
+        range={range}
+        onRangeChange={setRange}
+        currency={currency}
+        onCurrencyChange={setCurrency}
+        currencyRates={rates}
+      />
 
-      {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card>
-          <div className="text-center">
-            <p className="text-gray-600 dark:text-gray-400">Today's Calories</p>
-            <p className="text-3xl font-bold text-blue-500">{todayCalories}</p>
-            <p className="text-sm text-gray-500">kcal</p>
-          </div>
-        </Card>
+      <OverviewCards cards={overview.overviewCards} charts={miniCharts} />
 
-        <Card>
-          <div className="text-center">
-            <p className="text-gray-600 dark:text-gray-400">Habits Completed</p>
-            <p className="text-3xl font-bold text-green-500">
-              {completedHabits}
-            </p>
-            <p className="text-sm text-gray-500">of {activeHabits.length}</p>
-          </div>
-        </Card>
-
-        <Card>
-          <div className="text-center">
-            <p className="text-gray-600 dark:text-gray-400">Today's Expenses</p>
-            <p className="text-3xl font-bold text-red-500">
-              ৳{totalExpenses.toFixed(2)}
-            </p>
-          </div>
-        </Card>
-
-        <Card>
-          <div className="text-center">
-            <p className="text-gray-600 dark:text-gray-400">Total Income</p>
-            <p className="text-3xl font-bold text-green-600">
-              ৳{totalIncome.toFixed(2)}
-            </p>
-          </div>
-        </Card>
-      </div>
-
-      {/* Recent Journals */}
-      <Card>
-        <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
-          Recent Journal Entries
-        </h2>
-        <div className="space-y-3">
-          {data.journals.slice(0, 3).map((journal) => (
-            <div
-              key={journal._id}
-              className="p-3 bg-gray-50 dark:bg-gray-700 rounded"
-            >
-              <h3 className="font-semibold text-gray-900 dark:text-white">
-                {journal.title}
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                {journal.notes?.substring(0, 100)}
-              </p>
-            </div>
-          ))}
-          {data.journals.length === 0 && (
-            <p className="text-gray-500 dark:text-gray-400">
-              No journal entries yet
-            </p>
-          )}
-        </div>
-      </Card>
-
-      {/* Islamic Tracker Summary */}
-      {data.islamic.length > 0 && (
-        <Card>
-          <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
-            Islamic Tracker
-          </h2>
-          <div className="grid grid-cols-5 gap-2">
-            {["fajr", "dhuhr", "asr", "maghrib", "isha"].map((salah) => {
-              const today = data.islamic.find(
-                (i) =>
-                  new Date(i.date).toDateString() === new Date().toDateString(),
-              );
-              const completed = today?.salah?.[salah];
-              return (
-                <div
-                  key={salah}
-                  className="text-center p-2 bg-gray-50 dark:bg-gray-700 rounded"
-                >
-                  <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 capitalize">
-                    {salah}
-                  </p>
-                  <p className="text-2xl">{completed ? "✓" : "○"}</p>
-                </div>
-              );
-            })}
-          </div>
-        </Card>
-      )}
+      <TimeAnalytics overview={overview.productivity} charts={charts} />
+      <StudyAnalytics overview={overview.study} charts={charts} />
+      <IslamicAnalytics overview={overview.islamic} charts={charts} />
+      <JournalAnalytics
+        overview={overview.journal}
+        charts={charts}
+        entries={overview.journal?.recentEntries || []}
+      />
+      <CaloriesAnalytics overview={overview.calories} charts={charts} />
+      <FitnessAnalytics overview={overview.fitness} charts={charts} />
+      <HabitAnalytics overview={overview.habits} charts={charts} />
+      <FinanceAnalytics overview={overview.finance} charts={charts} />
+      <AIInsights insights={overview.insights || []} />
     </div>
   );
 };
