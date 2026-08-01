@@ -1,4 +1,4 @@
-# Finance API (Multi-Currency)
+# Finance API (Cash Flow)
 
 All endpoints require `Authorization: Bearer <token>`.
 
@@ -10,13 +10,14 @@ All endpoints require `Authorization: Bearer <token>`.
 
 ### 1) Create Transaction
 
-- `POST /`
-- Supports both `expense` and `income`.
+- `POST /create` or `POST /`
+- Supports `expense`, `income`, and `transfer`.
 
 Expense payload:
 
 ```json
 {
+  "transactionType": "expense",
   "type": "expense",
   "amount": 50,
   "currency": "SAR",
@@ -33,19 +34,35 @@ Income payload:
 
 ```json
 {
+  "transactionType": "income",
   "type": "income",
   "amount": 10000,
   "currency": "BDT",
-  "description": "Salary",
-  "source": "Company"
+  "incomeSource": "Salary",
+  "category": "Salary",
+  "description": "Monthly payout"
+}
+```
+
+Transfer payload:
+
+```json
+{
+  "transactionType": "transfer",
+  "amount": 3000,
+  "currency": "BDT",
+  "category": "Account Transfer",
+  "transactionName": "Savings Move",
+  "description": "Cash to bank"
 }
 ```
 
 ### 2) Get Transactions
 
-- `GET /?range=thisMonth&type=expense`
+- `GET /?range=thisMonth&transactionType=expense`
 - Supported `range`: `today`, `thisWeek`, `thisMonth`, `thisYear`, `custom`
 - For `custom`, send `startDate` and `endDate`
+- Supported `transactionType`: `all`, `expense`, `income`, `transfer`
 
 ### 3) Update Transaction
 
@@ -59,13 +76,13 @@ Income payload:
 
 - `GET /categories`
 
-Returns category + subcategory tree, supported currencies, and payment methods.
+Returns expense, income, and transfer category trees with currencies and payment methods.
 
-### 6) Expense Name Suggestions
+### 6) Typed Suggestions
 
-- `GET /suggestions?q=car&limit=6`
+- `GET /suggestions?transactionType=income&q=sch&limit=8`
 
-Returns fuzzy-ranked historical expense names with usage count and last-used labels.
+Returns fuzzy-ranked historical names with usage count and last-used labels.
 
 ### 7) Daily Rates
 
@@ -80,12 +97,30 @@ Returns BDT base rates for `SAR` and `USD`.
 
 Returns:
 
-- BDT summary (total, change %, average daily, largest category)
-- Chart datasets (distribution, trend, category comparison, currency usage)
+- BDT summary (balance, income, expense, savings rate)
+- Chart datasets (cash flow, balance trend, expense distribution, income sources)
 - Recent transactions
 
-### 9) Legacy Migration (Per User)
+### 9) Income Summary
+
+- `GET /income-summary?range=thisMonth`
+
+Returns total income and source breakdown.
+
+### 10) Balance Snapshot
+
+- `GET /balance`
+
+Returns all-time income, expense, and balance in BDT.
+
+### 11) Cash Flow Series
+
+- `GET /cash-flow?range=thisMonth`
+
+Returns period-wise income, expense, transfer, and net series.
+
+### 12) Legacy Migration (Per User)
 
 - `POST /migrate-legacy`
 
-Backfills missing multi-currency fields for old records.
+Backfills missing transaction and multi-currency fields for old records.

@@ -100,10 +100,32 @@ export const DEFAULT_FINANCE_CATEGORIES = [
   },
 ];
 
+export const DEFAULT_INCOME_CATEGORIES = [
+  { category: "Salary", subCategories: [] },
+  { category: "Scholarship", subCategories: [] },
+  { category: "Freelance", subCategories: [] },
+  { category: "Business", subCategories: [] },
+  { category: "Family Support", subCategories: [] },
+  { category: "Gift", subCategories: [] },
+  { category: "Refund", subCategories: [] },
+  { category: "Investment", subCategories: [] },
+  { category: "Other", subCategories: [] },
+];
+
+export const DEFAULT_TRANSFER_CATEGORIES = [
+  { category: "Account Transfer", subCategories: [] },
+  { category: "Savings Move", subCategories: [] },
+  { category: "Wallet Top-up", subCategories: [] },
+  { category: "Other", subCategories: [] },
+];
+
+export const DEFAULT_TRANSACTION_TYPES = ["expense", "income", "transfer"];
+
 export const DEFAULT_CURRENCIES = ["BDT", "SAR", "USD"];
 export const DEFAULT_PAYMENT_METHODS = [
   "Cash",
   "Card",
   "Bank",
   "Mobile Payment",
+  "Mobile Banking",
 ];

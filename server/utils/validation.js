@@ -1,6 +1,7 @@
 const {
   SUPPORTED_CURRENCIES,
   PAYMENT_METHODS,
+  TRANSACTION_TYPES,
   isValidCategory,
   isValidSubCategory,
 } = require("../constants/financeCategories");
@@ -30,8 +31,10 @@ const validateAuthPayload = (payload = {}) => {
 const validateFinancePayload = (payload = {}) => {
   const errors = [];
 
-  if (!payload.type || !["expense", "income"].includes(payload.type)) {
-    errors.push("type must be expense or income");
+  const transactionType = payload.transactionType || payload.type || "expense";
+
+  if (!TRANSACTION_TYPES.includes(transactionType)) {
+    errors.push("transactionType must be expense, income, or transfer");
   }
 
   if (
@@ -55,24 +58,42 @@ const validateFinancePayload = (payload = {}) => {
     errors.push("exchangeRate must be a positive number when provided");
   }
 
-  if (payload.category && !isValidCategory(payload.category)) {
+  if (payload.category && !isValidCategory(payload.category, transactionType)) {
     errors.push("category is invalid");
   }
 
   if (
     payload.subCategory &&
-    !isValidSubCategory(payload.category, payload.subCategory)
+    !isValidSubCategory(payload.category, payload.subCategory, transactionType)
   ) {
     errors.push("subCategory is invalid for the selected category");
   }
 
   if (
-    payload.type === "expense" &&
+    transactionType === "expense" &&
     (!payload.expenseName ||
       typeof payload.expenseName !== "string" ||
       !payload.expenseName.trim())
   ) {
     errors.push("expenseName is required for expense entries");
+  }
+
+  if (
+    transactionType === "income" &&
+    (!payload.incomeSource ||
+      typeof payload.incomeSource !== "string" ||
+      !payload.incomeSource.trim())
+  ) {
+    errors.push("incomeSource is required for income entries");
+  }
+
+  if (
+    transactionType === "transfer" &&
+    (!payload.transactionName ||
+      typeof payload.transactionName !== "string" ||
+      !payload.transactionName.trim())
+  ) {
+    errors.push("transactionName is required for transfer entries");
   }
 
   if (
@@ -88,16 +109,6 @@ const validateFinancePayload = (payload = {}) => {
       payload.description.length > 500)
   ) {
     errors.push("description must be a string with max length 500");
-  }
-
-  const requiresDescription =
-    payload.type === "income" &&
-    (!payload.description ||
-      typeof payload.description !== "string" ||
-      !payload.description.trim());
-
-  if (requiresDescription) {
-    errors.push("description is required for income entries");
   }
 
   if (payload.date && Number.isNaN(new Date(payload.date).getTime())) {

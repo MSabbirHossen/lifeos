@@ -1,4 +1,4 @@
-const FINANCE_CATEGORIES = [
+const EXPENSE_CATEGORIES = [
   {
     category: "Food",
     subCategories: [
@@ -100,26 +100,93 @@ const FINANCE_CATEGORIES = [
   },
 ];
 
+const INCOME_CATEGORIES = [
+  "Salary",
+  "Scholarship",
+  "Freelance",
+  "Business",
+  "Family Support",
+  "Gift",
+  "Refund",
+  "Investment",
+  "Other",
+].map((category) => ({
+  category,
+  subCategories: [],
+}));
+
+const TRANSFER_CATEGORIES = [
+  { category: "Account Transfer", subCategories: [] },
+  { category: "Savings Move", subCategories: [] },
+  { category: "Wallet Top-up", subCategories: [] },
+  { category: "Other", subCategories: [] },
+];
+
 const SUPPORTED_CURRENCIES = ["BDT", "SAR", "USD"];
-const PAYMENT_METHODS = ["Cash", "Card", "Bank", "Mobile Payment"];
+const PAYMENT_METHODS = [
+  "Cash",
+  "Card",
+  "Bank",
+  "Mobile Payment",
+  "Mobile Banking",
+];
+
+const TRANSACTION_TYPES = ["expense", "income", "transfer"];
+
+const getCategoryTree = (transactionType = "expense") => {
+  if (transactionType === "income") {
+    return INCOME_CATEGORIES;
+  }
+
+  if (transactionType === "transfer") {
+    return TRANSFER_CATEGORIES;
+  }
+
+  return EXPENSE_CATEGORIES;
+};
 
 const FINANCE_CATEGORY_SET = new Set(
-  FINANCE_CATEGORIES.map((item) => item.category),
+  EXPENSE_CATEGORIES.map((item) => item.category),
 );
 
-const subCategoryMap = FINANCE_CATEGORIES.reduce((acc, item) => {
+const INCOME_CATEGORY_SET = new Set(
+  INCOME_CATEGORIES.map((item) => item.category),
+);
+
+const TRANSFER_CATEGORY_SET = new Set(
+  TRANSFER_CATEGORIES.map((item) => item.category),
+);
+
+const subCategoryMap = EXPENSE_CATEGORIES.reduce((acc, item) => {
   acc[item.category] = new Set(item.subCategories);
   return acc;
 }, {});
 
-const isValidCategory = (category) => {
+const isValidCategory = (category, transactionType = "expense") => {
   if (!category) {
     return true;
   }
+
+  if (transactionType === "income") {
+    return INCOME_CATEGORY_SET.has(category);
+  }
+
+  if (transactionType === "transfer") {
+    return TRANSFER_CATEGORY_SET.has(category);
+  }
+
   return FINANCE_CATEGORY_SET.has(category);
 };
 
-const isValidSubCategory = (category, subCategory) => {
+const isValidSubCategory = (
+  category,
+  subCategory,
+  transactionType = "expense",
+) => {
+  if (transactionType !== "expense") {
+    return true;
+  }
+
   if (!subCategory) {
     return true;
   }
@@ -136,9 +203,13 @@ const isValidSubCategory = (category, subCategory) => {
 };
 
 module.exports = {
-  FINANCE_CATEGORIES,
+  EXPENSE_CATEGORIES,
+  INCOME_CATEGORIES,
+  TRANSFER_CATEGORIES,
   SUPPORTED_CURRENCIES,
   PAYMENT_METHODS,
+  TRANSACTION_TYPES,
+  getCategoryTree,
   isValidCategory,
   isValidSubCategory,
 };

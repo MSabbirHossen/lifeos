@@ -37,16 +37,29 @@ test("validateFinancePayload requires amount and expenseName for expenses", () =
   );
 });
 
-test("validateFinancePayload requires description for income", () => {
+test("validateFinancePayload requires incomeSource for income", () => {
   const result = validateFinancePayload({
     type: "income",
     amount: 1000,
-    description: "",
+    incomeSource: "",
   });
 
   assert.equal(result.isValid, false);
   assert.ok(
-    result.errors.includes("description is required for income entries"),
+    result.errors.includes("incomeSource is required for income entries"),
+  );
+});
+
+test("validateFinancePayload requires transactionName for transfer", () => {
+  const result = validateFinancePayload({
+    transactionType: "transfer",
+    amount: 1000,
+    transactionName: "",
+  });
+
+  assert.equal(result.isValid, false);
+  assert.ok(
+    result.errors.includes("transactionName is required for transfer entries"),
   );
 });
 

@@ -2,8 +2,12 @@ const mongoose = require("mongoose");
 const FinanceTracker = require("../models/FinanceTracker");
 const { validateFinancePayload } = require("../utils/validation");
 const {
-  FINANCE_CATEGORIES,
+  EXPENSE_CATEGORIES,
+  INCOME_CATEGORIES,
+  TRANSFER_CATEGORIES,
   SUPPORTED_CURRENCIES,
+  PAYMENT_METHODS,
+  TRANSACTION_TYPES,
   isValidSubCategory,
 } = require("../constants/financeCategories");
 const {
@@ -14,6 +18,60 @@ const {
 const normalizeDate = (value, fallback = new Date()) => {
   const parsed = value ? new Date(value) : fallback;
   return Number.isNaN(parsed.getTime()) ? fallback : parsed;
+};
+
+const normalizeName = (value = "") =>
+  value.toLowerCase().replace(/\s+/g, " ").trim();
+
+const resolveTransactionType = (payload = {}) => {
+  const candidate = payload.transactionType || payload.type || "expense";
+  return TRANSACTION_TYPES.includes(candidate) ? candidate : "expense";
+};
+
+const getSuggestionField = (transactionType) => {
+  if (transactionType === "income") {
+    return "incomeSource";
+  }
+  if (transactionType === "transfer") {
+    return "transactionName";
+  }
+  return "expenseName";
+};
+
+const getNameFromPayload = (transactionType, payload = {}) => {
+  if (transactionType === "income") {
+    return (
+      payload.incomeSource ||
+      payload.source ||
+      payload.transactionName ||
+      payload.description ||
+      ""
+    ).trim();
+  }
+
+  if (transactionType === "transfer") {
+    return (payload.transactionName || payload.description || "").trim();
+  }
+
+  return (
+    payload.expenseName ||
+    payload.transactionName ||
+    payload.description ||
+    ""
+  ).trim();
+};
+
+const toBDT = (entry) => {
+  if (
+    entry?.convertedAmountBDT != null &&
+    !Number.isNaN(entry.convertedAmountBDT)
+  ) {
+    return Number(entry.convertedAmountBDT);
+  }
+
+  const baseAmount = Number(entry?.amount || 0);
+  const rate = Number(entry?.exchangeRate || 1);
+  return baseAmount * rate;
 };
 
 const getDateRange = ({ range = "thisMonth", startDate, endDate }) => {
@@ -62,8 +120,40 @@ const getPreviousMonthRange = () => {
   return { start, end };
 };
 
-const normalizeName = (value = "") =>
-  value.toLowerCase().replace(/\s+/g, " ").trim();
+const formatRelativeLastUsed = (date) => {
+  const parsed = new Date(date);
+  if (Number.isNaN(parsed.getTime())) {
+    return "unknown";
+  }
+
+  const diffDays = Math.floor(
+    (Date.now() - parsed.getTime()) / (1000 * 60 * 60 * 24),
+  );
+
+  if (diffDays <= 0) {
+    return "today";
+  }
+
+  if (diffDays === 1) {
+    return "1 day ago";
+  }
+
+  if (diffDays < 30) {
+    return `${diffDays} days ago`;
+  }
+
+  const months = Math.floor(diffDays / 30);
+  if (months === 1) {
+    return "1 month ago";
+  }
+
+  if (months < 12) {
+    return `${months} months ago`;
+  }
+
+  const years = Math.floor(months / 12);
+  return years === 1 ? "1 year ago" : `${years} years ago`;
+};
 
 const scoreSuggestion = (query, item) => {
   const normalizedQuery = normalizeName(query);
@@ -71,7 +161,7 @@ const scoreSuggestion = (query, item) => {
     return 0;
   }
 
-  const target = normalizeName(item.expenseName);
+  const target = normalizeName(item.name);
   if (!target) {
     return 0;
   }
@@ -114,84 +204,228 @@ const scoreSuggestion = (query, item) => {
   return score;
 };
 
-const toBDT = (entry) => {
-  if (
-    entry?.convertedAmountBDT != null &&
-    !Number.isNaN(entry.convertedAmountBDT)
-  ) {
-    return Number(entry.convertedAmountBDT);
-  }
+const toTransactionDTO = (item) => {
+  const transactionType = item.transactionType || item.type || "expense";
+  const name =
+    item.transactionName ||
+    item.expenseName ||
+    item.incomeSource ||
+    item.source ||
+    item.description ||
+    "Transaction";
 
-  const baseAmount = Number(entry?.amount || 0);
-  const rate = Number(entry?.exchangeRate || 1);
-  return baseAmount * rate;
+  return {
+    ...item,
+    type: transactionType,
+    transactionType,
+    transactionName: name,
+    expenseName:
+      item.expenseName || (transactionType === "expense" ? name : ""),
+    incomeSource:
+      item.incomeSource ||
+      (transactionType === "income" ? name : item.source || ""),
+    convertedAmountBDT: toBDT(item),
+    signedAmountBDT:
+      transactionType === "income"
+        ? toBDT(item)
+        : transactionType === "expense"
+          ? -toBDT(item)
+          : 0,
+  };
 };
 
-const formatRelativeLastUsed = (date) => {
-  const parsed = new Date(date);
-  if (Number.isNaN(parsed.getTime())) {
+const getCashFlowLabel = (dateValue, range) => {
+  const date = new Date(dateValue);
+  if (Number.isNaN(date.getTime())) {
     return "unknown";
   }
 
-  const diffDays = Math.floor(
-    (Date.now() - parsed.getTime()) / (1000 * 60 * 60 * 24),
+  if (range === "thisYear") {
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+  }
+
+  return date.toISOString().slice(0, 10);
+};
+
+const buildAnalytics = (
+  transactions,
+  range,
+  start,
+  end,
+  previousMonthTotals,
+) => {
+  const typed = transactions.map(toTransactionDTO);
+
+  const totals = typed.reduce(
+    (acc, tx) => {
+      if (tx.transactionType === "income") {
+        acc.income += tx.convertedAmountBDT;
+      } else if (tx.transactionType === "expense") {
+        acc.expense += tx.convertedAmountBDT;
+      } else {
+        acc.transfer += tx.convertedAmountBDT;
+      }
+      return acc;
+    },
+    { income: 0, expense: 0, transfer: 0 },
   );
 
-  if (diffDays <= 0) {
-    return "today";
-  }
+  const balance = totals.income - totals.expense;
+  const savingsRate = totals.income > 0 ? (balance / totals.income) * 100 : 0;
 
-  if (diffDays === 1) {
-    return "1 day ago";
-  }
+  const daysInRange = Math.max(
+    1,
+    Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1,
+  );
 
-  if (diffDays < 30) {
-    return `${diffDays} days ago`;
-  }
+  const expenseCategoryTotals = typed
+    .filter((tx) => tx.transactionType === "expense")
+    .reduce((acc, tx) => {
+      const key = tx.category || "Other";
+      acc[key] = (acc[key] || 0) + tx.convertedAmountBDT;
+      return acc;
+    }, {});
 
-  const months = Math.floor(diffDays / 30);
-  if (months === 1) {
-    return "1 month ago";
-  }
+  const expenseDistribution = Object.entries(expenseCategoryTotals)
+    .map(([name, value]) => ({ name, value }))
+    .sort((a, b) => b.value - a.value);
 
-  if (months < 12) {
-    return `${months} months ago`;
-  }
+  const incomeSourceTotals = typed
+    .filter((tx) => tx.transactionType === "income")
+    .reduce((acc, tx) => {
+      const key = tx.incomeSource || tx.category || "Other";
+      acc[key] = (acc[key] || 0) + tx.convertedAmountBDT;
+      return acc;
+    }, {});
 
-  const years = Math.floor(months / 12);
-  return years === 1 ? "1 year ago" : `${years} years ago`;
+  const incomeSources = Object.entries(incomeSourceTotals)
+    .map(([name, value]) => ({ name, value }))
+    .sort((a, b) => b.value - a.value);
+
+  const currencyTotals = typed.reduce((acc, tx) => {
+    const key = tx.currency || "BDT";
+    acc[key] = (acc[key] || 0) + tx.convertedAmountBDT;
+    return acc;
+  }, {});
+
+  const currencyUsage = Object.entries(currencyTotals)
+    .map(([currency, value]) => ({ currency, value }))
+    .sort((a, b) => b.value - a.value);
+
+  const flowMap = typed.reduce((acc, tx) => {
+    const label = getCashFlowLabel(tx.date, range);
+    if (!acc[label]) {
+      acc[label] = {
+        label,
+        income: 0,
+        expense: 0,
+        transfer: 0,
+      };
+    }
+
+    if (tx.transactionType === "income") {
+      acc[label].income += tx.convertedAmountBDT;
+    } else if (tx.transactionType === "expense") {
+      acc[label].expense += tx.convertedAmountBDT;
+    } else {
+      acc[label].transfer += tx.convertedAmountBDT;
+    }
+
+    return acc;
+  }, {});
+
+  const cashFlow = Object.values(flowMap)
+    .sort((a, b) => a.label.localeCompare(b.label))
+    .map((entry) => ({
+      ...entry,
+      net: entry.income - entry.expense,
+    }));
+
+  let runningBalance = 0;
+  const balanceTrend = cashFlow.map((entry) => {
+    const openingBalance = runningBalance;
+    runningBalance = runningBalance + entry.income - entry.expense;
+    return {
+      label: entry.label,
+      openingBalance,
+      closingBalance: runningBalance,
+      income: entry.income,
+      expense: entry.expense,
+    };
+  });
+
+  const previousExpense = previousMonthTotals?.expense || 0;
+  const expenseChangePercentage =
+    previousExpense > 0
+      ? ((totals.expense - previousExpense) / previousExpense) * 100
+      : totals.expense > 0
+        ? 100
+        : 0;
+
+  return {
+    summary: {
+      totalBalanceBDT: balance,
+      totalIncomeBDT: totals.income,
+      totalExpenseBDT: totals.expense,
+      totalTransferBDT: totals.transfer,
+      savingsRate,
+      averageDailyExpenseBDT: totals.expense / daysInRange,
+      largestExpenseCategory: expenseDistribution[0]?.name || "N/A",
+      expenseChangePercentage,
+      previousMonthExpenseBDT: previousExpense,
+      previousMonthIncomeBDT: previousMonthTotals?.income || 0,
+    },
+    charts: {
+      expenseDistribution,
+      incomeSources,
+      categoryComparison: expenseDistribution.slice(0, 10),
+      currencyUsage,
+      cashFlow,
+      balanceTrend,
+    },
+    recentTransactions: typed
+      .slice()
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 12),
+  };
 };
 
 const financeTrackerController = {
   create: async (req, res) => {
     try {
+      const transactionType = resolveTransactionType(req.body);
       const {
-        type,
         amount,
         currency = "BDT",
         exchangeRate,
         category,
         subCategory,
         expenseName,
+        incomeSource,
+        transactionName,
         description,
         paymentMethod,
         source,
         date,
       } = req.body;
 
-      const validation = validateFinancePayload({
-        type,
+      const payload = {
+        transactionType,
+        type: transactionType,
         amount,
         currency,
         exchangeRate,
         category,
         subCategory,
         expenseName,
+        incomeSource,
+        transactionName,
         description,
         paymentMethod,
         date,
-      });
+      };
 
+      const validation = validateFinancePayload(payload);
       if (!validation.isValid) {
         return res.status(400).json({
           success: false,
@@ -200,7 +434,11 @@ const financeTrackerController = {
         });
       }
 
-      if (subCategory && !isValidSubCategory(category, subCategory)) {
+      if (
+        transactionType === "expense" &&
+        subCategory &&
+        !isValidSubCategory(category, subCategory, transactionType)
+      ) {
         return res.status(400).json({
           success: false,
           message: "Validation failed",
@@ -218,41 +456,49 @@ const financeTrackerController = {
         rateSource = rateMeta.source;
       }
 
-      const normalizedInputName = (expenseName || description || "").trim();
-      let canonicalExpenseName = normalizedInputName;
+      const rawName = getNameFromPayload(transactionType, {
+        expenseName,
+        incomeSource,
+        transactionName,
+        description,
+        source,
+      });
+      const suggestionField = getSuggestionField(transactionType);
+      let canonicalName = rawName;
 
-      if (type === "expense" && normalizedInputName) {
+      if (rawName) {
         const existing = await FinanceTracker.findOne({
           userId: req.userId,
-          type: "expense",
+          transactionType,
           $expr: {
-            $eq: [
-              { $toLower: "$expenseName" },
-              normalizeName(normalizedInputName),
-            ],
+            $eq: [{ $toLower: `$${suggestionField}` }, normalizeName(rawName)],
           },
         })
           .sort({ date: -1 })
           .lean();
 
-        if (existing?.expenseName) {
-          canonicalExpenseName = existing.expenseName;
+        if (existing?.[suggestionField]) {
+          canonicalName = existing[suggestionField];
         }
       }
 
       const tracker = new FinanceTracker({
         userId: req.userId,
-        type,
+        transactionType,
+        type: transactionType,
         amount,
         currency,
         exchangeRate: resolvedRate,
         convertedAmountBDT: Number(amount) * Number(resolvedRate),
         category,
-        subCategory,
-        expenseName: type === "expense" ? canonicalExpenseName : undefined,
+        subCategory: transactionType === "expense" ? subCategory : "",
+        transactionName: canonicalName,
+        expenseName: transactionType === "expense" ? canonicalName : "",
+        incomeSource:
+          transactionType === "income" ? canonicalName : incomeSource || "",
         description,
         paymentMethod,
-        source,
+        source: transactionType === "income" ? canonicalName : source,
         date: safeDate,
       });
 
@@ -260,7 +506,7 @@ const financeTrackerController = {
 
       res.status(201).json({
         success: true,
-        data: tracker,
+        data: toTransactionDTO(tracker.toObject()),
         meta: {
           exchangeRateSource: rateSource,
         },
@@ -276,11 +522,17 @@ const financeTrackerController = {
 
   getAll: async (req, res) => {
     try {
-      const { range, startDate, endDate, type } = req.query;
+      const { range, startDate, endDate, type, transactionType } = req.query;
       const filter = { userId: req.userId };
+      const selectedType =
+        transactionType && TRANSACTION_TYPES.includes(transactionType)
+          ? transactionType
+          : type && TRANSACTION_TYPES.includes(type)
+            ? type
+            : null;
 
-      if (type && ["expense", "income"].includes(type)) {
-        filter.type = type;
+      if (selectedType && selectedType !== "all") {
+        filter.transactionType = selectedType;
       }
 
       if (range || startDate || endDate) {
@@ -288,17 +540,10 @@ const financeTrackerController = {
         filter.date = { $gte: start, $lte: end };
       }
 
-      const trackers = await FinanceTracker.find(filter).sort({ date: -1 });
-
-      const data = trackers.map((item) => ({
-        ...item.toObject(),
-        currency: item.currency || "BDT",
-        exchangeRate: item.exchangeRate || 1,
-        convertedAmountBDT: toBDT(item),
-        expenseName: item.expenseName || item.description || "",
-      }));
-
-      res.json({ success: true, data });
+      const trackers = await FinanceTracker.find(filter)
+        .sort({ date: -1 })
+        .lean();
+      res.json({ success: true, data: trackers.map(toTransactionDTO) });
     } catch (error) {
       res.status(500).json({
         success: false,
@@ -321,48 +566,55 @@ const financeTrackerController = {
           .json({ success: false, message: "Finance tracker not found" });
       }
 
-      const payload = {
+      const merged = {
         ...tracker.toObject(),
         ...req.body,
       };
 
-      const validation = validateFinancePayload(payload);
+      const transactionType = resolveTransactionType(merged);
+      merged.transactionType = transactionType;
+      merged.type = transactionType;
+
+      const validation = validateFinancePayload(merged);
       if (!validation.isValid) {
-        return res
-          .status(400)
-          .json({
-            success: false,
-            message: "Validation failed",
-            errors: validation.errors,
-          });
+        return res.status(400).json({
+          success: false,
+          message: "Validation failed",
+          errors: validation.errors,
+        });
       }
 
-      const safeDate = normalizeDate(payload.date, tracker.date || new Date());
-      const selectedCurrency = payload.currency || "BDT";
+      const safeDate = normalizeDate(merged.date, tracker.date || new Date());
+      const selectedCurrency = merged.currency || "BDT";
 
-      let resolvedRate = Number(payload.exchangeRate);
+      let resolvedRate = Number(merged.exchangeRate);
       if (!resolvedRate || Number.isNaN(resolvedRate) || resolvedRate <= 0) {
         const rateMeta = await getRateToBDT(selectedCurrency, safeDate);
         resolvedRate = rateMeta.rateToBDT;
       }
 
-      tracker.type = payload.type;
-      tracker.amount = Number(payload.amount);
+      const canonicalName = getNameFromPayload(transactionType, merged);
+
+      tracker.transactionType = transactionType;
+      tracker.type = transactionType;
+      tracker.amount = Number(merged.amount);
       tracker.currency = selectedCurrency;
       tracker.exchangeRate = resolvedRate;
-      tracker.convertedAmountBDT =
-        Number(payload.amount) * Number(resolvedRate);
-      tracker.category = payload.category || "";
-      tracker.subCategory = payload.subCategory || "";
-      tracker.expenseName = payload.expenseName || payload.description || "";
-      tracker.description = payload.description || "";
-      tracker.paymentMethod = payload.paymentMethod || undefined;
-      tracker.source = payload.source || "";
+      tracker.convertedAmountBDT = Number(merged.amount) * Number(resolvedRate);
+      tracker.category = merged.category || "";
+      tracker.subCategory =
+        transactionType === "expense" ? merged.subCategory || "" : "";
+      tracker.transactionName = canonicalName;
+      tracker.expenseName = transactionType === "expense" ? canonicalName : "";
+      tracker.incomeSource = transactionType === "income" ? canonicalName : "";
+      tracker.description = merged.description || "";
+      tracker.paymentMethod = merged.paymentMethod || undefined;
+      tracker.source =
+        transactionType === "income" ? canonicalName : merged.source || "";
       tracker.date = safeDate;
 
       await tracker.save();
-
-      res.json({ success: true, data: tracker });
+      res.json({ success: true, data: toTransactionDTO(tracker.toObject()) });
     } catch (error) {
       res.status(500).json({
         success: false,
@@ -397,9 +649,13 @@ const financeTrackerController = {
     res.json({
       success: true,
       data: {
-        categories: FINANCE_CATEGORIES,
+        categories: EXPENSE_CATEGORIES,
+        expenseCategories: EXPENSE_CATEGORIES,
+        incomeCategories: INCOME_CATEGORIES,
+        transferCategories: TRANSFER_CATEGORIES,
+        transactionTypes: TRANSACTION_TYPES,
         currencies: SUPPORTED_CURRENCIES,
-        paymentMethods: ["Cash", "Card", "Bank", "Mobile Payment"],
+        paymentMethods: PAYMENT_METHODS,
       },
     });
   },
@@ -408,20 +664,22 @@ const financeTrackerController = {
     try {
       const query = String(req.query.q || "").trim();
       const limit = Math.min(Number(req.query.limit || 8), 20);
+      const transactionType = resolveTransactionType(req.query);
+      const field = getSuggestionField(transactionType);
       const userObjectId = new mongoose.Types.ObjectId(req.userId);
 
       const aggregate = await FinanceTracker.aggregate([
         {
           $match: {
             userId: userObjectId,
-            type: "expense",
-            expenseName: { $exists: true, $ne: "" },
+            transactionType,
+            [field]: { $exists: true, $ne: "" },
           },
         },
         {
           $group: {
-            _id: { $toLower: "$expenseName" },
-            expenseName: { $last: "$expenseName" },
+            _id: { $toLower: `$${field}` },
+            name: { $last: `$${field}` },
             category: { $last: "$category" },
             subCategory: { $last: "$subCategory" },
             count: { $sum: 1 },
@@ -447,7 +705,10 @@ const financeTrackerController = {
         })
         .slice(0, limit)
         .map((item) => ({
-          expenseName: item.expenseName,
+          name: item.name,
+          expenseName: transactionType === "expense" ? item.name : "",
+          incomeSource: transactionType === "income" ? item.name : "",
+          transactionName: item.name,
           category: item.category || "Other",
           subCategory: item.subCategory || "",
           count: item.count,
@@ -483,13 +744,11 @@ const financeTrackerController = {
         },
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          success: false,
-          message: "Failed to fetch rates",
-          error: error.message,
-        });
+      res.status(500).json({
+        success: false,
+        message: "Failed to fetch rates",
+        error: error.message,
+      });
     }
   },
 
@@ -498,81 +757,40 @@ const financeTrackerController = {
       const { range = "thisMonth", startDate, endDate } = req.query;
       const { start, end } = getDateRange({ range, startDate, endDate });
 
-      const expenses = await FinanceTracker.find({
+      const transactions = await FinanceTracker.find({
         userId: req.userId,
-        type: "expense",
         date: { $gte: start, $lte: end },
       })
         .sort({ date: 1 })
         .lean();
 
       const previousMonth = getPreviousMonthRange();
-      const previousExpenses = await FinanceTracker.find({
+      const previousTransactions = await FinanceTracker.find({
         userId: req.userId,
-        type: "expense",
         date: { $gte: previousMonth.start, $lte: previousMonth.end },
       }).lean();
 
-      const totalBDT = expenses.reduce((sum, item) => sum + toBDT(item), 0);
-      const previousTotalBDT = previousExpenses.reduce(
-        (sum, item) => sum + toBDT(item),
-        0,
+      const previousMonthTotals = previousTransactions.reduce(
+        (acc, item) => {
+          const tx = toTransactionDTO(item);
+          if (tx.transactionType === "income") {
+            acc.income += tx.convertedAmountBDT;
+          }
+          if (tx.transactionType === "expense") {
+            acc.expense += tx.convertedAmountBDT;
+          }
+          return acc;
+        },
+        { income: 0, expense: 0 },
       );
 
-      const daysInRange = Math.max(
-        1,
-        Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) +
-          1,
+      const analytics = buildAnalytics(
+        transactions,
+        range,
+        start,
+        end,
+        previousMonthTotals,
       );
-
-      const averageDaily = totalBDT / daysInRange;
-
-      const categoryTotals = expenses.reduce((acc, item) => {
-        const key = item.category || "Other";
-        acc[key] = (acc[key] || 0) + toBDT(item);
-        return acc;
-      }, {});
-
-      const categoryDistribution = Object.entries(categoryTotals)
-        .map(([name, value]) => ({ name, value }))
-        .sort((a, b) => b.value - a.value);
-
-      const largestCategory = categoryDistribution[0]?.name || "N/A";
-
-      const trendMap = expenses.reduce((acc, item) => {
-        const dateObj = new Date(item.date);
-        const key =
-          range === "thisYear"
-            ? `${dateObj.getFullYear()}-${String(dateObj.getMonth() + 1).padStart(2, "0")}`
-            : dateObj.toISOString().slice(0, 10);
-
-        if (!acc[key]) {
-          acc[key] = 0;
-        }
-        acc[key] += toBDT(item);
-        return acc;
-      }, {});
-
-      const trend = Object.entries(trendMap)
-        .map(([label, amount]) => ({ label, amount }))
-        .sort((a, b) => a.label.localeCompare(b.label));
-
-      const currencyTotals = expenses.reduce((acc, item) => {
-        const key = item.currency || "BDT";
-        acc[key] = (acc[key] || 0) + toBDT(item);
-        return acc;
-      }, {});
-
-      const currencyUsage = Object.entries(currencyTotals)
-        .map(([currency, value]) => ({ currency, value }))
-        .sort((a, b) => b.value - a.value);
-
-      const changePercentage =
-        previousTotalBDT > 0
-          ? ((totalBDT - previousTotalBDT) / previousTotalBDT) * 100
-          : totalBDT > 0
-            ? 100
-            : 0;
 
       res.json({
         success: true,
@@ -580,37 +798,142 @@ const financeTrackerController = {
           range,
           startDate: start,
           endDate: end,
-          summary: {
-            totalSpendingBDT: totalBDT,
-            previousMonthSpendingBDT: previousTotalBDT,
-            changePercentage,
-            averageDailySpendingBDT: averageDaily,
-            largestCategory,
-          },
-          charts: {
-            distribution: categoryDistribution,
-            trend,
-            categoryComparison: categoryDistribution.slice(0, 10),
-            currencyUsage,
-          },
-          recentTransactions: expenses
-            .slice()
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
-            .slice(0, 10)
-            .map((item) => ({
-              ...item,
-              convertedAmountBDT: toBDT(item),
-            })),
+          ...analytics,
         },
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          success: false,
-          message: "Failed to fetch analytics",
-          error: error.message,
-        });
+      res.status(500).json({
+        success: false,
+        message: "Failed to fetch analytics",
+        error: error.message,
+      });
+    }
+  },
+
+  getIncomeSummary: async (req, res) => {
+    try {
+      const { range = "thisMonth", startDate, endDate } = req.query;
+      const { start, end } = getDateRange({ range, startDate, endDate });
+
+      const incomes = await FinanceTracker.find({
+        userId: req.userId,
+        transactionType: "income",
+        date: { $gte: start, $lte: end },
+      }).lean();
+
+      const totalIncomeBDT = incomes.reduce(
+        (sum, item) => sum + toBDT(item),
+        0,
+      );
+
+      const sources = incomes.reduce((acc, item) => {
+        const key =
+          item.incomeSource || item.source || item.category || "Other";
+        acc[key] = (acc[key] || 0) + toBDT(item);
+        return acc;
+      }, {});
+
+      const bySource = Object.entries(sources)
+        .map(([name, value]) => ({
+          name,
+          value,
+          percentage: totalIncomeBDT > 0 ? (value / totalIncomeBDT) * 100 : 0,
+        }))
+        .sort((a, b) => b.value - a.value);
+
+      res.json({
+        success: true,
+        data: {
+          totalIncomeBDT,
+          bySource,
+        },
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Failed to fetch income summary",
+        error: error.message,
+      });
+    }
+  },
+
+  getBalance: async (req, res) => {
+    try {
+      const records = await FinanceTracker.find({ userId: req.userId }).lean();
+
+      const totals = records.reduce(
+        (acc, item) => {
+          const tx = toTransactionDTO(item);
+          if (tx.transactionType === "income") {
+            acc.income += tx.convertedAmountBDT;
+          } else if (tx.transactionType === "expense") {
+            acc.expense += tx.convertedAmountBDT;
+          }
+          return acc;
+        },
+        { income: 0, expense: 0 },
+      );
+
+      res.json({
+        success: true,
+        data: {
+          totalIncomeBDT: totals.income,
+          totalExpenseBDT: totals.expense,
+          totalBalanceBDT: totals.income - totals.expense,
+        },
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Failed to fetch balance",
+        error: error.message,
+      });
+    }
+  },
+
+  getCashFlow: async (req, res) => {
+    try {
+      const { range = "thisMonth", startDate, endDate } = req.query;
+      const { start, end } = getDateRange({ range, startDate, endDate });
+
+      const records = await FinanceTracker.find({
+        userId: req.userId,
+        date: { $gte: start, $lte: end },
+      }).lean();
+
+      const flowMap = records.reduce((acc, item) => {
+        const tx = toTransactionDTO(item);
+        const label = getCashFlowLabel(tx.date, range);
+
+        if (!acc[label]) {
+          acc[label] = { label, income: 0, expense: 0, transfer: 0 };
+        }
+
+        if (tx.transactionType === "income") {
+          acc[label].income += tx.convertedAmountBDT;
+        } else if (tx.transactionType === "expense") {
+          acc[label].expense += tx.convertedAmountBDT;
+        } else {
+          acc[label].transfer += tx.convertedAmountBDT;
+        }
+
+        return acc;
+      }, {});
+
+      const cashFlow = Object.values(flowMap)
+        .sort((a, b) => a.label.localeCompare(b.label))
+        .map((item) => ({
+          ...item,
+          net: item.income - item.expense,
+        }));
+
+      res.json({ success: true, data: cashFlow });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Failed to fetch cash flow",
+        error: error.message,
+      });
     }
   },
 
@@ -619,16 +942,27 @@ const financeTrackerController = {
       const legacyRecords = await FinanceTracker.find({
         userId: req.userId,
         $or: [
+          { transactionType: { $exists: false } },
           { currency: { $exists: false } },
           { exchangeRate: { $exists: false } },
           { convertedAmountBDT: { $exists: false } },
-          { expenseName: { $exists: false } },
+          { transactionName: { $exists: false } },
         ],
       });
 
       let updatedCount = 0;
 
       for (const record of legacyRecords) {
+        const transactionType = resolveTransactionType(record);
+
+        if (!record.transactionType) {
+          record.transactionType = transactionType;
+        }
+
+        if (!record.type) {
+          record.type = transactionType;
+        }
+
         if (!record.currency) {
           record.currency = "BDT";
         }
@@ -650,8 +984,21 @@ const financeTrackerController = {
             Number(record.amount || 0) * Number(record.exchangeRate || 1);
         }
 
-        if (!record.expenseName && record.type === "expense") {
-          record.expenseName = record.description || "Expense";
+        if (!record.transactionName) {
+          record.transactionName =
+            record.expenseName ||
+            record.incomeSource ||
+            record.source ||
+            record.description ||
+            "Transaction";
+        }
+
+        if (record.transactionType === "expense" && !record.expenseName) {
+          record.expenseName = record.transactionName;
+        }
+
+        if (record.transactionType === "income" && !record.incomeSource) {
+          record.incomeSource = record.source || record.transactionName;
         }
 
         await record.save();
@@ -665,13 +1012,11 @@ const financeTrackerController = {
         },
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          success: false,
-          message: "Migration failed",
-          error: error.message,
-        });
+      res.status(500).json({
+        success: false,
+        message: "Migration failed",
+        error: error.message,
+      });
     }
   },
 };

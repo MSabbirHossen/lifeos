@@ -10,16 +10,29 @@ const migrateFinanceMultiCurrency = async () => {
 
     const records = await FinanceTracker.find({
       $or: [
+        { transactionType: { $exists: false } },
         { currency: { $exists: false } },
         { exchangeRate: { $exists: false } },
         { convertedAmountBDT: { $exists: false } },
         { expenseName: { $exists: false } },
+        { transactionName: { $exists: false } },
       ],
     });
 
     let updatedCount = 0;
 
     for (const record of records) {
+      const transactionType =
+        record.transactionType || record.type || "expense";
+
+      if (!record.transactionType) {
+        record.transactionType = transactionType;
+      }
+
+      if (!record.type) {
+        record.type = transactionType;
+      }
+
       if (!record.currency) {
         record.currency = "BDT";
       }
@@ -43,6 +56,19 @@ const migrateFinanceMultiCurrency = async () => {
 
       if (!record.expenseName && record.type === "expense") {
         record.expenseName = record.description || "Expense";
+      }
+
+      if (!record.transactionName) {
+        record.transactionName =
+          record.expenseName ||
+          record.incomeSource ||
+          record.source ||
+          record.description ||
+          "Transaction";
+      }
+
+      if (record.transactionType === "income" && !record.incomeSource) {
+        record.incomeSource = record.source || record.transactionName;
       }
 
       await record.save();
