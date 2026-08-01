@@ -48,11 +48,12 @@ const validateFinancePayload = (payload = {}) => {
 
 const validateTimeTrackerPayload = (payload = {}) => {
   const errors = [];
+  const taskName = payload.taskName ?? payload.task;
 
   if (
-    !payload.task ||
-    typeof payload.task !== "string" ||
-    !payload.task.trim()
+    !taskName ||
+    typeof taskName !== "string" ||
+    !taskName.trim()
   ) {
     errors.push("task is required");
   }
@@ -76,6 +77,86 @@ const validateTimeTrackerPayload = (payload = {}) => {
     errors.push("endTime must be a valid date");
   }
 
+  if (
+    payload.startTime &&
+    payload.endTime &&
+    !Number.isNaN(new Date(payload.startTime).getTime()) &&
+    !Number.isNaN(new Date(payload.endTime).getTime()) &&
+    new Date(payload.endTime).getTime() <= new Date(payload.startTime).getTime()
+  ) {
+    errors.push("endTime must be after startTime");
+  }
+
+  return { isValid: errors.length === 0, errors };
+};
+
+const validateTaskPayload = (payload = {}) => {
+  const errors = [];
+
+  if (
+    !payload.name ||
+    typeof payload.name !== "string" ||
+    !payload.name.trim()
+  ) {
+    errors.push("name is required");
+  }
+
+  return { isValid: errors.length === 0, errors };
+};
+
+const validateJournalPayload = (payload = {}) => {
+  const errors = [];
+
+  if (
+    !payload.title ||
+    typeof payload.title !== "string" ||
+    !payload.title.trim()
+  ) {
+    errors.push("title is required");
+  }
+
+  if (payload.mood && typeof payload.mood === "string") {
+    const allowedMoods = [
+      "happy",
+      "sad",
+      "neutral",
+      "excited",
+      "anxious",
+      "calm",
+    ];
+    if (!allowedMoods.includes(payload.mood)) {
+      errors.push("mood must be a valid option");
+    }
+  }
+
+  if (
+    payload.reflectionQuestion &&
+    typeof payload.reflectionQuestion !== "object"
+  ) {
+    errors.push("reflectionQuestion must be an object");
+  }
+
+  if (
+    payload.reflectionQuestion &&
+    typeof payload.reflectionQuestion === "object"
+  ) {
+    const { questionId, text, category } = payload.reflectionQuestion;
+
+    if (questionId != null && typeof questionId !== "string") {
+      errors.push(
+        "reflectionQuestion.questionId must be a string when provided",
+      );
+    }
+
+    if (text != null && typeof text !== "string") {
+      errors.push("reflectionQuestion.text must be a string when provided");
+    }
+
+    if (category != null && typeof category !== "string") {
+      errors.push("reflectionQuestion.category must be a string when provided");
+    }
+  }
+
   return { isValid: errors.length === 0, errors };
 };
 
@@ -83,4 +164,6 @@ module.exports = {
   validateAuthPayload,
   validateFinancePayload,
   validateTimeTrackerPayload,
+  validateTaskPayload,
+  validateJournalPayload,
 };

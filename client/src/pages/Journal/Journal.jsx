@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from "react";
 import Card from "../../components/Card";
 import Modal from "../../components/Modal";
+import ReflectionPrompt from "../../components/ReflectionPrompt";
 import API from "../../utils/api";
 import { Trash2, Plus } from "lucide-react";
+
+const defaultFormData = {
+  title: "",
+  mood: "neutral",
+  activities: [],
+  highlights: "",
+  notes: "",
+};
 
 const Journal = () => {
   const [journals, setJournals] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    title: "",
-    mood: "neutral",
-    activities: [],
-    highlights: "",
-    notes: "",
-  });
+  const [reflectionLoading, setReflectionLoading] = useState(false);
+  const [reflectionError, setReflectionError] = useState("");
+  const [reflectionQuestion, setReflectionQuestion] = useState(null);
+  const [formData, setFormData] = useState(defaultFormData);
 
   useEffect(() => {
     fetchJournals();
@@ -36,19 +42,59 @@ const Journal = () => {
 
   const handleSubmit = async () => {
     try {
-      await API.post("/journal", formData);
-      setFormData({
-        title: "",
-        mood: "neutral",
-        activities: [],
-        highlights: "",
-        notes: "",
-      });
+      const payload = {
+        ...formData,
+        reflectionQuestion: reflectionQuestion
+          ? {
+              questionId: reflectionQuestion.id,
+              text: reflectionQuestion.text,
+              category: reflectionQuestion.category,
+            }
+          : undefined,
+      };
+
+      await API.post("/journal", payload);
+      setFormData(defaultFormData);
+      setReflectionQuestion(null);
+      setReflectionError("");
       setIsModalOpen(false);
       fetchJournals();
     } catch (error) {
       console.error("Error creating journal:", error);
     }
+  };
+
+  const fetchRandomReflectionQuestion = async () => {
+    try {
+      setReflectionLoading(true);
+      setReflectionError("");
+      const { data } = await API.get("/journal/questions/random");
+      setReflectionQuestion(data.question);
+    } catch (questionError) {
+      setReflectionError("Unable to load reflection question right now.");
+      setReflectionQuestion(null);
+    } finally {
+      setReflectionLoading(false);
+    }
+  };
+
+  const openCreateModal = () => {
+    setIsModalOpen(true);
+    fetchRandomReflectionQuestion();
+  };
+
+  const appendQuestionToNotes = () => {
+    if (!reflectionQuestion?.text) {
+      return;
+    }
+
+    setFormData((prev) => {
+      const separator = prev.notes.trim().length > 0 ? "\n\n" : "";
+      return {
+        ...prev,
+        notes: `${prev.notes}${separator}Q: ${reflectionQuestion.text}\nA: `,
+      };
+    });
   };
 
   const handleDelete = async (id) => {
@@ -67,7 +113,7 @@ const Journal = () => {
           Journal
         </h1>
         <button
-          onClick={() => setIsModalOpen(true)}
+          onClick={openCreateModal}
           className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
         >
           <Plus size={20} /> New Entry
@@ -102,6 +148,21 @@ const Journal = () => {
                   <p className="mt-3 text-gray-700 dark:text-gray-300">
                     {journal.notes}
                   </p>
+                  {journal.reflectionQuestion?.text && (
+                    <div className="mt-3 rounded-md border border-indigo-200 dark:border-indigo-800 bg-indigo-50/70 dark:bg-indigo-900/20 p-3">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700 dark:text-indigo-300">
+                        Reflection Question
+                      </p>
+                      <p className="mt-1 text-sm text-gray-800 dark:text-gray-200">
+                        {journal.reflectionQuestion.text}
+                      </p>
+                      {journal.reflectionQuestion.category && (
+                        <p className="mt-1 text-xs text-indigo-700 dark:text-indigo-300">
+                          Category: {journal.reflectionQuestion.category}
+                        </p>
+                      )}
+                    </div>
+                  )}
                   {journal.highlights && (
                     <p className="mt-2 text-sm text-green-600 dark:text-green-400">
                       <strong>Highlights:</strong> {journal.highlights}
@@ -130,6 +191,23 @@ const Journal = () => {
           <p className="text-xs text-gray-500 dark:text-gray-400">
             * Required fields
           </p>
+          <ReflectionPrompt
+            question={reflectionQuestion?.text || ""}
+            category={reflectionQuestion?.category || ""}
+            loading={reflectionLoading}
+            error={reflectionError}
+            onRefresh={fetchRandomReflectionQuestion}
+          />
+          <div>
+            <button
+              type="button"
+              onClick={appendQuestionToNotes}
+              disabled={!reflectionQuestion?.text}
+              className="w-full px-3 py-2 text-sm font-medium bg-indigo-500 text-white rounded hover:bg-indigo-600 disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              Insert Question Into Notes
+            </button>
+          </div>
           <div>
             <label
               htmlFor="journal-title"

@@ -3,14 +3,26 @@ const FitnessTracker = require("../models/FitnessTracker");
 const fitnessTrackerController = {
   create: async (req, res) => {
     try {
-      const { exercise, type, duration, caloriesBurned, weight } = req.body;
-      const tracker = new FitnessTracker({
-        userId: req.userId,
+      const {
         exercise,
+        exerciseId,
         type,
         duration,
         caloriesBurned,
         weight,
+        sets,
+        reps,
+      } = req.body;
+      const tracker = new FitnessTracker({
+        userId: req.userId,
+        exercise,
+        exerciseId,
+        type,
+        duration,
+        caloriesBurned,
+        weight,
+        sets,
+        reps,
       });
       await tracker.save();
       res.status(201).json(tracker);
@@ -44,13 +56,11 @@ const fitnessTrackerController = {
       }
       res.json({ success: true, data: tracker });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          success: false,
-          message: "Server error",
-          error: error.message,
-        });
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        error: error.message,
+      });
     }
   },
 
@@ -67,13 +77,11 @@ const fitnessTrackerController = {
       }
       res.json({ success: true, message: "Fitness tracker deleted" });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          success: false,
-          message: "Server error",
-          error: error.message,
-        });
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        error: error.message,
+      });
     }
   },
 };

@@ -18,6 +18,21 @@ const journalSchema = new mongoose.Schema({
   highlights: String,
   notes: String,
   images: [String],
+  reflectionQuestion: {
+    questionId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "JournalQuestion",
+      default: null,
+    },
+    text: {
+      type: String,
+      default: "",
+    },
+    category: {
+      type: String,
+      default: "",
+    },
+  },
   date: {
     type: Date,
     default: Date.now,
@@ -27,5 +42,8 @@ const journalSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
+
+journalSchema.index({ userId: 1, "reflectionQuestion.category": 1, date: -1 });
+journalSchema.index({ userId: 1, "reflectionQuestion.questionId": 1 });
 
 module.exports = mongoose.model("Journal", journalSchema);

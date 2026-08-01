@@ -10,6 +10,10 @@ const fitnessTrackerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  exerciseId: {
+    type: String,
+    default: "",
+  },
   type: {
     type: String,
     enum: ["cardio", "strength", "flexibility", "sports"],
@@ -21,6 +25,14 @@ const fitnessTrackerSchema = new mongoose.Schema({
   },
   caloriesBurned: Number,
   weight: Number,
+  sets: {
+    type: Number,
+    default: 0,
+  },
+  reps: {
+    type: Number,
+    default: 0,
+  },
   date: {
     type: Date,
     default: Date.now,

@@ -4,6 +4,9 @@ const assert = require("node:assert/strict");
 const {
   validateAuthPayload,
   validateFinancePayload,
+  validateJournalPayload,
+  validateTimeTrackerPayload,
+  validateTaskPayload,
 } = require("../utils/validation");
 
 test("validateAuthPayload rejects missing credentials", () => {
@@ -28,4 +31,45 @@ test("validateFinancePayload requires amount and description", () => {
 
   assert.equal(result.isValid, false);
   assert.ok(result.errors.includes("description is required"));
+});
+
+test("validateJournalPayload rejects missing title", () => {
+  const result = validateJournalPayload({ notes: "sample" });
+
+  assert.equal(result.isValid, false);
+  assert.ok(result.errors.includes("title is required"));
+});
+
+test("validateJournalPayload accepts reflection question snapshot", () => {
+  const result = validateJournalPayload({
+    title: "Daily check-in",
+    notes: "Reflection answer",
+    reflectionQuestion: {
+      questionId: "689123456789012345678901",
+      text: "What motivates me deeply?",
+      category: "Purpose",
+    },
+  });
+
+  assert.equal(result.isValid, true);
+  assert.deepEqual(result.errors, []);
+});
+
+test("validateTimeTrackerPayload requires a task name and valid time span", () => {
+  const result = validateTimeTrackerPayload({
+    taskName: "React Learning",
+    category: "Textbook Study",
+    startTime: "2026-08-01T10:00:00.000Z",
+    endTime: "2026-08-01T09:00:00.000Z",
+  });
+
+  assert.equal(result.isValid, false);
+  assert.ok(result.errors.includes("endTime must be after startTime"));
+});
+
+test("validateTaskPayload accepts a populated task name", () => {
+  const result = validateTaskPayload({ name: "Quran Memorization" });
+
+  assert.equal(result.isValid, true);
+  assert.deepEqual(result.errors, []);
 });

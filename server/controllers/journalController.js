@@ -1,9 +1,28 @@
 const Journal = require("../models/Journal");
+const { validateJournalPayload } = require("../utils/validation");
 
 const journalController = {
   create: async (req, res) => {
     try {
-      const { title, mood, activities, highlights, notes, images } = req.body;
+      const validation = validateJournalPayload(req.body);
+
+      if (!validation.isValid) {
+        return res.status(400).json({
+          success: false,
+          message: "Validation failed",
+          errors: validation.errors,
+        });
+      }
+
+      const {
+        title,
+        mood,
+        activities,
+        highlights,
+        notes,
+        images,
+        reflectionQuestion,
+      } = req.body;
       const journal = new Journal({
         userId: req.userId,
         title,
@@ -12,6 +31,13 @@ const journalController = {
         highlights,
         notes,
         images,
+        reflectionQuestion: reflectionQuestion
+          ? {
+              questionId: reflectionQuestion.questionId || null,
+              text: reflectionQuestion.text || "",
+              category: reflectionQuestion.category || "",
+            }
+          : undefined,
       });
       await journal.save();
       res.status(201).json(journal);
@@ -57,13 +83,11 @@ const journalController = {
       }
       res.json({ success: true, data: journal });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          success: false,
-          message: "Server error",
-          error: error.message,
-        });
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        error: error.message,
+      });
     }
   },
 
@@ -80,13 +104,11 @@ const journalController = {
       }
       res.json({ success: true, message: "Journal deleted" });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          success: false,
-          message: "Server error",
-          error: error.message,
-        });
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        error: error.message,
+      });
     }
   },
 };
