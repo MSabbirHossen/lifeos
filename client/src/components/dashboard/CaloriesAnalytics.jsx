@@ -55,12 +55,15 @@ const CaloriesAnalytics = ({ overview, charts }) => {
           value={`${overview?.consumedCalories || 0} kcal`}
         />
         <Stat label="Burned" value={`${overview?.burnedCalories || 0} kcal`} />
-        <Stat label="Current Weight" value={overview?.currentWeight || "-"} />
         <Stat
-          label="Target Progress"
+          label="Weekly Avg Balance"
+          value={`${overview?.weeklyAverageBalance || 0} kcal`}
+        />
+        <Stat
+          label="Weight Prediction"
           value={
-            overview?.progressPercentage != null
-              ? `${overview.progressPercentage}%`
+            overview?.weightTrendPrediction
+              ? `${overview.weightTrendPrediction.trend} (${overview.weightTrendPrediction.predicted7DayChange} /7d)`
               : "-"
           }
         />

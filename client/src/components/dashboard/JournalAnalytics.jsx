@@ -44,13 +44,13 @@ const JournalAnalytics = ({ overview, charts, entries = [] }) => {
       </p>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
-        <Stat label="Entries" value={overview?.totalEntries || 0} />
+        <Stat label="Entries" value={overview?.entries || 0} />
         <Stat
           label="Writing Streak"
           value={`${overview?.writingStreak || 0} days`}
         />
-        <Stat label="Mood Score" value={`${overview?.moodScore || 0}%`} />
-        <Stat label="Avg Words/Day" value={overview?.averageWordsPerDay || 0} />
+        <Stat label="Frequency" value={`${overview?.entryFrequency || 0}%`} />
+        <Stat label="Avg Words" value={overview?.averageWords || 0} />
       </div>
 
       <div className="grid xl:grid-cols-3 gap-4 mt-4">

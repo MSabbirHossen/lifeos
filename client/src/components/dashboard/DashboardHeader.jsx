@@ -1,11 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { CalendarDays, Sparkles } from "lucide-react";
+import { CalendarDays, Download, Sparkles } from "lucide-react";
 
 const rangeLabels = {
   today: "Today",
   "7d": "7 Days",
   "30d": "30 Days",
+  "90d": "90 Days",
   year: "Year",
 };
 
@@ -19,6 +20,11 @@ const DashboardHeader = ({
   currency,
   onCurrencyChange,
   currencyRates,
+  streakSummary,
+  comparePrevious,
+  onComparePreviousChange,
+  onExportJson,
+  onExportPdf,
 }) => {
   const radius = 54;
   const circumference = 2 * Math.PI * radius;
@@ -30,7 +36,7 @@ const DashboardHeader = ({
       initial={{ opacity: 0, y: 18 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45 }}
-      className="rounded-2xl border border-slate-200/80 dark:border-slate-700/70 bg-gradient-to-r from-cyan-100 via-sky-50 to-emerald-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 p-5 md:p-6 shadow-sm"
+      className="rounded-2xl border border-slate-200/70 dark:border-slate-700/60 bg-gradient-to-r from-cyan-100/90 via-sky-50/90 to-emerald-100/90 dark:from-slate-900/90 dark:via-slate-800/90 dark:to-slate-900/90 backdrop-blur-md p-4 sm:p-5 md:p-6 shadow-sm"
     >
       <div className="grid gap-6 lg:grid-cols-[1fr_auto] items-center">
         <div className="space-y-3">
@@ -44,9 +50,14 @@ const DashboardHeader = ({
             })}
           </p>
 
-          <h1 className="text-2xl md:text-3xl font-semibold text-slate-900 dark:text-white tracking-tight">
+          <motion.h1
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.08, duration: 0.45 }}
+            className="text-2xl md:text-3xl font-semibold text-slate-900 dark:text-white tracking-tight"
+          >
             {greeting}, {userName || "Friend"}
-          </h1>
+          </motion.h1>
 
           <p className="text-slate-700 dark:text-slate-200 text-sm md:text-base">
             <span className="font-medium">
@@ -55,13 +66,13 @@ const DashboardHeader = ({
             <span className="block mt-1">{motivation}</span>
           </p>
 
-          <div className="flex flex-wrap gap-3 pt-1">
+          <div className="flex flex-wrap gap-2 sm:gap-3 pt-1 items-end">
             <label className="text-sm text-slate-700 dark:text-slate-200">
               <span className="mr-2">Range</span>
               <select
                 value={range}
                 onChange={(e) => onRangeChange(e.target.value)}
-                className="rounded-lg border border-slate-300 dark:border-slate-600 bg-white/90 dark:bg-slate-900 px-3 py-1.5 text-sm"
+                className="rounded-lg border border-slate-300 dark:border-slate-600 bg-white/90 dark:bg-slate-900 px-2.5 py-2 text-xs sm:text-sm"
               >
                 {Object.entries(rangeLabels).map(([value, label]) => (
                   <option key={value} value={value}>
@@ -76,18 +87,52 @@ const DashboardHeader = ({
               <select
                 value={currency}
                 onChange={(e) => onCurrencyChange(e.target.value)}
-                className="rounded-lg border border-slate-300 dark:border-slate-600 bg-white/90 dark:bg-slate-900 px-3 py-1.5 text-sm"
+                className="rounded-lg border border-slate-300 dark:border-slate-600 bg-white/90 dark:bg-slate-900 px-2.5 py-2 text-xs sm:text-sm"
               >
                 <option value="BDT">BDT</option>
                 <option value="SAR">SAR</option>
                 <option value="USD">USD</option>
               </select>
             </label>
+
+            <label className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 inline-flex items-center gap-2 mb-0.5">
+              <input
+                type="checkbox"
+                checked={comparePrevious}
+                onChange={(e) => onComparePreviousChange(e.target.checked)}
+                className="accent-cyan-600"
+              />
+              Compare previous period
+            </label>
+
+            <button
+              type="button"
+              onClick={onExportJson}
+              className="inline-flex items-center gap-1 rounded-lg border border-slate-300 dark:border-slate-600 bg-white/90 dark:bg-slate-900 px-2.5 py-2 text-xs sm:text-sm text-slate-700 dark:text-slate-100"
+            >
+              <Download size={14} /> JSON
+            </button>
+            <button
+              type="button"
+              onClick={onExportPdf}
+              className="inline-flex items-center gap-1 rounded-lg border border-slate-300 dark:border-slate-600 bg-white/90 dark:bg-slate-900 px-2.5 py-2 text-xs sm:text-sm text-slate-700 dark:text-slate-100"
+            >
+              <Download size={14} /> PDF
+            </button>
           </div>
 
           <p className="text-xs text-slate-600 dark:text-slate-300">
             1 SAR = {Number(currencyRates?.SAR_BDT || 0).toFixed(2)} BDT | 1 USD
             = {Number(currencyRates?.USD_BDT || 0).toFixed(2)} BDT
+          </p>
+
+          <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200">
+            Current streak highlight: {streakSummary?.bestCurrent || 0} days
+            <span className="block text-slate-600 dark:text-slate-300 mt-0.5">
+              Study {streakSummary?.study || 0}d | Journal{" "}
+              {streakSummary?.journal || 0}d | Quran {streakSummary?.quran || 0}
+              d | Habits {streakSummary?.habits || 0}d
+            </span>
           </p>
         </div>
 

@@ -34,29 +34,45 @@ const TimeAnalytics = ({ overview, charts }) => {
         {overview?.summary}
       </p>
 
-      <div className="grid lg:grid-cols-3 gap-4 mt-4">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-4">
         <div className="rounded-xl bg-slate-50 dark:bg-slate-900/40 p-3">
           <p className="text-xs text-slate-500 dark:text-slate-300">
-            Total Tracked Hours
+            Today Hours
           </p>
           <p className="text-2xl font-semibold text-slate-900 dark:text-white">
-            {overview?.totalHours || 0}h
+            {overview?.todayHours || 0}h
           </p>
         </div>
         <div className="rounded-xl bg-slate-50 dark:bg-slate-900/40 p-3">
           <p className="text-xs text-slate-500 dark:text-slate-300">
-            Productive Hours
+            Weekly Hours
           </p>
           <p className="text-2xl font-semibold text-slate-900 dark:text-white">
-            {overview?.productiveHours || 0}h
+            {overview?.weeklyHours || 0}h
           </p>
         </div>
         <div className="rounded-xl bg-slate-50 dark:bg-slate-900/40 p-3">
           <p className="text-xs text-slate-500 dark:text-slate-300">
-            Monthly Comparison
+            Monthly Hours
           </p>
           <p className="text-2xl font-semibold text-slate-900 dark:text-white">
-            {Number(overview?.monthlyComparisonPercent || 0).toFixed(1)}%
+            {overview?.monthlyHours || 0}h
+          </p>
+        </div>
+        <div className="rounded-xl bg-slate-50 dark:bg-slate-900/40 p-3">
+          <p className="text-xs text-slate-500 dark:text-slate-300">
+            Productivity
+          </p>
+          <p className="text-2xl font-semibold text-slate-900 dark:text-white">
+            {overview?.productivityPercentage || 0}%
+          </p>
+        </div>
+        <div className="rounded-xl bg-slate-50 dark:bg-slate-900/40 p-3">
+          <p className="text-xs text-slate-500 dark:text-slate-300">
+            Top Activity
+          </p>
+          <p className="text-sm font-semibold text-slate-900 dark:text-white mt-1 line-clamp-2">
+            {overview?.mostProductiveActivity?.name || "-"}
           </p>
         </div>
       </div>

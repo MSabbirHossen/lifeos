@@ -39,15 +39,15 @@ const FitnessAnalytics = ({ overview, charts }) => {
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-3 mt-4">
         <Stat label="Total Workouts" value={overview?.totalWorkouts || 0} />
-        <Stat
-          label="Duration"
-          value={`${overview?.durationMinutes || 0} min`}
-        />
+        <Stat label="Duration" value={`${overview?.totalMinutes || 0} min`} />
         <Stat label="Calories Burned" value={overview?.caloriesBurned || 0} />
-        <Stat label="Strength Volume" value={overview?.strengthProgress || 0} />
+        <Stat
+          label="Consistency"
+          value={`${overview?.workoutConsistency || 0}%`}
+        />
         <Stat
           label="Muscle Groups"
-          value={overview?.muscleGroupsTrained || 0}
+          value={overview?.muscleGroupFrequency?.length || 0}
         />
       </div>
 

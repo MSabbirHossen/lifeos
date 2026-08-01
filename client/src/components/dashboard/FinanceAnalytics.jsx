@@ -55,7 +55,7 @@ const FinanceAnalytics = ({ overview, charts }) => {
           label="Balance"
           value={`${overview?.currency || "BDT"} ${Number(overview?.balance || 0).toFixed(2)}`}
         />
-        <Stat label="Savings Rate" value={`${overview?.savingsRate || 0}%`} />
+        <Stat label="Savings Rate" value={`${overview?.savingsRate ?? 0}%`} />
       </div>
 
       <div className="grid xl:grid-cols-3 gap-4 mt-4">

@@ -46,9 +46,15 @@ const StudyAnalytics = ({ overview, charts }) => {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
         <Stat label="Total Study" value={`${overview?.totalHours || 0}h`} />
-        <Stat label="Subjects" value={overview?.subjectsStudied || 0} />
+        <Stat
+          label="Subjects"
+          value={overview?.subjectDistribution?.length || 0}
+        />
         <Stat label="Streak" value={`${overview?.currentStreak || 0} days`} />
-        <Stat label="Goal" value={`${overview?.weeklyGoalCompletion || 0}%`} />
+        <Stat
+          label="Consistency"
+          value={`${overview?.weeklyConsistency || 0}%`}
+        />
       </div>
 
       <div className="grid xl:grid-cols-3 gap-4 mt-4">

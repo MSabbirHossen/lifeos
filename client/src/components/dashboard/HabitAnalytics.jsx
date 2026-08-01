@@ -36,26 +36,29 @@ const HabitAnalytics = ({ overview, charts }) => {
             Completed
           </p>
           <p className="text-4xl font-bold text-emerald-600 dark:text-emerald-400 mt-2">
-            {overview?.completion || 0}%
+            {overview?.completionRate || 0}%
           </p>
           <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">
-            Incomplete {Math.max(0, 100 - Number(overview?.completion || 0))}%
+            Incomplete{" "}
+            {overview?.incomplete ??
+              Math.max(0, 100 - Number(overview?.completionRate || 0))}
+            %
           </p>
         </div>
         <Stat
           label="Strongest Habit"
           value={
-            overview?.strongestHabit
-              ? `${overview.strongestHabit.name} (${overview.strongestHabit.completionPercentage}%)`
+            overview?.bestHabit
+              ? `${overview.bestHabit.name} (${overview.bestHabit.completionRate}%)`
               : "-"
           }
         />
         <Stat
-          label="Weakest Habit"
+          label="Weakest Habit / Longest Streak"
           value={
-            overview?.weakestHabit
-              ? `${overview.weakestHabit.name} (${overview.weakestHabit.completionPercentage}%)`
-              : "-"
+            overview?.worstHabit
+              ? `${overview.worstHabit.name} (${overview.worstHabit.completionRate}%) | ${overview.longestStreak || 0}d`
+              : `${overview?.longestStreak || 0}d`
           }
         />
       </div>

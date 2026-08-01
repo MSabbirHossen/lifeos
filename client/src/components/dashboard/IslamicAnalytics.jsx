@@ -38,11 +38,14 @@ const IslamicAnalytics = ({ overview, charts }) => {
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
         <Stat
           label="Salah Completion"
-          value={`${overview?.salahCompletion || 0}%`}
+          value={`${overview?.prayerScore || 0}%`}
         />
         <Stat label="Quran Pages" value={overview?.quranPages || 0} />
-        <Stat label="Dhikr" value={overview?.dhikrCount || 0} />
-        <Stat label="Fasting Days" value={overview?.fastingDays || 0} />
+        <Stat
+          label="Quran Streak"
+          value={`${overview?.quranStreak || 0} days`}
+        />
+        <Stat label="Islamic Lessons" value={overview?.islamicLessons || 0} />
       </div>
 
       <div className="grid grid-cols-5 gap-2 mt-4">
@@ -58,7 +61,7 @@ const IslamicAnalytics = ({ overview, charts }) => {
               <div
                 className="h-2 rounded-full bg-emerald-500"
                 style={{
-                  width: `${Math.max(10, Math.min(100, Number(overview?.salahCompletion || 0) - idx * 4))}%`,
+                  width: `${Math.max(10, Math.min(100, Number(overview?.prayerScore || 0) - idx * 4))}%`,
                 }}
               />
             </div>
