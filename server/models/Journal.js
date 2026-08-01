@@ -12,7 +12,17 @@ const journalSchema = new mongoose.Schema({
   },
   mood: {
     type: String,
-    enum: ["happy", "sad", "neutral", "excited", "anxious", "calm"],
+    enum: [
+      "happy",
+      "sad",
+      "neutral",
+      "excited",
+      "anxious",
+      "calm",
+      "motivated",
+      "stressed",
+      "grateful",
+    ],
   },
   activities: [String],
   highlights: String,

@@ -10,7 +10,9 @@
     "server:start": "node server/server.js",
     "client:build": "cd client && npm run build",
     "seed": "node database/seed.js",
+    "seed:finance": "node database/seedFinanceData.js",
     "seed:questions": "node database/seedQuestions.js",
+    "migrate:finance": "node database/migrateFinanceMultiCurrency.js",
     "test": "node --test server/__tests__/*.test.js",
     "lint": "npm run test"
   },

@@ -79,13 +79,16 @@ const Dashboard = () => {
 
   const totalExpenses = data.finance
     .filter((f) => f.type === "expense")
-    .reduce((sum, f) => sum + f.amount, 0);
+    .reduce((sum, f) => sum + (f.convertedAmountBDT || f.amount || 0), 0);
 
   const totalIncome = data.finance
     .filter((f) => f.type === "income")
-    .reduce((sum, f) => sum + f.amount, 0);
+    .reduce((sum, f) => sum + (f.convertedAmountBDT || f.amount || 0), 0);
 
-  const completedHabits = data.habits.filter((h) => h.status).length;
+  const activeHabits = data.habits.filter((h) => h.active !== false);
+  const completedHabits = activeHabits.filter(
+    (h) => h.completedToday || h.status,
+  ).length;
 
   if (loading) {
     return (
@@ -117,7 +120,7 @@ const Dashboard = () => {
             <p className="text-3xl font-bold text-green-500">
               {completedHabits}
             </p>
-            <p className="text-sm text-gray-500">of {data.habits.length}</p>
+            <p className="text-sm text-gray-500">of {activeHabits.length}</p>
           </div>
         </Card>
 
@@ -125,7 +128,7 @@ const Dashboard = () => {
           <div className="text-center">
             <p className="text-gray-600 dark:text-gray-400">Today's Expenses</p>
             <p className="text-3xl font-bold text-red-500">
-              ${totalExpenses.toFixed(2)}
+              ৳{totalExpenses.toFixed(2)}
             </p>
           </div>
         </Card>
@@ -134,7 +137,7 @@ const Dashboard = () => {
           <div className="text-center">
             <p className="text-gray-600 dark:text-gray-400">Total Income</p>
             <p className="text-3xl font-bold text-green-600">
-              ${totalIncome.toFixed(2)}
+              ৳{totalIncome.toFixed(2)}
             </p>
           </div>
         </Card>

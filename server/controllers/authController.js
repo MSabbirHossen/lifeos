@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const { validateAuthPayload } = require("../utils/validation");
+const { initializeDefaultHabitsForUser } = require("../services/habitService");
 
 const createToken = (userId) => {
   return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
@@ -31,6 +32,7 @@ const authController = {
 
       user = new User({ username, email, password });
       await user.save();
+      await initializeDefaultHabitsForUser(user._id);
 
       const token = createToken(user._id);
 
@@ -40,13 +42,11 @@ const authController = {
         user: { id: user._id, username: user.username, email: user.email },
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          success: false,
-          message: "Server error",
-          error: error.message,
-        });
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        error: error.message,
+      });
     }
   },
 
@@ -85,13 +85,11 @@ const authController = {
         user: { id: user._id, username: user.username, email: user.email },
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          success: false,
-          message: "Server error",
-          error: error.message,
-        });
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        error: error.message,
+      });
     }
   },
 
@@ -100,13 +98,11 @@ const authController = {
       const user = await User.findById(req.userId).select("-password");
       res.json({ success: true, data: user });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          success: false,
-          message: "Server error",
-          error: error.message,
-        });
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        error: error.message,
+      });
     }
   },
 
@@ -120,13 +116,11 @@ const authController = {
       ).select("-password");
       res.json({ success: true, data: user });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          success: false,
-          message: "Server error",
-          error: error.message,
-        });
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        error: error.message,
+      });
     }
   },
 };

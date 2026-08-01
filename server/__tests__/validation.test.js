@@ -28,11 +28,26 @@ test("validateAuthPayload accepts valid credentials", () => {
   assert.deepEqual(result.errors, []);
 });
 
-test("validateFinancePayload requires amount and description", () => {
+test("validateFinancePayload requires amount and expenseName for expenses", () => {
   const result = validateFinancePayload({ type: "expense", amount: 0 });
 
   assert.equal(result.isValid, false);
-  assert.ok(result.errors.includes("description is required"));
+  assert.ok(
+    result.errors.includes("expenseName is required for expense entries"),
+  );
+});
+
+test("validateFinancePayload requires description for income", () => {
+  const result = validateFinancePayload({
+    type: "income",
+    amount: 1000,
+    description: "",
+  });
+
+  assert.equal(result.isValid, false);
+  assert.ok(
+    result.errors.includes("description is required for income entries"),
+  );
 });
 
 test("validateJournalPayload rejects missing title", () => {
