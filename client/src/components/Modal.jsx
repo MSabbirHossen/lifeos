@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { X } from "lucide-react";
 
-const Modal = ({ isOpen, title, children, onClose, onSubmit }) => {
+const Modal = ({
+  isOpen,
+  title,
+  children,
+  onClose,
+  onSubmit,
+  submitLabel = "Submit",
+}) => {
   if (!isOpen) return null;
 
   return (
@@ -30,7 +37,7 @@ const Modal = ({ isOpen, title, children, onClose, onSubmit }) => {
             onClick={onSubmit}
             className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
           >
-            Submit
+            {submitLabel}
           </button>
         </div>
       </div>

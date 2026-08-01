@@ -80,7 +80,9 @@ const buildDailySeries = (entries, windowStart, windowEnd) => {
     while (cursor < entryEnd) {
       const dayEnd = new Date(cursor);
       dayEnd.setHours(23, 59, 59, 999);
-      const segmentEnd = new Date(Math.min(dayEnd.getTime(), entryEnd.getTime()));
+      const segmentEnd = new Date(
+        Math.min(dayEnd.getTime(), entryEnd.getTime()),
+      );
       const seconds = Math.max(
         0,
         Math.floor((segmentEnd.getTime() - cursor.getTime()) / 1000),
@@ -255,7 +257,10 @@ const timeTrackerController = {
       const entries = trackers
         .map((tracker) => {
           const clippedStart = new Date(
-            Math.max(new Date(tracker.startTime).getTime(), windowStart.getTime()),
+            Math.max(
+              new Date(tracker.startTime).getTime(),
+              windowStart.getTime(),
+            ),
           );
           const clippedEnd = new Date(
             Math.min(new Date(tracker.endTime).getTime(), windowEnd.getTime()),
@@ -277,7 +282,9 @@ const timeTrackerController = {
           };
         })
         .filter((entry) => entry.durationSeconds > 0)
-        .sort((left, right) => new Date(left.startTime) - new Date(right.startTime));
+        .sort(
+          (left, right) => new Date(left.startTime) - new Date(right.startTime),
+        );
 
       res.json({
         success: true,
@@ -320,7 +327,9 @@ const timeTrackerController = {
       const startTime = req.body.startTime || tracker.startTime;
       const endTime = req.body.endTime || tracker.endTime;
       const notes =
-        typeof req.body.notes === "string" ? req.body.notes.trim() : tracker.notes;
+        typeof req.body.notes === "string"
+          ? req.body.notes.trim()
+          : tracker.notes;
 
       const validation = validateTimeTrackerPayload({
         taskName,

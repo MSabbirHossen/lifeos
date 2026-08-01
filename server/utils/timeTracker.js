@@ -1,8 +1,5 @@
 const normalizeTaskName = (value = "") =>
-  value
-    .trim()
-    .replace(/\s+/g, " ")
-    .toLowerCase();
+  value.trim().replace(/\s+/g, " ").toLowerCase();
 
 const formatTaskName = (value = "") =>
   value

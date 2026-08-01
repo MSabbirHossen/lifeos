@@ -50,11 +50,7 @@ const validateTimeTrackerPayload = (payload = {}) => {
   const errors = [];
   const taskName = payload.taskName ?? payload.task;
 
-  if (
-    !taskName ||
-    typeof taskName !== "string" ||
-    !taskName.trim()
-  ) {
+  if (!taskName || typeof taskName !== "string" || !taskName.trim()) {
     errors.push("task is required");
   }
 

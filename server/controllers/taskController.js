@@ -1,10 +1,7 @@
 const Task = require("../models/Task");
 const timeTrackerCategories = require("../data/timeTrackerCategories");
 const { validateTaskPayload } = require("../utils/validation");
-const {
-  formatTaskName,
-  normalizeTaskName,
-} = require("../utils/timeTracker");
+const { formatTaskName, normalizeTaskName } = require("../utils/timeTracker");
 
 const escapeRegex = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
