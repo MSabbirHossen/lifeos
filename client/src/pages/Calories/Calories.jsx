@@ -3,6 +3,7 @@ import Card from "../../components/Card";
 import Modal from "../../components/Modal";
 import API from "../../utils/api";
 import { Trash2, Plus } from "lucide-react";
+import { calorieFoods } from "../../data/calorieFoods";
 
 const Calories = () => {
   const [trackers, setTrackers] = useState([]);
@@ -10,6 +11,8 @@ const Calories = () => {
   const [formData, setFormData] = useState({
     mealType: "breakfast",
     foodName: "",
+    consumedWeight: 0,
+    servingMultiplier: 1,
     calories: 0,
     macros: { protein: 0, carbs: 0, fats: 0 },
     waterIntake: 0,
@@ -18,6 +21,120 @@ const Calories = () => {
   useEffect(() => {
     fetchTrackers();
   }, []);
+
+  const roundToOneDecimal = (value) => Math.round(value * 10) / 10;
+
+  const findFoodByName = (name) =>
+    calorieFoods.find(
+      (food) => food.name.toLowerCase() === name.trim().toLowerCase(),
+    );
+
+  const calculateNutritionByWeight = (food, consumedWeight) => {
+    const weight = Number(consumedWeight) || 0;
+    const factor = food.gramWeight > 0 ? weight / food.gramWeight : 0;
+
+    return {
+      calories: Math.round(food.calories * factor),
+      protein: roundToOneDecimal(food.protein * factor),
+      carbs: roundToOneDecimal(food.carbs * factor),
+      fats: roundToOneDecimal(food.fat * factor),
+    };
+  };
+
+  const calculateNutritionByMultiplier = (food, multiplier) => {
+    const safeMultiplier = Number(multiplier) || 0;
+    const weight = food.gramWeight * safeMultiplier;
+    return {
+      consumedWeight: roundToOneDecimal(weight),
+      ...calculateNutritionByWeight(food, weight),
+    };
+  };
+
+  const handleFoodNameChange = (value) => {
+    const matchedFood = findFoodByName(value);
+
+    if (!matchedFood) {
+      setFormData((prev) => ({ ...prev, foodName: value }));
+      return;
+    }
+
+    const servingMultiplier =
+      Number(formData.servingMultiplier) > 0
+        ? Number(formData.servingMultiplier)
+        : 1;
+    const nutrition = calculateNutritionByMultiplier(
+      matchedFood,
+      servingMultiplier,
+    );
+
+    setFormData((prev) => ({
+      ...prev,
+      foodName: matchedFood.name,
+      servingMultiplier,
+      consumedWeight: nutrition.consumedWeight,
+      calories: nutrition.calories,
+      macros: {
+        protein: nutrition.protein,
+        carbs: nutrition.carbs,
+        fats: nutrition.fats,
+      },
+    }));
+  };
+
+  const handleConsumedWeightChange = (value) => {
+    const consumedWeight = Number(value) || 0;
+    const matchedFood = findFoodByName(formData.foodName);
+
+    if (!matchedFood) {
+      setFormData((prev) => ({ ...prev, consumedWeight }));
+      return;
+    }
+
+    const nutrition = calculateNutritionByWeight(matchedFood, consumedWeight);
+    const servingMultiplier =
+      matchedFood.gramWeight > 0
+        ? roundToOneDecimal(consumedWeight / matchedFood.gramWeight)
+        : 0;
+
+    setFormData((prev) => ({
+      ...prev,
+      consumedWeight,
+      servingMultiplier,
+      calories: nutrition.calories,
+      macros: {
+        protein: nutrition.protein,
+        carbs: nutrition.carbs,
+        fats: nutrition.fats,
+      },
+    }));
+  };
+
+  const handleServingMultiplierChange = (value) => {
+    const servingMultiplier = Number(value) || 0;
+    const matchedFood = findFoodByName(formData.foodName);
+
+    if (!matchedFood) {
+      setFormData((prev) => ({ ...prev, servingMultiplier }));
+      return;
+    }
+
+    const nutrition = calculateNutritionByMultiplier(
+      matchedFood,
+      servingMultiplier,
+    );
+
+    setFormData((prev) => ({
+      ...prev,
+      servingMultiplier,
+      consumedWeight: nutrition.consumedWeight,
+      calories: nutrition.calories,
+      macros: {
+        protein: nutrition.protein,
+        carbs: nutrition.carbs,
+        fats: nutrition.fats,
+      },
+    }));
+  };
 
   const fetchTrackers = async () => {
     try {
@@ -34,6 +151,8 @@ const Calories = () => {
       setFormData({
         mealType: "breakfast",
         foodName: "",
+        consumedWeight: 0,
+        servingMultiplier: 1,
         calories: 0,
         macros: { protein: 0, carbs: 0, fats: 0 },
         waterIntake: 0,
@@ -118,6 +237,14 @@ const Calories = () => {
                   </span>{" "}
                   - {new Date(tracker.date).toLocaleTimeString()}
                 </p>
+                {tracker.consumedWeight > 0 && (
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    Weight: {tracker.consumedWeight} g
+                    {tracker.servingMultiplier > 0
+                      ? ` (${tracker.servingMultiplier}x serving)`
+                      : ""}
+                  </p>
+                )}
                 <div className="grid grid-cols-2 gap-2 mt-2">
                   <p className="text-sm">
                     <strong>Calories:</strong> {tracker.calories}
@@ -175,6 +302,7 @@ const Calories = () => {
               <option value="snack">Snack</option>
             </select>
           </div>
+
           <div>
             <label
               htmlFor="calories-food-name"
@@ -185,13 +313,63 @@ const Calories = () => {
             <input
               id="calories-food-name"
               type="text"
+              list="calorie-food-options"
               value={formData.foodName}
-              onChange={(e) =>
-                setFormData({ ...formData, foodName: e.target.value })
-              }
+              onChange={(e) => handleFoodNameChange(e.target.value)}
+              placeholder="Search foods (e.g., chicken curry, bhaat, roti)"
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+            <datalist id="calorie-food-options">
+              {calorieFoods.map((food) => (
+                <option
+                  key={food.id}
+                  value={food.name}
+                  label={`${food.category} | ${food.calories} kcal | ${food.servingSize} ${food.servingUnit}`}
+                />
+              ))}
+            </datalist>
+            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+              Selecting a listed food auto-fills calories and macros, then the
+              values scale when you change consumed weight.
+            </p>
+          </div>
+
+          <div>
+            <label
+              htmlFor="calories-multiplier"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Serving Multiplier (x)
+            </label>
+            <input
+              id="calories-multiplier"
+              type="number"
+              step="0.1"
+              min="0"
+              value={formData.servingMultiplier}
+              onChange={(e) => handleServingMultiplierChange(e.target.value)}
+              placeholder="Enter serving multiplier (e.g., 1.5)"
               className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
             />
           </div>
+
+          <div>
+            <label
+              htmlFor="calories-weight"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Consumed Weight (g)
+            </label>
+            <input
+              id="calories-weight"
+              type="number"
+              value={formData.consumedWeight}
+              onChange={(e) => handleConsumedWeightChange(e.target.value)}
+              placeholder="Enter grams eaten (e.g., 120)"
+              className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+
           <div>
             <label
               htmlFor="calories-amount"
@@ -204,11 +382,15 @@ const Calories = () => {
               type="number"
               value={formData.calories}
               onChange={(e) =>
-                setFormData({ ...formData, calories: parseInt(e.target.value) })
+                setFormData({
+                  ...formData,
+                  calories: Number(e.target.value) || 0,
+                })
               }
               className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
             />
           </div>
+
           <div className="grid grid-cols-3 gap-2">
             <div>
               <label
@@ -226,13 +408,14 @@ const Calories = () => {
                     ...formData,
                     macros: {
                       ...formData.macros,
-                      protein: parseInt(e.target.value),
+                      protein: Number(e.target.value) || 0,
                     },
                   })
                 }
                 className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
               />
             </div>
+
             <div>
               <label
                 htmlFor="calories-carbs"
@@ -249,13 +432,14 @@ const Calories = () => {
                     ...formData,
                     macros: {
                       ...formData.macros,
-                      carbs: parseInt(e.target.value),
+                      carbs: Number(e.target.value) || 0,
                     },
                   })
                 }
                 className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
               />
             </div>
+
             <div>
               <label
                 htmlFor="calories-fats"
@@ -272,7 +456,7 @@ const Calories = () => {
                     ...formData,
                     macros: {
                       ...formData.macros,
-                      fats: parseInt(e.target.value),
+                      fats: Number(e.target.value) || 0,
                     },
                   })
                 }
@@ -280,6 +464,7 @@ const Calories = () => {
               />
             </div>
           </div>
+
           <div>
             <label
               htmlFor="calories-water"
@@ -294,7 +479,7 @@ const Calories = () => {
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  waterIntake: parseInt(e.target.value),
+                  waterIntake: Number(e.target.value) || 0,
                 })
               }
               className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"

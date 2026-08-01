@@ -15,6 +15,14 @@ const calorieTrackerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  consumedWeight: {
+    type: Number,
+    default: 0,
+  },
+  servingMultiplier: {
+    type: Number,
+    default: 1,
+  },
   calories: {
     type: Number,
     required: true,

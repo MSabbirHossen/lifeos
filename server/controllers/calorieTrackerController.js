@@ -3,11 +3,21 @@ const CalorieTracker = require("../models/CalorieTracker");
 const calorieTrackerController = {
   create: async (req, res) => {
     try {
-      const { mealType, foodName, calories, macros, waterIntake } = req.body;
+      const {
+        mealType,
+        foodName,
+        consumedWeight,
+        servingMultiplier,
+        calories,
+        macros,
+        waterIntake,
+      } = req.body;
       const tracker = new CalorieTracker({
         userId: req.userId,
         mealType,
         foodName,
+        consumedWeight,
+        servingMultiplier,
         calories,
         macros,
         waterIntake,
@@ -44,13 +54,11 @@ const calorieTrackerController = {
       }
       res.json({ success: true, data: tracker });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          success: false,
-          message: "Server error",
-          error: error.message,
-        });
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        error: error.message,
+      });
     }
   },
 
@@ -67,13 +75,11 @@ const calorieTrackerController = {
       }
       res.json({ success: true, message: "Calorie tracker deleted" });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          success: false,
-          message: "Server error",
-          error: error.message,
-        });
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        error: error.message,
+      });
     }
   },
 };
